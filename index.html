@@ -1,10 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPATE Deliveries - Fast Delivery Service Across Nairobi</title>
     <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#00B14F',
+          'primary-dark': '#009640'
+        }
+      }
+    }
+  }
+</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @keyframes drive {
@@ -59,7 +71,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <h1 class="text-2xl font-bold text-[#00B14F] flex items-center cursor-pointer" onclick="showPage('homepage')">
-                        <span class="mr-2">ðŸšš</span>
+                        <span class="mr-2">🚚</span>
                         IPATE Deliveries
                     </h1>
                 </div>
@@ -133,7 +145,7 @@
                     <div class="flex justify-center">
                         <div class="relative w-full h-64 md:h-80 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                             <div class="text-center">
-                                <div class="text-5xl md:text-6xl mb-4">ðŸšš</div>
+                                <div class="text-5xl md:text-6xl mb-4">🚚</div>
                                 <p class="text-lg font-semibold">Live Delivery Tracking</p>
                                 <p class="text-sm opacity-80 mt-2">Real-time updates across Nairobi</p>
                             </div>
@@ -166,7 +178,7 @@
                     <!-- For Customers -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center border border-gray-100 hover:shadow-xl transition-shadow">
                         <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <span class="text-2xl md:text-3xl text-[#00B14F]">ðŸ›ï¸</span>
+                            <span class="text-2xl md:text-3xl text-[#00B14F]">🛍️</span>
                         </div>
                         <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">For Customers</h3>
                         <p class="text-gray-600 mb-6">
@@ -174,19 +186,19 @@
                         </p>
                         <ul class="text-left text-gray-600 space-y-2 mb-6">
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Real-time product browsing
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Secure M-PESA payments
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Live rider tracking
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Instant order updates
                             </li>
                         </ul>
@@ -198,7 +210,7 @@
                     <!-- For Sellers -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center border border-gray-100 hover:shadow-xl transition-shadow">
                         <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <span class="text-2xl md:text-3xl text-[#00B14F]">ðŸª</span>
+                            <span class="text-2xl md:text-3xl text-[#00B14F]">🏪</span>
                         </div>
                         <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">For Sellers</h3>
                         <p class="text-gray-600 mb-6">
@@ -206,19 +218,19 @@
                         </p>
                         <ul class="text-left text-gray-600 space-y-2 mb-6">
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Easy product management
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Real-time order tracking
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Rider assignment
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Sales analytics
                             </li>
                         </ul>
@@ -230,7 +242,7 @@
                     <!-- For Riders -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center border border-gray-100 hover:shadow-xl transition-shadow">
                         <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <span class="text-2xl md:text-3xl text-[#00B14F]">ðŸ›µ</span>
+                            <span class="text-2xl md:text-3xl text-[#00B14F]">🛵</span>
                         </div>
                         <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">For Riders</h3>
                         <p class="text-gray-600 mb-6">
@@ -238,19 +250,19 @@
                         </p>
                         <ul class="text-left text-gray-600 space-y-2 mb-6">
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Real-time delivery requests
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Live location tracking
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Flexible working hours
                             </li>
                             <li class="flex items-center">
-                                <span class="text-[#00B14F] mr-2">âœ“</span>
+                                <span class="text-[#00B14F] mr-2">✓</span>
                                 Instant payments
                             </li>
                         </ul>
@@ -313,7 +325,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                     <div class="text-center p-6">
                         <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-[#00B14F]">âš¡</span>
+                            <span class="text-2xl text-[#00B14F]">⚡</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Lightning Fast</h3>
                         <p class="text-gray-600">Delivery in as little as 30 minutes with optimized routing across Nairobi.</p>
@@ -321,7 +333,7 @@
                     
                     <div class="text-center p-6">
                         <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-[#00B14F]">ðŸ“</span>
+                            <span class="text-2xl text-[#00B14F]">📍</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Real-Time Tracking</h3>
                         <p class="text-gray-600">Watch your delivery progress live on the map from pickup to delivery.</p>
@@ -329,7 +341,7 @@
                     
                     <div class="text-center p-6">
                         <div class="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-[#00B14F]">ðŸ›¡ï¸</span>
+                            <span class="text-2xl text-[#00B14F]">🛡️</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Secure Payments</h3>
                         <p class="text-gray-600">M-Pesa, cards, and wallet payments with bank-level security protection.</p>
@@ -351,7 +363,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center hover:shadow-xl transition-shadow cursor-pointer">
                         <div class="w-16 h-16 bg-[#00B14F] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-white">ðŸ“ž</span>
+                            <span class="text-2xl text-white">📞</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Call Us</h3>
                         <p class="text-gray-600 font-semibold">+254 748 894 671</p>
@@ -360,7 +372,7 @@
                     
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center hover:shadow-xl transition-shadow cursor-pointer">
                         <div class="w-16 h-16 bg-[#00B14F] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-white">âœ‰ï¸</span>
+                            <span class="text-2xl text-white">✉️</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Email Us</h3>
                         <p class="text-gray-600 font-semibold">support@ipatedeliveries.com</p>
@@ -369,7 +381,7 @@
                     
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center hover:shadow-xl transition-shadow cursor-pointer">
                         <div class="w-16 h-16 bg-[#00B14F] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-white">ðŸ“</span>
+                            <span class="text-2xl text-white">📍</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Visit Us</h3>
                         <p class="text-gray-600 font-semibold">Nairobi, Kenya</p>
@@ -701,7 +713,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="mr-2">ðŸšš</span>
+                        <span class="mr-2">🚚</span>
                         IPATE Deliveries
                     </h3>
                     <p class="text-gray-400">
@@ -709,7 +721,7 @@
                     </p>
                     <div class="flex space-x-4 mt-4">
                         <a href="https://x.com/meltongraymond?s=09" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-[#00B14F] transition-colors">
-                            ð•
+                            𝕏
                         </a>
                         <a href="https://www.instagram.com/dir.melton?igsh=MTZ0dmY2MmdkcXU1dw==" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-[#00B14F] transition-colors">
                             <i class="fab fa-instagram"></i>
