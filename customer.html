@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -646,6 +646,32 @@
     </style>
 </head>
 <body>
+<script>
+// Simple authentication check
+const SimpleAuth = {
+    isAuthenticated: function() {
+        try {
+            const userData = localStorage.getItem('ipate_simple_user');
+            return userData !== null;
+        } catch (e) {
+            return false;
+        }
+    },
+    
+    getUserRole: function() {
+        try {
+            const userData = localStorage.getItem('ipate_simple_user');
+            if (userData) {
+                const user = JSON.parse(userData);
+                return user.role;
+            }
+        } catch (e) {
+            console.error('Error reading user role:', e);
+        }
+        return null;
+    }
+};
+</script>
     <!-- Loading Spinner -->
     <div class="loading-spinner" id="loadingSpinner">
         <div class="spinner"></div>
@@ -659,12 +685,12 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo" onclick="localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html"">
                     <i class="fas fa-shipping-fast"></i>
                     <span>IPATE Deliveries</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a onclick="localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html""><i class="fas fa-home"></i> Home</a></li>
                     <li><a class="active"><i class="fas fa-shopping-bag"></i> Shop</a></li>
                     <li><a onclick="CustomerDashboard.showOrders()"><i class="fas fa-clipboard-list"></i> My Orders</a></li>
                     <li><a onclick="CustomerDashboard.showCart()"><i class="fas fa-shopping-cart"></i> Cart</a></li>
@@ -673,7 +699,7 @@
                 <div class="user-profile">
                     <div class="user-avatar" id="userAvatar">JD</div>
                     <span id="userName">John Doe</span>
-                    <button class="btn btn-outline" onclick="AuthManager.logout()">
+                    <button class="btn btn-outline" onclick="localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html"">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </button>
                 </div>
@@ -688,7 +714,7 @@
             <div class="section">
                 <div class="section-title">
                     <div>
-                        <h2>🛍️ Customer Dashboard</h2>
+                        <h2>ðŸ›ï¸ Customer Dashboard</h2>
                         <p>Welcome back, <span id="customerName">John Doe</span>!</p>
                     </div>
                     <div class="flex gap-4">
@@ -723,7 +749,7 @@
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-star"></i></div>
-                        <div class="stat-value">4.8 ★</div>
+                        <div class="stat-value">4.8 â˜…</div>
                         <div class="stat-label">Your Rating</div>
                         <div class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> 0.2 from last month</div>
                     </div>
@@ -733,7 +759,7 @@
             <!-- Products Section -->
             <div class="section">
                 <div class="section-title">
-                    <h2>🛍️ Shop Products</h2>
+                    <h2>ðŸ›ï¸ Shop Products</h2>
                     <div class="flex gap-4">
                         <select id="categoryFilter" onchange="CustomerDashboard.filterProducts()" class="border border-gray-300 rounded-lg px-4 py-2">
                             <option value="all">All Categories</option>
@@ -754,7 +780,7 @@
             <!-- Cart Section -->
             <div class="section" id="cartSection" style="display: none;">
                 <div class="section-title">
-                    <h2>🛒 Your Shopping Cart</h2>
+                    <h2>ðŸ›’ Your Shopping Cart</h2>
                     <button class="btn btn-outline" onclick="CustomerDashboard.hideCart()">
                         <i class="fas fa-arrow-left"></i> Continue Shopping
                     </button>
@@ -790,7 +816,7 @@
             <!-- Orders Section -->
             <div class="section">
                 <div class="section-title">
-                    <h2>📦 Your Orders</h2>
+                    <h2>ðŸ“¦ Your Orders</h2>
                     <div class="flex gap-4">
                         <select id="orderStatusFilter" onchange="CustomerDashboard.filterOrders()" class="border border-gray-300 rounded-lg px-4 py-2">
                             <option value="all">All Orders</option>
@@ -831,11 +857,11 @@
                 <label>Payment Method</label>
                 <div class="payment-options">
                     <div class="payment-option active" data-method="cash" onclick="CustomerDashboard.selectPaymentMethod('cash')">
-                        <div style="font-size: 24px;">💵</div>
+                        <div style="font-size: 24px;">ðŸ’µ</div>
                         <div>Cash on Delivery</div>
                     </div>
                     <div class="payment-option" data-method="mpesa" onclick="CustomerDashboard.selectPaymentMethod('mpesa')">
-                        <div style="font-size: 24px;">📱</div>
+                        <div style="font-size: 24px;">ðŸ“±</div>
                         <div>M-Pesa</div>
                     </div>
                 </div>
@@ -881,9 +907,9 @@
     </div>
 
         <!-- Add integration scripts before existing script -->
-    <script src="./js/config.js"></script>
-    <script src="./js/mock-data.js"></script>
-    <script src="./js/integration.js"></script>
+    <!-- <!-- <script src="./js/config.js"></script> --> -->
+    <!-- <!-- <script src="./js/mock-data.js"></script> --> -->
+    <!-- <!-- <script src="./js/integration.js"></script> --> -->
 
     <script>
         // ========== ENHANCED CUSTOMER DASHBOARD WITH INTEGRATION ==========
@@ -891,16 +917,19 @@
         // Enhanced initialization
         document.addEventListener('DOMContentLoaded', async function() {
             // Check authentication
-            if (!IPATEApp.isAuthenticated()) {
-                window.location.href = 'login.html';
+            if (!SimpleAuth.isAuthenticated()) {
+                const userData = localStorage.getItem('ipate_simple_user');
+if (!userData) {
+    window.location.href = 'login.html';
+}
                 return;
             }
 
             // Verify user role
-            if (IPATEApp.getUserRole() !== 'customer') {
+            if (SimpleAuth.getUserRole() !== 'customer') {
                 IPATEApp.showNotification('Access denied. Please login as customer.', 'error');
                 setTimeout(() => {
-                    IPATEApp.logout();
+                    localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html";
                 }, 2000);
                 return;
             }
@@ -933,16 +962,19 @@
         // Enhanced AuthManager to use integration
         class EnhancedAuthManager {
             static logout() {
-                IPATEApp.logout();
+                localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html";
             }
             
             static isAuthenticated() {
-                return IPATEApp.isAuthenticated();
+                return SimpleAuth.isAuthenticated();
             }
             
             static requireAuth() {
                 if (!this.isAuthenticated()) {
-                    window.location.href = 'login.html';
+                    const userData = localStorage.getItem('ipate_simple_user');
+if (!userData) {
+    window.location.href = 'login.html';
+}
                     return false;
                 }
                 return true;
@@ -1065,7 +1097,7 @@
                 DataStore.clearUserData();
                 UIHelper.showNotification('Logged out successfully', 'success');
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html";
                 }, 1500);
             }
             
@@ -1076,7 +1108,10 @@
             
             static requireAuth() {
                 if (!this.isAuthenticated()) {
-                    window.location.href = 'login.html';
+                    const userData = localStorage.getItem('ipate_simple_user');
+if (!userData) {
+    window.location.href = 'login.html';
+}
                     return false;
                 }
                 return true;
@@ -1230,7 +1265,7 @@
                             <div>
                                 <strong>Order #${order.id}</strong>
                                 <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-                                    ${new Date(order.createdAt).toLocaleDateString()} • ${new Date(order.createdAt).toLocaleTimeString()}
+                                    ${new Date(order.createdAt).toLocaleDateString()} â€¢ ${new Date(order.createdAt).toLocaleTimeString()}
                                 </div>
                             </div>
                             <div class="order-status ${statusClass}">${statusText}</div>
@@ -1239,7 +1274,7 @@
                         <div class="order-items">
                             ${order.items.map(item => `
                                 <div class="order-item">
-                                    <span>${item.name} × ${item.quantity}</span>
+                                    <span>${item.name} Ã— ${item.quantity}</span>
                                     <span>KSh ${(item.price * item.quantity).toLocaleString()}</span>
                                 </div>
                             `).join('')}
@@ -1349,7 +1384,7 @@
                                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                                 <div>
                                     <h4>${item.name}</h4>
-                                    <div style="color: var(--gray); font-size: 14px;">KSh ${item.price.toLocaleString()} × ${item.quantity}</div>
+                                    <div style="color: var(--gray); font-size: 14px;">KSh ${item.price.toLocaleString()} Ã— ${item.quantity}</div>
                                     <div style="color: var(--gray); font-size: 12px;">Seller: ${item.sellerName}</div>
                                 </div>
                             </div>
@@ -1438,7 +1473,7 @@
                     total += itemTotal;
                     summaryHTML += `
                         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span>${item.name} × ${item.quantity}</span>
+                            <span>${item.name} Ã— ${item.quantity}</span>
                             <span>KSh ${itemTotal.toLocaleString()}</span>
                         </div>
                     `;
@@ -1578,7 +1613,7 @@
                         <h4>Order Items</h4>
                         ${order.items.map(item => `
                             <div class="order-item">
-                                <span>${item.name} × ${item.quantity}</span>
+                                <span>${item.name} Ã— ${item.quantity}</span>
                                 <span>KSh ${(item.price * item.quantity).toLocaleString()}</span>
                             </div>
                         `).join('')}
@@ -1812,5 +1847,61 @@
             CustomerDashboard.initialize();
         });
     </script>
+
+
+    <!-- GitHub Pages Compatibility -->
+    <script>
+        // Fix for GitHub Pages routing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update all internal links to work on GitHub Pages
+            document.querySelectorAll('a').forEach(link => {
+                if (link.href.includes('.github.io') && link.getAttribute('href').startsWith('./')) {
+                    link.href = link.getAttribute('href').replace('./', '');
+                }
+            });
+            
+            // Enhanced authentication check
+            const userData = JSON.parse(localStorage.getItem('ipate_simple_user') || 'null');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            // Pages that don't require authentication
+            const publicPages = ['index.html', 'login.html', 'register.html'];
+            
+            if (!publicPages.includes(currentPage)) {
+                if (!userData) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Check if user is on correct dashboard
+                const expectedRole = currentPage.replace('.html', '');
+                if (userData.role !== expectedRole) {
+                    window.location.href = userData.role + '.html';
+                    return;
+                }
+                
+                // Update user info in UI
+                const avatarElements = document.querySelectorAll('.user-avatar');
+                const nameElements = document.querySelectorAll('.user-profile span, #customerName, #userName');
+                
+                avatarElements.forEach(el => {
+                    if (el.textContent.length <= 2) { // Only update if it's an avatar
+                        el.textContent = userData.avatar || 'US';
+                    }
+                });
+                
+                nameElements.forEach(el => {
+                    if (el.id === 'customerName' || el.id === 'userName' || el.className.includes('user-profile')) {
+                        el.textContent = userData.name || 'User';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+

@@ -439,16 +439,42 @@
     </style>
 </head>
 <body>
+<script>
+// Simple authentication check
+const SimpleAuth = {
+    isAuthenticated: function() {
+        try {
+            const userData = localStorage.getItem('ipate_simple_user');
+            return userData !== null;
+        } catch (e) {
+            return false;
+        }
+    },
+    
+    getUserRole: function() {
+        try {
+            const userData = localStorage.getItem('ipate_simple_user');
+            if (userData) {
+                const user = JSON.parse(userData);
+                return user.role;
+            }
+        } catch (e) {
+            console.error('Error reading user role:', e);
+        }
+        return null;
+    }
+};
+</script>
     <!-- Header -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo" onclick="localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html"">
                     <i class="fas fa-shipping-fast"></i>
                     <span>IPATE Deliveries</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a onclick="window.location.href='index.html'">Home</a></li>
+                    <li><a onclick="localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html"">Home</a></li>
                     <li><a onclick="showSection('dashboard', this)" class="active">Dashboard</a></li>
                     <li><a onclick="showSection('products', this)">Products</a></li>
                     <li><a onclick="showSection('orders', this)">Orders</a></li>
@@ -457,7 +483,7 @@
                 <div class="user-profile">
                     <div class="user-avatar">SK</div>
                     <span>Sarah's Kitchen</span>
-                    <button class="btn btn-outline" onclick="window.location.href='index.html'">Logout</button>
+                    <button class="btn btn-outline" onclick="localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html"">Logout</button>
                 </div>
             </nav>
         </div>
@@ -634,32 +660,44 @@
     </div>
 
         <!-- Add integration scripts before existing script -->
-    <script src="./js/config.js"></script>
-    <script src="./js/mock-data.js"></script>
-    <script src="./js/integration.js"></script>
+    
+    
+    
 
     <script>
         // ========== ENHANCED SELLER DASHBOARD WITH INTEGRATION ==========
         
         // Enhanced initialization
         document.addEventListener('DOMContentLoaded', async function() {
-            // Check authentication
-            if (!IPATEApp.isAuthenticated()) {
+                        // Check authentication
+            const userData = localStorage.getItem('ipate_simple_user');
+            if (!userData) {
                 window.location.href = 'login.html';
                 return;
             }
 
             // Verify user role
-            if (IPATEApp.getUserRole() !== 'seller') {
-                IPATEApp.showNotification('Access denied. Please login as seller.', 'error');
+            const user = JSON.parse(userData);
+            if (user.role !== 'seller') {
+                alert('Access denied. Please login as seller.');
                 setTimeout(() => {
-                    IPATEApp.logout();
+                    window.location.href = 'login.html';
+                }, 2000);
+                return;
+            }
+            }
+
+            // Verify user role
+            if (SimpleAuth.getUserRole() !== 'seller') {
+                alert('Access denied. Please login as seller.', 'error');
+                setTimeout(() => {
+                    window.location.href = "login.html"();
                 }, 2000);
                 return;
             }
 
             // Load user data
-            const userData = IPATEApp.getCurrentUser();
+            const userData = function() { try { return JSON.parse(localStorage.getItem("ipate_simple_user")); } catch(e) { return null; } }();
             
             // Update UI with user data
             document.querySelector('.user-avatar').textContent = userData.avatar;
@@ -667,7 +705,7 @@
 
             // TODO: Replace with Supabase data loading
             // Load dashboard data from mock API
-            const dashboardData = await IPATEApp.loadDashboardData();
+            const dashboardData = await function() { return new Promise(resolve => resolve({})); }();
             if (dashboardData) {
                 // Initialize the existing seller dashboard with loaded data
                 // The existing loadSellerProducts(), loadSellerOrders() will use mock data
@@ -690,7 +728,7 @@
 
         // Enhanced logout for seller dashboard
         function enhancedLogout() {
-            IPATEApp.logout();
+            window.location.href = "login.html"();
         }
 
         // Replace the original logout function
@@ -1208,5 +1246,65 @@
             }
         }
     </script>
+
+
+    <!-- GitHub Pages Compatibility -->
+    <script>
+        // Fix for GitHub Pages routing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update all internal links to work on GitHub Pages
+            document.querySelectorAll('a').forEach(link => {
+                if (link.href.includes('.github.io') && link.getAttribute('href').startsWith('./')) {
+                    link.href = link.getAttribute('href').replace('./', '');
+                }
+            });
+            
+            // Enhanced authentication check
+            const userData = JSON.parse(localStorage.getItem('ipate_simple_user') || 'null');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            // Pages that don't require authentication
+            const publicPages = ['index.html', 'login.html', 'register.html'];
+            
+            if (!publicPages.includes(currentPage)) {
+                if (!userData) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Check if user is on correct dashboard
+                const expectedRole = currentPage.replace('.html', '');
+                if (userData.role !== expectedRole) {
+                    window.location.href = userData.role + '.html';
+                    return;
+                }
+                
+                // Update user info in UI
+                const avatarElements = document.querySelectorAll('.user-avatar');
+                const nameElements = document.querySelectorAll('.user-profile span, #customerName, #userName');
+                
+                avatarElements.forEach(el => {
+                    if (el.textContent.length <= 2) { // Only update if it's an avatar
+                        el.textContent = userData.avatar || 'US';
+                    }
+                });
+                
+                nameElements.forEach(el => {
+                    if (el.id === 'customerName' || el.id === 'userName' || el.className.includes('user-profile')) {
+                        el.textContent = userData.name || 'User';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
