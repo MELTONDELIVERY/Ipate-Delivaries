@@ -177,11 +177,7 @@
         });
         
         // Check if already logged in
-        const currentUser = localStorage.getItem('ipate_simple_user');
-        if (currentUser) {
-            const user = JSON.parse(currentUser);
-            window.location.href = user.role + '.html';
-        }
+        // Authentication check removed for testing
     </script>
 
     <!-- GitHub Pages Compatibility -->
@@ -197,4 +193,5 @@
     </script>
 </body>
 </html>
+
 
