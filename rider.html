@@ -794,7 +794,7 @@ const SimpleAuth = {
         document.addEventListener('DOMContentLoaded', async function() {
             // Check authentication
             if (!SimpleAuth.isAuthenticated()) {
-                window.location.href = 'login.html';
+                // Login redirect disabled;
                 return;
             }
 
@@ -1635,7 +1635,7 @@ const SimpleAuth = {
             
             if (!publicPages.includes(currentPage)) {
                 if (!userData) {
-                    window.location.href = 'login.html';
+                    // Login redirect disabled;
                     return;
                 }
                 
@@ -1666,6 +1666,7 @@ const SimpleAuth = {
     </script>
 </body>
 </html>
+
 
 
 

@@ -946,7 +946,7 @@ window.IPATEApp = {
     redirectToDashboard: function() {
         const user = this.getCurrentUser();
         if (user && user.role) {
-            window.location.href = user.role + '.html';
+            // Redirect disabled;
         }
     }
 };
@@ -982,7 +982,7 @@ window.IPATEApp = {
                 if (!this.isAuthenticated()) {
                     const userData = localStorage.getItem('ipate_simple_user');
 if (!userData) {
-    window.location.href = 'login.html';
+    // Login redirect disabled;
 }
                     return false;
                 }
@@ -1119,7 +1119,7 @@ if (!userData) {
                 if (!this.isAuthenticated()) {
                     const userData = localStorage.getItem('ipate_simple_user');
 if (!userData) {
-    window.location.href = 'login.html';
+    // Login redirect disabled;
 }
                     return false;
                 }
@@ -1878,7 +1878,7 @@ if (!userData) {
             
             if (!publicPages.includes(currentPage)) {
                 if (!userData) {
-                    window.location.href = 'login.html';
+                    // Login redirect disabled;
                     return;
                 }
                 
@@ -1909,6 +1909,7 @@ if (!userData) {
     </script>
 </body>
 </html>
+
 
 
 
