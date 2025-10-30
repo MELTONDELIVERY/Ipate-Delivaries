@@ -691,7 +691,7 @@ const SimpleAuth = {
             if (SimpleAuth.getUserRole() !== 'seller') {
                 alert('Access denied. Please login as seller.', 'error');
                 setTimeout(() => {
-                    window.location.href = "login.html"();
+                    window.location.href = "login.html";
                 }, 2000);
                 return;
             }
@@ -728,7 +728,7 @@ const SimpleAuth = {
 
         // Enhanced logout for seller dashboard
         function enhancedLogout() {
-            window.location.href = "login.html"();
+            window.location.href = "login.html";
         }
 
         // Replace the original logout function
@@ -1103,7 +1103,7 @@ const SimpleAuth = {
             
             // For demo purposes, just show an alert
             // In a real implementation, you would open an edit modal
-            alert(`Edit Product: ${product.name}\nPrice: KSh ${product.price}\nStock: ${product.stock}`);
+            alert("Edit Product: ${product.name}\nPrice: KSh ${product.price}\nStock: ${product.stock}");
         }
 
         function deleteProduct(productId) {
@@ -1299,6 +1299,7 @@ const SimpleAuth = {
     </script>
 </body>
 </html>
+
 
 
 
