@@ -183,5 +183,18 @@
             window.location.href = user.role + '.html';
         }
     </script>
+
+    <!-- GitHub Pages Compatibility -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update internal links for GitHub Pages
+            document.querySelectorAll('a').forEach(link => {
+                if (link.href.includes('.github.io') && link.getAttribute('href')?.startsWith('./')) {
+                    link.href = link.getAttribute('href').replace('./', '');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
