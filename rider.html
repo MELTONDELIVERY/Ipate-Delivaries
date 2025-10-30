@@ -800,7 +800,7 @@ const SimpleAuth = {
 
             // Verify user role
             if (SimpleAuth.getUserRole() !== 'rider') {
-                IPATEApp.showNotification('Access denied. Please login as rider.', 'error');
+                window.location.href = 'index.html'; // Removed alert('Access denied. Please login as rider.', 'error');
                 setTimeout(() => {
                     localStorage.removeItem("ipate_simple_user"); window.location.href = "index.html";
                 }, 2000);
@@ -808,7 +808,7 @@ const SimpleAuth = {
             }
 
             // Load user data
-            const userData = IPATEApp.getCurrentUser();
+            const userData = window.location.href = 'index.html'; // Removed function(){return JSON.parse(localStorage.getItem('ipate_simple_user')||'{}')}();
             
             // Update UI with user data
             document.querySelector('.user-avatar').textContent = userData.avatar;
@@ -816,7 +816,7 @@ const SimpleAuth = {
 
             // TODO: Replace with Supabase data loading
             // Load dashboard data from mock API
-            const dashboardData = await IPATEApp.loadDashboardData();
+            const dashboardData = await window.location.href = 'index.html'; // Removed function(){return new Promise(r=>setTimeout(r,100))}();
             if (dashboardData) {
                 // Initialize the enhanced rider dashboard
                 riderDashboard.initialize();
@@ -1666,6 +1666,8 @@ const SimpleAuth = {
     </script>
 </body>
 </html>
+
+
 
 
 

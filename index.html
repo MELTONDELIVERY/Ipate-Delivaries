@@ -837,11 +837,11 @@
         // Enhanced initialization for homepage
         document.addEventListener('DOMContentLoaded', function() {
             // Check if user is logged in and redirect to appropriate dashboard
-            const currentUser = IPATEApp.getCurrentUser();
+            const currentUser = function(){return JSON.parse(localStorage.getItem('ipate_simple_user')||'{}')}();
             if (currentUser) {
                 // User is logged in, redirect to their dashboard
                 setTimeout(() => {
-                    IPATEApp.redirectToDashboard();
+                    function(){const u=JSON.parse(localStorage.getItem('ipate_simple_user')||'{}');if(u.role)window.location.href=u.role+'.html'}();
                 }, 1000);
             }
             
@@ -903,6 +903,7 @@
     </script>
 </body>
 </html>
+
 
 
 
