@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stawear - Kenya's Best Taekwondo Branding Store | Custom Martial Arts Clothing</title>
-    <meta name="description" content="Stawear - Kenya's #1 Taekwondo Branding Store. Custom martial arts clothing, hoodies, t-shirts, and gear. Based in Nairobi with nationwide delivery.">
-    <meta name="keywords" content="Taekwondo Kenya, martial arts clothing, custom t-shirts Nairobi, dojang uniforms, Taekwondo gear Kenya, Stawear">
+    <title>Stawear - Kenya's #1 Taekwondo Branding Store | Custom Martial Arts Clothing</title>
+    <meta name="description" content="Stawear - Kenya's Premier Taekwondo Branding Store. Custom martial arts clothing, hoodies, t-shirts, and gear. Based in Nairobi with nationwide delivery.">
+    <meta name="keywords" content="Taekwondo Kenya, martial arts clothing, custom t-shirts Nairobi, dojang uniforms, Taekwondo gear Kenya, Stawear, martial arts apparel">
     <meta property="og:title" content="Stawear - Kenya's Best Taekwondo Branding Store">
-    <meta property="og:description" content="Premium custom Taekwondo clothing and gear in Kenya">
+    <meta property="og:description" content="Premium custom Taekwondo clothing and gear in Kenya with nationwide delivery">
     <meta property="og:image" content="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://stawear.co.ke">
     <meta name="twitter:card" content="summary_large_image">
@@ -15,11 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #C62828; /* Red - Taekwondo/Kenyan theme */
+            --primary: #C62828;
             --primary-dark: #8B0000;
-            --secondary: #FF9800; /* Orange accent */
+            --secondary: #FF9800;
             --secondary-dark: #F57C00;
-            --accent: #1A237E; /* Deep blue for contrast */
+            --accent: #1A237E;
             --light: #F5F5F5;
             --dark: #212121;
             --gray: #757575;
@@ -30,7 +30,6 @@
             --kenya-green: #006600;
             --kenya-red: #BB0000;
             --kenya-black: #000000;
-            --kenya-white: #FFFFFF;
         }
         
         * {
@@ -70,6 +69,7 @@
             top: 0;
             z-index: 1000;
             border-bottom: 4px solid var(--secondary);
+            transition: all 0.3s;
         }
         
         .header-container {
@@ -83,6 +83,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
+            cursor: pointer;
         }
         
         .logo-icon {
@@ -126,6 +127,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
         }
         
         nav ul li a i {
@@ -202,7 +204,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(198, 40, 40, 0.85)), url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(198, 40, 40, 0.85)), url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -211,17 +213,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 Q50,0 100,50 T200,50" stroke="%23FF9800" stroke-width="2" fill="none" opacity="0.1"/></svg>');
-            opacity: 0.3;
         }
         
         .hero-content {
@@ -242,18 +233,6 @@
             color: var(--secondary);
             display: inline-block;
             position: relative;
-        }
-        
-        .hero h1 span:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            background: var(--secondary);
-            bottom: 5px;
-            left: 0;
-            border-radius: 3px;
-            opacity: 0.7;
         }
         
         .hero p {
@@ -286,21 +265,6 @@
             overflow: hidden;
         }
         
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
-        }
-        
-        .btn:hover:before {
-            left: 100%;
-        }
-        
         .btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(198, 40, 40, 0.5);
@@ -315,6 +279,16 @@
         .btn-secondary:hover {
             box-shadow: 0 12px 20px rgba(255, 152, 0, 0.5);
             background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--secondary) 100%);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #1B5E20 100%);
+            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+        }
+        
+        .btn-success:hover {
+            box-shadow: 0 12px 20px rgba(46, 125, 50, 0.5);
+            background: linear-gradient(135deg, #1B5E20 0%, var(--success) 100%);
         }
         
         /* Kenyan Info */
@@ -342,6 +316,26 @@
         .kenyan-icon {
             font-size: 2.5rem;
             color: var(--secondary);
+        }
+        
+        .contact-button {
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-button:hover {
+            background: white;
+            transform: scale(1.05);
         }
         
         /* Products Section */
@@ -486,7 +480,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -507,7 +501,7 @@
             background: white;
             border-radius: 20px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
@@ -535,10 +529,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .close-modal:hover {
             color: var(--primary);
+            transform: scale(1.1);
         }
         
         .modal-body {
@@ -549,23 +545,25 @@
         
         .modal-image {
             flex: 1;
-            min-width: 300px;
-            background: #f5f5f5;
+            min-width: 350px;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 40px;
         }
         
         .modal-image img {
             max-width: 100%;
-            max-height: 400px;
+            max-height: 450px;
             object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .modal-details {
             flex: 1;
-            min-width: 300px;
+            min-width: 350px;
             padding: 40px;
         }
         
@@ -576,10 +574,10 @@
         }
         
         .modal-price {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
         .modal-description {
@@ -590,7 +588,7 @@
         }
         
         .size-selector {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         
         .size-selector h4 {
@@ -600,50 +598,57 @@
         
         .sizes {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         
         .size-btn {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border: 2px solid #ddd;
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 1.1rem;
         }
         
         .size-btn:hover, .size-btn.active {
             border-color: var(--primary);
             background: var(--primary);
             color: white;
+            transform: scale(1.05);
         }
         
         .quantity-selector {
             display: flex;
             align-items: center;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .quantity-selector h4 {
+            color: var(--dark);
         }
         
         .quantity-control {
             display: flex;
             align-items: center;
             border: 2px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
         }
         
         .quantity-btn {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: #f5f5f5;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: background 0.3s;
+            font-weight: 700;
         }
         
         .quantity-btn:hover {
@@ -651,330 +656,357 @@
         }
         
         .quantity-input {
-            width: 60px;
-            height: 45px;
+            width: 70px;
+            height: 50px;
             border: none;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
         
-        /* Testimonials */
-        .testimonials {
-            background: #f9f9f9;
-            padding: 5rem 0;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .testimonial {
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100%;
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            position: relative;
-        }
-        
-        .testimonial:before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.2;
-            font-family: serif;
-        }
-        
-        .testimonial p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .customer {
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            z-index: 2001;
+            transition: right 0.4s ease;
             display: flex;
             flex-direction: column;
         }
         
-        .customer strong {
-            color: var(--primary);
-            font-size: 1.1rem;
+        .cart-sidebar.active {
+            right: 0;
         }
         
-        /* Social Proof */
-        .social-proof {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--kenya-black) 100%);
+        .cart-header {
+            background: linear-gradient(135deg, var(--kenya-black), var(--dark));
             color: white;
-            text-align: center;
-        }
-        
-        .proof-item {
+            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
         }
         
-        .proof-item i {
-            font-size: 3rem;
+        .cart-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .cart-close {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .cart-close:hover {
             color: var(--secondary);
         }
         
-        .proof-item h4 {
-            font-size: 2.5rem;
-            margin: 0;
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
         }
         
-        /* Branding Section */
-        .branding {
-            background: linear-gradient(135deg, var(--kenya-black) 0%, var(--dark) 100%);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
             position: relative;
         }
         
-        .branding:before {
-            content: '';
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .cart-item-size {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-remove {
             position: absolute;
+            top: 15px;
+            right: 0;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .cart-item-remove:hover {
+            color: var(--primary);
+        }
+        
+        .cart-footer {
+            padding: 20px;
+            border-top: 2px solid #eee;
+            background: #f9f9f9;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .cart-total span:last-child {
+            color: var(--primary);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Checkout Modal */
+        .checkout-modal {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,0 100,50 50,100 0,50" fill="%23FF9800" opacity="0.05"/></svg>');
-        }
-        
-        .branding h2 {
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .branding h2 span {
-            color: var(--secondary);
-        }
-        
-        .branding p {
-            max-width: 900px;
-            margin: 0 auto 3rem;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.95);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .branding-features {
-            display: flex;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2100;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            margin-top: 3rem;
+            padding: 20px;
+        }
+        
+        .checkout-modal.active {
+            display: flex;
+        }
+        
+        .checkout-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
             position: relative;
-            z-index: 1;
         }
         
-        .feature {
-            flex: 1;
-            min-width: 280px;
-            max-width: 320px;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
+        .checkout-content h2 {
+            margin-bottom: 25px;
+            color: var(--primary);
         }
         
-        .feature:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.12);
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
             border-color: var(--secondary);
         }
         
-        .feature-icon {
-            font-size: 3.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .newsletter h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .newsletter p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-        
-        .newsletter-form {
+        .form-row {
             display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-            gap: 10px;
+            gap: 15px;
         }
         
-        .newsletter-form input {
+        .form-row .form-group {
             flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            outline: none;
         }
         
-        /* Delivery Calculator */
-        .delivery-calculator {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin: 3rem 0;
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
         }
         
-        .delivery-calculator h4 {
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        #county-select {
-            width: 100%;
-            padding: 12px 15px;
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px;
             border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            outline: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .delivery-cost {
-            font-size: 1.2rem;
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .payment-method span {
+            display: block;
             font-weight: 600;
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: rgba(198, 40, 40, 0.05);
+        }
+        
+        .payment-method.selected i {
             color: var(--primary);
         }
         
-        /* Payment Methods */
-        .payment-methods {
-            padding: 2rem 0;
-            text-align: center;
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--kenya-black) 0%, var(--dark) 100%);
+            padding: 2.5rem;
+            transition: right 0.4s;
+            z-index: 1001;
+            overflow-y: auto;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
         }
         
-        .payment-icons {
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
         }
         
-        .payment-icons i {
-            font-size: 2.5rem;
-            color: var(--gray);
+        .mobile-menu-close {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
             transition: color 0.3s;
         }
         
-        .payment-icons i:hover {
-            color: var(--primary);
+        .mobile-menu-close:hover {
+            color: var(--secondary);
         }
         
-        /* Order Tracking */
-        .order-tracking {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin: 3rem 0;
-            text-align: center;
+        .mobile-menu ul {
+            list-style: none;
         }
         
-        .order-tracking h3 {
-            margin-bottom: 1.5rem;
+        .mobile-menu ul li {
+            margin-bottom: 1.8rem;
         }
         
-        .order-tracking input {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            outline: none;
-        }
-        
-        /* Customization Section */
-        .customization {
-            padding: 5rem 0;
-            background-color: #f9f9f9;
-        }
-        
-        .customization-container {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 4rem;
-        }
-        
-        .customization-content {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .customization-img {
-            flex: 1;
-            min-width: 300px;
-            height: 450px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
+        .mobile-menu ul li a {
             color: white;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            position: relative;
+            text-decoration: none;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
         }
         
-        .customization-img:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2" opacity="0.2"/></svg>');
+        .mobile-menu ul li a i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            width: 30px;
+        }
+        
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        
+        .toast {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideInRight 0.3s ease;
+            max-width: 350px;
+            border-left: 5px solid var(--success);
+        }
+        
+        .toast i {
+            font-size: 1.5rem;
+            color: var(--success);
+        }
+        
+        .toast-message {
+            flex: 1;
+        }
+        
+        .toast-close {
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
         /* WhatsApp Float */
@@ -995,10 +1027,11 @@
             z-index: 999;
             transition: all 0.3s;
             text-decoration: none;
+            border: 3px solid white;
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7);
         }
         
@@ -1057,6 +1090,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
         
         .footer-column ul li a:hover {
@@ -1086,27 +1120,12 @@
             color: white;
             font-size: 1.3rem;
             transition: all 0.3s;
+            text-decoration: none;
         }
         
         .social-links a:hover {
             background: var(--primary);
             transform: translateY(-5px);
-            color: white;
-        }
-        
-        .security-badges {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .security-badges i {
-            color: var(--secondary);
-            font-size: 1.2rem;
         }
         
         .copyright {
@@ -1129,16 +1148,63 @@
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.9rem;
+            cursor: pointer;
         }
         
         .legal-links a:hover {
             color: var(--secondary);
         }
         
-        /* Responsive Styles */
+        /* Order Tracking */
+        .order-tracking {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .tracking-form {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            gap: 10px;
+        }
+        
+        .tracking-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: var(--dark);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            gap: 10px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 1100px) {
             .hero h1 {
-                font-size: 3.2rem;
+                font-size: 3rem;
             }
             
             nav ul {
@@ -1148,71 +1214,6 @@
             .mobile-menu-btn {
                 display: block;
             }
-            
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 320px;
-                height: 100%;
-                background: linear-gradient(135deg, var(--kenya-black) 0%, var(--dark) 100%);
-                padding: 2.5rem;
-                transition: right 0.4s;
-                z-index: 1001;
-                overflow-y: auto;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-            }
-            
-            .mobile-menu.active {
-                right: 0;
-            }
-            
-            .mobile-menu-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 2.5rem;
-            }
-            
-            .mobile-menu-close {
-                font-size: 1.8rem;
-                cursor: pointer;
-                color: white;
-                transition: color 0.3s;
-            }
-            
-            .mobile-menu-close:hover {
-                color: var(--secondary);
-            }
-            
-            .mobile-menu ul {
-                list-style: none;
-            }
-            
-            .mobile-menu ul li {
-                margin-bottom: 1.8rem;
-            }
-            
-            .mobile-menu ul li a {
-                color: white;
-                text-decoration: none;
-                font-size: 1.3rem;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                padding: 10px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .mobile-menu ul li a i {
-                font-size: 1.2rem;
-                color: var(--secondary);
-                width: 30px;
-            }
-            
-            .modal-body {
-                flex-direction: column;
-            }
         }
         
         @media (max-width: 768px) {
@@ -1221,49 +1222,28 @@
             }
             
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .section-title {
-                font-size: 2.3rem;
-            }
-            
-            .logo-text {
-                font-size: 1.8rem;
-            }
-            
-            .logo-text span {
-                font-size: 1rem;
-            }
-            
-            .header-actions {
-                gap: 15px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                margin-bottom: 10px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                padding: 5rem 0;
-            }
-            
-            .hero h1 {
                 font-size: 2rem;
             }
             
-            .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
             }
             
-            .product-actions {
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                min-height: 300px;
+            }
+            
+            .tracking-form,
+            .newsletter-form {
                 flex-direction: column;
             }
             
@@ -1274,59 +1254,198 @@
                 bottom: 20px;
                 right: 20px;
             }
-            
-            .modal-details {
-                padding: 25px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20your%20Taekwondo%20clothing" class="whatsapp-float" target="_blank">
+    <!-- WhatsApp Float - Direct WhatsApp -->
+    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20your%20Taekwondo%20clothing%20and%20would%20like%20to%20place%20an%20order%20or%20get%20more%20information." 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+            <div class="cart-close" onclick="toggleCart()">&times;</div>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>Ksh <span id="cartTotal">0</span></span>
+            </div>
+            <button class="btn checkout-btn" onclick="openCheckout()">
+                <i class="fas fa-lock"></i> Proceed to Checkout
+            </button>
+            <button class="btn btn-secondary checkout-btn" onclick="continueShopping()">
+                <i class="fas fa-shopping-bag"></i> Continue Shopping
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <span class="close-modal" onclick="closeCheckout()">&times;</span>
+            <h2><i class="fas fa-lock"></i> Secure Checkout</h2>
+            
+            <form id="checkoutForm" onsubmit="processOrder(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="customerName" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="customerPhone" required placeholder="0712 345 678" pattern="[0-9]{10,12}">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="customerEmail" required placeholder="Enter your email for order confirmation">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>County *</label>
+                        <select id="deliveryCounty" required onchange="updateDeliveryCost()">
+                            <option value="">Select County</option>
+                            <option value="200">Nairobi - Ksh 200</option>
+                            <option value="250">Kiambu - Ksh 250</option>
+                            <option value="350">Nakuru - Ksh 350</option>
+                            <option value="500">Mombasa - Ksh 500</option>
+                            <option value="450">Kisumu - Ksh 450</option>
+                            <option value="600">Other Counties - Ksh 600</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Delivery Cost</label>
+                        <input type="text" id="displayDeliveryCost" value="Ksh 0" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Delivery Address *</label>
+                    <textarea id="deliveryAddress" required placeholder="Street, building, landmark" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Payment Method *</label>
+                    <div class="payment-methods" id="paymentMethods">
+                        <div class="payment-method selected" onclick="selectPaymentMethod('mpesa', this)">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>M-Pesa</span>
+                        </div>
+                        <div class="payment-method" onclick="selectPaymentMethod('card', this)">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Card</span>
+                        </div>
+                        <div class="payment-method" onclick="selectPaymentMethod('bank', this)">
+                            <i class="fas fa-university"></i>
+                            <span>Bank</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="paymentMethod" value="mpesa">
+                </div>
+                
+                <div id="mpesaDetails" class="payment-details" style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    <p><strong>M-Pesa Instructions:</strong></p>
+                    <p>1. Go to M-Pesa on your phone</p>
+                    <p>2. Select Lipa Na M-Pesa</p>
+                    <p>3. Enter Business No: <strong>522522</strong></p>
+                    <p>4. Enter Account No: <strong>STAWEAR</strong></p>
+                    <p>5. Enter Amount: Ksh <span id="mpesaAmount">0</span></p>
+                    <p>6. Enter your M-Pesa PIN and complete payment</p>
+                    <p>7. Enter the M-Pesa confirmation code below:</p>
+                    <input type="text" id="mpesaCode" placeholder="e.g., RCD1Q2W3E4" style="width: 100%; padding: 10px; margin-top: 10px;">
+                </div>
+                
+                <div id="cardDetails" class="payment-details" style="display: none; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    <p><strong>Card Payment:</strong></p>
+                    <p>We accept Visa, Mastercard, and American Express.</p>
+                    <p>You'll be redirected to our secure payment gateway.</p>
+                </div>
+                
+                <div id="bankDetails" class="payment-details" style="display: none; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    <p><strong>Bank Transfer Details:</strong></p>
+                    <p>Bank: Equity Bank</p>
+                    <p>Account Name: Stawear Enterprises</p>
+                    <p>Account Number: 1234567890</p>
+                    <p>Branch: Nairobi</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Additional Notes (Optional)</label>
+                    <textarea id="orderNotes" placeholder="Special instructions, customization requests, etc." rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; padding: 18px; font-size: 1.3rem;">
+                    <i class="fas fa-check-circle"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#home" class="logo">
+            <div class="logo" onclick="scrollToSection('home')">
                 <i class="fas fa-fist-raised logo-icon"></i>
                 <div class="logo-text">STAWEAR<span>Taekwondo Branding</span></div>
-            </a>
+            </div>
             
             <nav>
                 <ul>
                     <li class="active">
-                        <a href="#home"><i class="fas fa-home"></i> Home</a>
+                        <a onclick="scrollToSection('home')"><i class="fas fa-home"></i> Home</a>
                         <div class="nav-indicator"></div>
                     </li>
                     <li>
-                        <a href="#products"><i class="fas fa-tshirt"></i> Products</a>
+                        <a onclick="scrollToSection('products')"><i class="fas fa-tshirt"></i> Products</a>
                         <div class="nav-indicator"></div>
                     </li>
                     <li>
-                        <a href="#testimonials"><i class="fas fa-star"></i> Reviews</a>
+                        <a onclick="scrollToSection('testimonials')"><i class="fas fa-star"></i> Reviews</a>
                         <div class="nav-indicator"></div>
                     </li>
                     <li>
-                        <a href="#branding"><i class="fas fa-palette"></i> Branding</a>
+                        <a onclick="scrollToSection('branding')"><i class="fas fa-palette"></i> Branding</a>
                         <div class="nav-indicator"></div>
                     </li>
                     <li>
-                        <a href="#customization"><i class="fas fa-pen-fancy"></i> Custom Design</a>
+                        <a onclick="scrollToSection('customization')"><i class="fas fa-pen-fancy"></i> Custom Design</a>
                         <div class="nav-indicator"></div>
                     </li>
                 </ul>
             </nav>
             
             <div class="header-actions">
-                <div class="user-icon" onclick="showLoginModal()">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="cart-icon" onclick="showCart()">
+                <a href="tel:0727394165" class="user-icon" title="Call us now">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+                <div class="cart-icon" onclick="toggleCart()">
                     <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count" id="cartCount">0</span>
                 </div>
                 <div class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -1346,49 +1465,55 @@
                 </div>
             </div>
             <ul>
-                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#products"><i class="fas fa-tshirt"></i> Products</a></li>
-                <li><a href="#testimonials"><i class="fas fa-star"></i> Reviews</a></li>
-                <li><a href="#branding"><i class="fas fa-palette"></i> Branding</a></li>
-                <li><a href="#customization"><i class="fas fa-pen-fancy"></i> Custom Design</a></li>
-                <li><a href="#" onclick="showLoginModal()"><i class="fas fa-user-circle"></i> My Account</a></li>
-                <li><a href="#" onclick="showCart()"><i class="fas fa-shopping-bag"></i> Cart (<span class="mobile-cart-count">0</span>)</a></li>
+                <li><a onclick="scrollToSection('home')"><i class="fas fa-home"></i> Home</a></li>
+                <li><a onclick="scrollToSection('products')"><i class="fas fa-tshirt"></i> Products</a></li>
+                <li><a onclick="scrollToSection('testimonials')"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a onclick="scrollToSection('branding')"><i class="fas fa-palette"></i> Branding</a></li>
+                <li><a onclick="scrollToSection('customization')"><i class="fas fa-pen-fancy"></i> Custom Design</a></li>
+                <li><a href="tel:0727394165"><i class="fas fa-phone-alt"></i> Call Us</a></li>
+                <li><a href="https://wa.me/254727394165" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                <li><a onclick="toggleCart()"><i class="fas fa-shopping-bag"></i> Cart (<span class="mobile-cart-count" id="mobileCartCount">0</span>)</a></li>
             </ul>
         </div>
     </header>
-
-    <!-- Product Modal -->
-    <div class="product-modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="modal-body" id="modalBody">
-                <!-- Dynamic content will be inserted here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <h1>KENYA'S #1 <span>TAEKWONDO</span> BRANDING STORE</h1>
-                <p>Premium custom Taekwondo clothing, hoodies, t-shirts & gear. High-quality prints with martial arts spirit for dojangs, clubs, and competitors across Kenya and beyond.</p>
+                <p>Premium custom Taekwondo clothing, hoodies, t-shirts & gear. High-quality prints with martial arts spirit for dojangs, clubs, and competitors across Kenya.</p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="#products" class="btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
-                    <a href="#customization" class="btn btn-secondary"><i class="fas fa-pen-fancy"></i> Custom Design</a>
+                    <a onclick="scrollToSection('products')" class="btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20custom%20Taekwondo%20designs.%20Please%20contact%20me." 
+                       target="_blank" 
+                       class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kenyan Info -->
+    <!-- Kenyan Info with Direct Contact -->
     <section class="kenyan-info">
         <div class="container kenyan-container">
             <div class="kenyan-item">
                 <i class="fas fa-phone-alt kenyan-icon"></i>
                 <div>
                     <h3 style="margin-bottom: 5px;">Call Us Now</h3>
-                    <p style="font-size: 1.3rem; font-weight: 700;">0727 394 165</p>
+                    <a href="tel:0727394165" style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: 700;">0727 394 165</a>
+                    <button class="contact-button" onclick="window.location.href='tel:0727394165'">
+                        <i class="fas fa-phone"></i> Call Directly
+                    </button>
+                </div>
+            </div>
+            <div class="kenyan-item">
+                <i class="fab fa-whatsapp kenyan-icon"></i>
+                <div>
+                    <h3 style="margin-bottom: 5px;">WhatsApp</h3>
+                    <a href="https://wa.me/254727394165" target="_blank" style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: 700;">Chat Now</a>
+                    <button class="contact-button" onclick="window.open('https://wa.me/254727394165', '_blank')">
+                        <i class="fab fa-whatsapp"></i> Open WhatsApp
+                    </button>
                 </div>
             </div>
             <div class="kenyan-item">
@@ -1396,40 +1521,6 @@
                 <div>
                     <h3 style="margin-bottom: 5px;">Nairobi, Kenya</h3>
                     <p>We deliver countrywide</p>
-                </div>
-            </div>
-            <div class="kenyan-item">
-                <i class="fas fa-truck kenyan-icon"></i>
-                <div>
-                    <h3 style="margin-bottom: 5px;">Nationwide Delivery</h3>
-                    <p>Fast & reliable shipping across Kenya</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <div class="container" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-            <div class="proof-item">
-                <i class="fas fa-users"></i>
-                <div>
-                    <h4>500+</h4>
-                    <p>Happy Customers</p>
-                </div>
-            </div>
-            <div class="proof-item">
-                <i class="fas fa-tshirt"></i>
-                <div>
-                    <h4>2,000+</h4>
-                    <p>Items Sold</p>
-                </div>
-            </div>
-            <div class="proof-item">
-                <i class="fas fa-school"></i>
-                <div>
-                    <h4>50+</h4>
-                    <p>Dojangs Served</p>
                 </div>
             </div>
         </div>
@@ -1441,9 +1532,9 @@
             <h2 class="section-title">OUR BEST SELLERS</h2>
             
             <!-- Delivery Calculator -->
-            <div class="delivery-calculator">
+            <div class="delivery-calculator" style="background: white; padding: 2rem; border-radius: 15px; margin-bottom: 3rem;">
                 <h4>Calculate Delivery Cost:</h4>
-                <select id="county-select">
+                <select id="county-select" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; margin: 10px 0;">
                     <option value="">Select County</option>
                     <option value="200">Nairobi - Ksh 200</option>
                     <option value="250">Kiambu - Ksh 250</option>
@@ -1455,8 +1546,8 @@
                 <p class="delivery-cost">Delivery: Ksh <span id="cost">0</span></p>
             </div>
             
-            <div class="products-grid">
-                <!-- Products will be loaded dynamically -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products loaded dynamically -->
             </div>
         </div>
     </section>
@@ -1467,21 +1558,21 @@
             <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
             <div class="testimonial-grid">
                 <div class="testimonial">
-                    <p>"Best quality Taekwondo gear in Kenya! Our dojang ordered 30 custom t-shirts and they were perfect. The printing quality is excellent and the fabric lasts."</p>
+                    <p>"Best quality Taekwondo gear in Kenya! Our dojang ordered 30 custom t-shirts and they were perfect. The printing quality is excellent."</p>
                     <div class="customer">
                         <strong>Sensei Kamau</strong>
                         <span>Nairobi Taekwondo Club</span>
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>"Stawear delivered our tournament uniforms just in time. The design was exactly what we wanted and the material is perfect for active training. Highly recommended!"</p>
+                    <p>"Stawear delivered our tournament uniforms just in time. The design was exactly what we wanted and the material is perfect for active training."</p>
                     <div class="customer">
                         <strong>Coach Wanjiku</strong>
                         <span>Mombasa Martial Arts Academy</span>
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>"As a national competitor, I need gear that can handle intense training. Stawear's hoodies and t-shirts have been durable and comfortable. Great Kenyan brand!"</p>
+                    <p>"As a national competitor, I need gear that can handle intense training. Stawear's hoodies and t-shirts have been durable and comfortable."</p>
                     <div class="customer">
                         <strong>David Omondi</strong>
                         <span>National Taekwondo Team</span>
@@ -1491,113 +1582,92 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h3>GET 10% OFF YOUR FIRST ORDER</h3>
-            <p>Subscribe to our newsletter for exclusive deals and Taekwondo tips</p>
-            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" placeholder="Your email address" required id="newsletterEmail">
-                <button type="submit" class="btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Branding Section -->
-    <section class="branding" id="branding">
+    <section class="branding" id="branding" style="background: linear-gradient(135deg, var(--kenya-black), var(--dark)); color: white; padding: 5rem 0;">
         <div class="container">
-            <h2>TAEKWONDO <span>BRANDING</span> SPECIALISTS IN KENYA</h2>
-            <p>We create custom branded clothing for Taekwondo schools, clubs, and competition teams across Kenya. From dojang uniforms to tournament merchandise, we specialize in martial arts apparel that represents your brand with honor, quality, and authentic Kenyan style.</p>
+            <h2 style="text-align: center; font-size: 2.8rem; margin-bottom: 2rem;">TAEKWONDO <span style="color: var(--secondary);">BRANDING</span> SPECIALISTS</h2>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem; font-size: 1.2rem;">We create custom branded clothing for Taekwondo schools, clubs, and competition teams across Kenya.</p>
             
-            <div class="branding-features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div style="text-align: center; flex: 1; min-width: 250px;">
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
                     <h3>Custom Printing</h3>
-                    <p>High-quality screen printing, embroidery, and heat transfer for your unique Taekwondo designs.</p>
+                    <p>High-quality screen printing and embroidery</p>
                 </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
+                <div style="text-align: center; flex: 1; min-width: 250px;">
+                    <i class="fas fa-medal" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
                     <h3>Tournament Gear</h3>
-                    <p>Specialized apparel for competitors, referees, and tournament staff with quick turnaround.</p>
+                    <p>Specialized apparel for competitors</p>
                 </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                <div style="text-align: center; flex: 1; min-width: 250px;">
+                    <i class="fas fa-users" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
                     <h3>Team Uniforms</h3>
-                    <p>Custom uniforms for your entire dojang with your logo, colors, and school name.</p>
+                    <p>Complete sets for your entire dojang</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Payment Methods -->
-    <section class="payment-methods">
-        <div class="container">
-            <h3>ACCEPTED PAYMENT METHODS</h3>
-            <div class="payment-icons">
-                <i class="fas fa-mobile-alt" title="M-Pesa"></i>
-                <i class="fas fa-university" title="Bank Transfer"></i>
-                <i class="fab fa-cc-visa" title="Visa"></i>
-                <i class="fab fa-cc-mastercard" title="MasterCard"></i>
-                <i class="fas fa-money-bill-wave" title="Cash on Delivery"></i>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20branding%20services%20for%20my%20Taekwondo%20club." 
+                   target="_blank"
+                   class="btn btn-secondary">
+                    <i class="fab fa-whatsapp"></i> Get Branding Quote
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Customization Section -->
-    <section class="customization" id="customization">
+    <section class="customization" id="customization" style="padding: 5rem 0;">
         <div class="container">
             <h2 class="section-title">CUSTOM DESIGN SERVICE</h2>
-            <div class="customization-container">
-                <div class="customization-content">
-                    <h3 style="font-size: 2.3rem; margin-bottom: 1.5rem; color: var(--dark);">Create Your Own Taekwondo Design</h3>
-                    <p style="margin-bottom: 1.8rem; font-size: 1.2rem; line-height: 1.7;">We work with Taekwondo schools and organizations across Kenya to create custom branded clothing that reflects their unique identity and values.</p>
+            <div style="display: flex; align-items: center; gap: 4rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Create Your Own Taekwondo Design</h3>
+                    <p style="margin-bottom: 2rem;">We work with Taekwondo schools across Kenya to create custom branded clothing that reflects their unique identity.</p>
                     
-                    <ul style="list-style: none; margin-bottom: 2.5rem;">
-                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
-                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem; margin-top: 3px;"></i>
-                            <div><strong>Add your dojang name and logo</strong> - We'll incorporate your school identity into the design</div>
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
-                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem; margin-top: 3px;"></i>
-                            <div><strong>Choose from Taekwondo-specific designs</strong> - Korean characters, belt systems, kicking techniques</div>
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
-                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem; margin-top: 3px;"></i>
-                            <div><strong>Select colors matching your school</strong> - Custom color palettes to match your dojang's uniform</div>
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
-                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.2rem; margin-top: 3px;"></i>
-                            <div><strong>Bulk orders for teams and events</strong> - Special pricing for team orders and tournaments</div>
-                        </li>
+                    <ul style="list-style: none; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Add your dojang name and logo</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Choose from Taekwondo-specific designs</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Select colors matching your school</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Bulk orders for teams and events</li>
                     </ul>
                     
                     <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <a href="tel:0727394165" class="btn"><i class="fas fa-phone-alt"></i> Call: 0727 394 165</a>
-                        <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Request Quote</a>
+                        <a href="tel:0727394165" class="btn"><i class="fas fa-phone-alt"></i> Call Now</a>
+                        <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I%20need%20a%20custom%20Taekwondo%20design%20quote." 
+                           target="_blank"
+                           class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Design</a>
                     </div>
                 </div>
                 
-                <div class="customization-img">
-                    <i class="fas fa-pen-nib"></i>
+                <div style="flex: 1; min-width: 300px; height: 400px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-pen-nib" style="font-size: 6rem; color: white;"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Order Tracking -->
+    <!-- Order Tracking Section -->
     <section class="order-tracking">
         <div class="container">
-            <h3>TRACK YOUR ORDER</h3>
-            <input type="text" placeholder="Enter Order ID" id="orderId">
-            <button class="btn" onclick="trackOrder()">Track Order</button>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Track Your Order</h2>
+            <p>Enter your order ID to get real-time tracking information</p>
+            <div class="tracking-form">
+                <input type="text" id="trackingNumber" placeholder="e.g., STA-2024-001">
+                <button class="btn btn-success" onclick="trackOrder()">Track Order</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Get 10% Off Your First Order</h2>
+            <p>Subscribe for exclusive deals, new arrivals, and Taekwondo tips</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
         </div>
     </section>
 
@@ -1607,24 +1677,22 @@
             <div class="footer-container">
                 <div class="footer-column">
                     <h3>Stawear Kenya</h3>
-                    <p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 1.5rem; line-height: 1.7;">Kenya's premier Taekwondo branding and clothing store. Quality martial arts apparel with authentic Kenyan style and craftsmanship.</p>
+                    <p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 1.5rem;">Kenya's premier Taekwondo branding and clothing store. Quality martial arts apparel with authentic Kenyan style.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/254727394165" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="tel:0727394165"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Shop Products</a></li>
-                        <li><a href="#branding"><i class="fas fa-chevron-right"></i> Branding Services</a></li>
-                        <li><a href="#customization"><i class="fas fa-chevron-right"></i> Custom Design</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Customer Reviews</a></li>
-                        <li><a href="#" onclick="trackOrderPrompt()"><i class="fas fa-chevron-right"></i> Track Order</a></li>
+                        <li><a onclick="scrollToSection('home')"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a onclick="scrollToSection('products')"><i class="fas fa-chevron-right"></i> Shop Products</a></li>
+                        <li><a onclick="scrollToSection('branding')"><i class="fas fa-chevron-right"></i> Branding Services</a></li>
+                        <li><a onclick="scrollToSection('customization')"><i class="fas fa-chevron-right"></i> Custom Design</a></li>
                     </ul>
                 </div>
                 
@@ -1636,7 +1704,16 @@
                                 <i class="fas fa-phone"></i>
                                 <div>
                                     <div style="font-weight: 700;">0727 394 165</div>
-                                    <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Call/WhatsApp</div>
+                                    <div style="font-size: 0.9rem;">Call Directly</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/254727394165" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <div>
+                                    <div style="font-weight: 700;">WhatsApp</div>
+                                    <div style="font-size: 0.9rem;">Chat with us</div>
                                 </div>
                             </a>
                         </li>
@@ -1645,16 +1722,7 @@
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <div style="font-weight: 700;">info@stawear.co.ke</div>
-                                    <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Email Us</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <div style="font-weight: 700;">Nairobi, Kenya</div>
-                                    <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">We deliver countrywide</div>
+                                    <div style="font-size: 0.9rem;">Email Us</div>
                                 </div>
                             </a>
                         </li>
@@ -1664,43 +1732,31 @@
                 <div class="footer-column">
                     <h3>Business Hours</h3>
                     <ul>
-                        <li style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; display: flex; justify-content: space-between;">
-                            <span>Monday - Friday:</span>
-                            <span style="font-weight: 700;">8:00 AM - 6:00 PM</span>
+                        <li style="display: flex; justify-content: space-between;">
+                            <span>Mon - Fri:</span>
+                            <span>8:00 AM - 6:00 PM</span>
                         </li>
-                        <li style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; display: flex; justify-content: space-between;">
+                        <li style="display: flex; justify-content: space-between;">
                             <span>Saturday:</span>
-                            <span style="font-weight: 700;">9:00 AM - 4:00 PM</span>
+                            <span>9:00 AM - 4:00 PM</span>
                         </li>
-                        <li style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; display: flex; justify-content: space-between;">
+                        <li style="display: flex; justify-content: space-between;">
                             <span>Sunday:</span>
-                            <span style="font-weight: 700;">10:00 AM - 2:00 PM</span>
+                            <span>10:00 AM - 2:00 PM</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Security Badges -->
-            <div class="security-badges">
-                <i class="fas fa-lock"></i>
-                <span>Secure Checkout</span>
-                <i class="fas fa-shield-alt"></i>
-                <span>SSL Encrypted</span>
-                <i class="fas fa-user-shield"></i>
-                <span>GDPR Compliant</span>
-            </div>
-            
-            <!-- Legal Links -->
             <div class="legal-links">
-                <a href="#" onclick="showTerms()">Terms & Conditions</a>
-                <a href="#" onclick="showPrivacy()">Privacy Policy</a>
-                <a href="#" onclick="showReturns()">Return Policy</a>
-                <a href="#" onclick="showShipping()">Shipping Policy</a>
+                <a onclick="showTerms()">Terms & Conditions</a>
+                <a onclick="showPrivacy()">Privacy Policy</a>
+                <a onclick="showReturns()">Return Policy</a>
+                <a onclick="showShipping()">Shipping Policy</a>
             </div>
             
             <div class="copyright">
                 <p>&copy; 2026 Stawear Taekwondo Branding Store. All rights reserved. | Proudly Kenyan</p>
-                <p style="margin-top: 10px; font-size: 0.85rem;">Website designed for the best Taekwondo clothing experience in Kenya</p>
             </div>
         </div>
     </footer>
@@ -1714,7 +1770,7 @@
                 category: "Hoodies",
                 price: 2499,
                 originalPrice: 3200,
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
                 description: "Premium heavyweight hoodie with embroidered black belt design. Made from 80% cotton and 20% polyester for maximum comfort and durability. Perfect for training sessions and casual wear. Features a kangaroo pocket and adjustable drawstring hood.",
                 badge: "BEST SELLER",
                 sizes: ["S", "M", "L", "XL", "XXL"]
@@ -1725,7 +1781,7 @@
                 category: "T-Shirts",
                 price: 1899,
                 originalPrice: 2400,
-                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
                 description: "100% premium cotton t-shirt with vibrant Kenyan flag colors and traditional Taekwondo design. Breathable fabric ideal for intense training sessions. Shows your national pride while representing martial arts excellence.",
                 badge: "NEW",
                 sizes: ["S", "M", "L", "XL"]
@@ -1735,7 +1791,7 @@
                 name: "Dojang Training Jacket",
                 category: "Jackets",
                 price: 3299,
-                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
                 description: "Lightweight training jacket with moisture-wicking fabric technology. Perfect for pre-training warmups and cool-down sessions. Features zippered pockets and breathable mesh lining. Water-resistant outer layer.",
                 badge: "LIMITED",
                 sizes: ["M", "L", "XL", "XXL"]
@@ -1746,7 +1802,7 @@
                 category: "Headwear",
                 price: 1299,
                 originalPrice: 1600,
-                image: "https://images.unsplash.com/photo-1576872381143-784fbd58d7f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                image: "https://images.unsplash.com/photo-1576872381143-784fbd58d7f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
                 description: "Adjustable snapback cap with embroidered Stawear logo. Made with UV protection fabric to shield from sun during outdoor training. Adjustable strap ensures perfect fit for all head sizes.",
                 sizes: ["One Size"]
             },
@@ -1756,7 +1812,7 @@
                 category: "Tracksuits",
                 price: 4999,
                 originalPrice: 6500,
-                image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
                 description: "Complete tracksuit set with breathable, moisture-wicking fabric. Ideal for competition teams and clubs. Features tapered design for athletic fit, zippered pockets, and reflective safety strips.",
                 badge: "SALE",
                 sizes: ["S", "M", "L", "XL", "XXL"]
@@ -1766,7 +1822,7 @@
                 name: "Tournament Gear Bag",
                 category: "Accessories",
                 price: 2899,
-                image: "https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                image: "https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
                 description: "Large capacity gear bag with multiple compartments for uniforms, gloves, and protection gear. Water-resistant material with reinforced stitching. Includes separate shoe compartment and padded shoulder strap.",
                 sizes: ["One Size"]
             }
@@ -1776,105 +1832,145 @@
         let cart = {
             items: [],
             total: 0,
+            count: 0,
+            
             addItem: function(product, size = "M", quantity = 1) {
-                const cartItem = {
-                    ...product,
-                    size: size,
-                    quantity: quantity,
-                    addedAt: new Date()
-                };
-                this.items.push(cartItem);
-                this.calculateTotal();
-                this.updateCartDisplay();
-                showNotification(`${product.name} added to cart!`);
+                const existingItem = this.items.find(item => item.id === product.id && item.size === size);
+                
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    this.items.push({
+                        ...product,
+                        size: size,
+                        quantity: quantity
+                    });
+                }
+                
+                this.updateCart();
+                this.saveToLocalStorage();
+                showNotification(`${product.name} added to cart!`, 'success');
             },
+            
             removeItem: function(index) {
                 this.items.splice(index, 1);
-                this.calculateTotal();
-                this.updateCartDisplay();
+                this.updateCart();
+                this.saveToLocalStorage();
+                showNotification('Item removed from cart', 'info');
             },
-            calculateTotal: function() {
+            
+            updateCart: function() {
+                this.count = this.items.reduce((sum, item) => sum + item.quantity, 0);
                 this.total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                // Update displays
+                document.getElementById('cartCount').textContent = this.count;
+                const mobileCount = document.getElementById('mobileCartCount');
+                if (mobileCount) mobileCount.textContent = this.count;
+                
+                this.renderCart();
             },
-            updateCartDisplay: function() {
-                const cartCount = document.querySelector('.cart-count');
-                const mobileCartCount = document.querySelector('.mobile-cart-count');
-                cartCount.textContent = this.items.length;
-                if (mobileCartCount) {
-                    mobileCartCount.textContent = this.items.length;
+            
+            renderCart: function() {
+                const cartContainer = document.getElementById('cartItems');
+                const cartTotal = document.getElementById('cartTotal');
+                
+                if (this.items.length === 0) {
+                    cartContainer.innerHTML = `
+                        <div style="text-align: center; padding: 50px 20px;">
+                            <i class="fas fa-shopping-bag" style="font-size: 4rem; color: #ddd; margin-bottom: 20px;"></i>
+                            <p style="color: #666;">Your cart is empty</p>
+                            <button class="btn btn-secondary" style="margin-top: 20px;" onclick="continueShopping()">Start Shopping</button>
+                        </div>
+                    `;
+                } else {
+                    cartContainer.innerHTML = this.items.map((item, index) => `
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">Ksh ${item.price} x ${item.quantity}</div>
+                                <div class="cart-item-size">Size: ${item.size}</div>
+                            </div>
+                            <div class="cart-item-remove" onclick="removeFromCart(${index})">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                    `).join('');
                 }
+                
+                cartTotal.textContent = this.total;
+            },
+            
+            saveToLocalStorage: function() {
+                localStorage.setItem('stawearCart', JSON.stringify(this.items));
+            },
+            
+            loadFromLocalStorage: function() {
+                const saved = localStorage.getItem('stawearCart');
+                if (saved) {
+                    this.items = JSON.parse(saved);
+                    this.updateCart();
+                }
+            },
+            
+            clearCart: function() {
+                this.items = [];
+                this.updateCart();
+                this.saveToLocalStorage();
             }
         };
 
-        // Initialize website
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            cart.loadFromLocalStorage();
             loadProducts();
             setupEventListeners();
-            setupSmoothScrolling();
         });
 
-        // Load products into grid
+        // Load products
         function loadProducts() {
-            const productsGrid = document.querySelector('.products-grid');
-            productsGrid.innerHTML = '';
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
             
             products.forEach(product => {
-                const productCard = createProductCard(product);
-                productsGrid.appendChild(productCard);
-            });
-        }
-
-        // Create product card HTML
-        function createProductCard(product) {
-            const div = document.createElement('div');
-            div.className = 'product-card';
-            div.dataset.id = product.id;
-            
-            const badgeHTML = product.badge ? `<div class="product-badge">${product.badge}</div>` : '';
-            const originalPriceHTML = product.originalPrice ? `<span>Ksh ${product.originalPrice}</span>` : '';
-            
-            div.innerHTML = `
-                ${badgeHTML}
-                <div class="product-img">
-                    <img src="${product.image}" alt="${product.name}" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">${product.category}</div>
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-description">${product.description.substring(0, 100)}...</p>
-                    <div class="product-price">Ksh ${product.price} ${originalPriceHTML}</div>
-                    <div class="product-actions">
-                        <button class="btn" onclick="addToCart(${product.id}, event)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        <button class="btn btn-secondary" onclick="viewProduct(${product.id}, event)"><i class="fas fa-eye"></i> View Details</button>
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                     </div>
-                </div>
-            `;
-            
-            // Add click event to view product
-            div.addEventListener('click', function(e) {
-                if (!e.target.closest('.product-actions')) {
-                    viewProduct(product.id, e);
-                }
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description.substring(0, 80)}...</p>
+                        <div class="product-price">
+                            Ksh ${product.price}
+                            ${product.originalPrice ? `<span>Ksh ${product.originalPrice}</span>` : ''}
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn" onclick="addToCartFromCard(${product.id}, event)">Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="viewProduct(${product.id}, event)">View</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
-            
-            return div;
         }
 
-        // View product details in modal
+        // View product
         function viewProduct(productId, event) {
             if (event) event.stopPropagation();
             
             const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
             const modal = document.getElementById('productModal');
             const modalBody = document.getElementById('modalBody');
             
-            const originalPriceHTML = product.originalPrice ? 
-                `<p style="color: var(--gray); text-decoration: line-through; font-size: 1.2rem;">Ksh ${product.originalPrice}</p>` : '';
-            
             const sizesHTML = product.sizes.map(size => 
-                `<button class="size-btn" data-size="${size}" onclick="selectSize(this)">${size}</button>`
+                `<button class="size-btn" onclick="selectSize(this)">${size}</button>`
             ).join('');
             
             modalBody.innerHTML = `
@@ -1885,310 +1981,385 @@
                     <div class="product-category">${product.category}</div>
                     <h2>${product.name}</h2>
                     <div class="modal-price">Ksh ${product.price}</div>
-                    ${originalPriceHTML}
+                    ${product.originalPrice ? `<p style="color: gray; text-decoration: line-through;">Ksh ${product.originalPrice}</p>` : ''}
                     <p class="modal-description">${product.description}</p>
                     
                     <div class="size-selector">
                         <h4>Select Size:</h4>
-                        <div class="sizes">
-                            ${sizesHTML}
-                        </div>
+                        <div class="sizes">${sizesHTML}</div>
                     </div>
                     
                     <div class="quantity-selector">
                         <h4>Quantity:</h4>
                         <div class="quantity-control">
                             <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                            <input type="text" class="quantity-input" value="1" readonly id="quantityInput">
+                            <input type="text" class="quantity-input" value="1" readonly id="modalQuantity">
                             <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
                         </div>
                     </div>
                     
-                    <button class="btn" style="width: 100%; padding: 18px;" onclick="addToCartModal(${product.id})">
-                        <i class="fas fa-cart-plus"></i> Add to Cart - Ksh ${product.price}
+                    <button class="btn" style="width: 100%; padding: 15px;" onclick="addToCartFromModal(${product.id})">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                     
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <button class="btn btn-secondary" style="flex: 1;" onclick="shareProduct(${product.id})">
-                            <i class="fas fa-share"></i> Share
-                        </button>
-                        <button class="btn btn-secondary" style="flex: 1;" onclick="saveForLater(${product.id})">
-                            <i class="fas fa-heart"></i> Save
-                        </button>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <a href="https://wa.me/254727394165?text=I'm%20interested%20in%20${encodeURIComponent(product.name)}" 
+                           target="_blank"
+                           class="btn btn-secondary"
+                           style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </a>
                     </div>
                 </div>
             `;
             
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
             
-            // Select first size by default
-            if (product.sizes && product.sizes.length > 0) {
-                const firstSizeBtn = modalBody.querySelector('.size-btn');
-                if (firstSizeBtn) firstSizeBtn.classList.add('active');
-            }
+            // Select first size
+            setTimeout(() => {
+                const firstSize = modalBody.querySelector('.size-btn');
+                if (firstSize) firstSize.classList.add('active');
+            }, 100);
         }
 
-        // Close modal
-        function closeModal() {
-            const modal = document.getElementById('productModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Select size in modal
-        function selectSize(button) {
-            const allSizes = document.querySelectorAll('.size-btn');
-            allSizes.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-        }
-
-        // Change quantity in modal
-        function changeQuantity(change) {
-            const input = document.getElementById('quantityInput');
-            let current = parseInt(input.value) || 1;
-            current += change;
-            if (current < 1) current = 1;
-            if (current > 10) current = 10;
-            input.value = current;
-        }
-
-        // Add to cart from modal
-        function addToCartModal(productId) {
+        // Add to cart functions
+        function addToCartFromCard(productId, event) {
+            if (event) event.stopPropagation();
             const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            const selectedSizeBtn = document.querySelector('.size-btn.active');
-            const size = selectedSizeBtn ? selectedSizeBtn.dataset.size : (product.sizes ? product.sizes[0] : "M");
-            const quantity = parseInt(document.getElementById('quantityInput').value) || 1;
+            cart.addItem(product);
+        }
+
+        function addToCartFromModal(productId) {
+            const product = products.find(p => p.id === productId);
+            const selectedSize = document.querySelector('.size-btn.active');
+            const size = selectedSize ? selectedSize.textContent : 'M';
+            const quantity = parseInt(document.getElementById('modalQuantity').value);
             
             cart.addItem(product, size, quantity);
             closeModal();
         }
 
-        // Add to cart from product card
-        function addToCart(productId, event) {
-            if (event) event.stopPropagation();
-            
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            cart.addItem(product);
+        function selectSize(btn) {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         }
+
+        function changeQuantity(change) {
+            const input = document.getElementById('modalQuantity');
+            let val = parseInt(input.value) + change;
+            if (val < 1) val = 1;
+            if (val > 10) val = 10;
+            input.value = val;
+        }
+
+        // Cart functions
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        function removeFromCart(index) {
+            cart.removeItem(index);
+        }
+
+        function continueShopping() {
+            document.getElementById('cartSidebar').classList.remove('active');
+        }
+
+        // Checkout
+        function openCheckout() {
+            if (cart.items.length === 0) {
+                showNotification('Your cart is empty', 'error');
+                return;
+            }
+            
+            document.getElementById('cartSidebar').classList.remove('active');
+            document.getElementById('checkoutModal').classList.add('active');
+            updateDeliveryCost();
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        function selectPaymentMethod(method, element) {
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('paymentMethod').value = method;
+            
+            // Show/hide payment details
+            document.getElementById('mpesaDetails').style.display = method === 'mpesa' ? 'block' : 'none';
+            document.getElementById('cardDetails').style.display = method === 'card' ? 'block' : 'none';
+            document.getElementById('bankDetails').style.display = method === 'bank' ? 'block' : 'none';
+        }
+
+        function updateDeliveryCost() {
+            const county = document.getElementById('deliveryCounty');
+            const cost = county.value || 0;
+            document.getElementById('displayDeliveryCost').value = `Ksh ${cost}`;
+            document.getElementById('mpesaAmount').textContent = cart.total + parseInt(cost);
+        }
+
+        function processOrder(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const order = {
+                id: 'STA-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+                date: new Date().toISOString(),
+                customer: {
+                    name: document.getElementById('customerName').value,
+                    phone: document.getElementById('customerPhone').value,
+                    email: document.getElementById('customerEmail').value
+                },
+                delivery: {
+                    county: document.getElementById('deliveryCounty').selectedOptions[0].text,
+                    cost: parseInt(document.getElementById('deliveryCounty').value || 0),
+                    address: document.getElementById('deliveryAddress').value
+                },
+                payment: {
+                    method: document.getElementById('paymentMethod').value,
+                    mpesaCode: document.getElementById('mpesaCode').value
+                },
+                items: cart.items,
+                subtotal: cart.total,
+                total: cart.total + parseInt(document.getElementById('deliveryCounty').value || 0),
+                notes: document.getElementById('orderNotes').value
+            };
+
+            // Validate M-Pesa code if method is mpesa
+            if (order.payment.method === 'mpesa' && !order.payment.mpesaCode) {
+                showNotification('Please enter your M-Pesa confirmation code', 'error');
+                return;
+            }
+
+            // Send order confirmation via email (simulated)
+            sendOrderConfirmation(order);
+            
+            // Send to WhatsApp
+            sendOrderToWhatsApp(order);
+            
+            // Clear cart
+            cart.clearCart();
+            
+            // Close checkout
+            closeCheckout();
+            
+            // Show success message
+            showNotification(`Order #${order.id} placed successfully! Confirmation sent to ${order.customer.email}`, 'success');
+        }
+
+        function sendOrderConfirmation(order) {
+            // This would normally send via backend, but for demo we'll simulate
+            console.log('Sending order confirmation email to:', order.customer.email);
+            
+            // Store in localStorage for demo
+            const orders = JSON.parse(localStorage.getItem('stawearOrders') || '[]');
+            orders.push(order);
+            localStorage.setItem('stawearOrders', JSON.stringify(orders));
+        }
+
+        function sendOrderToWhatsApp(order) {
+            const itemsList = order.items.map(item => 
+                `${item.quantity}x ${item.name} (${item.size}) - Ksh ${item.price * item.quantity}`
+            ).join('%0A');
+            
+            const message = `NEW ORDER: #${order.id}%0A%0A` +
+                `CUSTOMER:%0A${order.customer.name}%0A${order.customer.phone}%0A${order.customer.email}%0A%0A` +
+                `ITEMS:%0A${itemsList}%0A%0A` +
+                `DELIVERY:%0A${order.delivery.address}%0A${order.delivery.county}%0ACost: Ksh ${order.delivery.cost}%0A%0A` +
+                `PAYMENT: ${order.payment.method.toUpperCase()}%0A` +
+                (order.payment.mpesaCode ? `M-Pesa Code: ${order.payment.mpesaCode}%0A` : '') +
+                `TOTAL: Ksh ${order.total}%0A%0A` +
+                `Notes: ${order.notes || 'None'}`;
+            
+            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Order Tracking
+        function trackOrder() {
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            if (!trackingNumber) {
+                showNotification('Please enter an order ID', 'error');
+                return;
+            }
+            
+            // Check in localStorage
+            const orders = JSON.parse(localStorage.getItem('stawearOrders') || '[]');
+            const order = orders.find(o => o.id === trackingNumber);
+            
+            if (order) {
+                const date = new Date(order.date);
+                showNotification(
+                    `Order ${order.id}: Placed on ${date.toLocaleDateString()}. Status: Processing. Total: Ksh ${order.total}`,
+                    'info'
+                );
+            } else {
+                // Forward to WhatsApp for manual tracking
+                if (confirm('Order not found. Would you like to track via WhatsApp?')) {
+                    window.open(`https://wa.me/254727394165?text=Please%20help%20me%20track%20order%20${trackingNumber}`, '_blank');
+                }
+            }
+        }
+
+        // Newsletter
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            
+            // Store subscription
+            const subscriptions = JSON.parse(localStorage.getItem('stawearNewsletter') || '[]');
+            subscriptions.push({
+                email: email,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('stawearNewsletter', JSON.stringify(subscriptions));
+            
+            // Send confirmation email (simulated)
+            console.log('Newsletter subscription:', email);
+            
+            showNotification(`Thank you! 10% discount code sent to ${email}`, 'success');
+            document.getElementById('newsletterEmail').value = '';
+        }
+
+        // Notifications
+        function showNotification(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            
+            let icon = 'fa-check-circle';
+            if (type === 'error') icon = 'fa-exclamation-circle';
+            if (type === 'info') icon = 'fa-info-circle';
+            
+            toast.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <div class="toast-message">${message}</div>
+                <div class="toast-close" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </div>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 5000);
+        }
+
+        // Modal functions
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        // Delivery calculator
+        document.getElementById('county-select')?.addEventListener('change', function() {
+            document.getElementById('cost').textContent = this.value || '0';
+        });
 
         // Setup event listeners
         function setupEventListeners() {
             // Mobile menu
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-menu-close');
             const mobileMenu = document.querySelector('.mobile-menu');
             
-            mobileMenuBtn.addEventListener('click', () => {
+            menuBtn?.addEventListener('click', () => {
                 mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
             });
             
-            mobileMenuClose.addEventListener('click', () => {
+            closeBtn?.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
             });
             
-            // Close mobile menu when clicking links
+            // Close mobile menu on link click
             document.querySelectorAll('.mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('active');
-                    document.body.style.overflow = 'auto';
                 });
             });
             
-            // Delivery calculator
-            const countySelect = document.getElementById('county-select');
-            const costDisplay = document.getElementById('cost');
-            
-            countySelect.addEventListener('change', function() {
-                costDisplay.textContent = this.value || '0';
-            });
-            
-            // Close modal when clicking outside
-            document.getElementById('productModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
-            });
-            
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
+            // Close modals on escape
+            document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal();
+                    document.getElementById('cartSidebar').classList.remove('active');
+                    closeCheckout();
                 }
+            });
+            
+            // Click outside to close
+            document.getElementById('productModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            
+            document.getElementById('checkoutModal').addEventListener('click', function(e) {
+                if (e.target === this) closeCheckout();
             });
         }
 
-        // Fixed Smooth Scrolling - No blue sidebar issue
-        function setupSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        
-                        // Calculate position correctly
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                        
-                        window.scrollTo({
-                            top: targetPosition - headerHeight,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update URL without refresh
-                        history.pushState(null, null, targetId);
-                    }
+        // Smooth scroll
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                
+                window.scrollTo({
+                    top: targetPosition - headerHeight,
+                    behavior: 'smooth'
                 });
-            });
-        }
-
-        // Show cart (simplified)
-        function showCart() {
-            if (cart.items.length === 0) {
-                alert("Your cart is empty. Start shopping!");
-            } else {
-                let cartSummary = "Your Cart:\n\n";
-                cart.items.forEach((item, index) => {
-                    cartSummary += `${item.quantity}x ${item.name} (${item.size}) - Ksh ${item.price * item.quantity}\n`;
-                });
-                cartSummary += `\nTotal: Ksh ${cart.total}`;
-                cartSummary += `\n\nCall 0727 394 165 to complete your order or visit our store in Nairobi.`;
-                alert(cartSummary);
             }
         }
 
-        // Track order
-        function trackOrder() {
-            const orderId = document.getElementById('orderId').value;
-            if (!orderId) {
-                alert("Please enter your order ID");
-                return;
-            }
-            alert(`Tracking order: ${orderId}\n\nOrder status: Processing\nEstimated delivery: 3-5 business days\n\nFor detailed tracking, call 0727 394 165`);
-        }
-
-        function trackOrderPrompt() {
-            const orderId = prompt("Enter your order ID:");
-            if (orderId) {
-                alert(`Tracking order: ${orderId}\n\nOrder status: Processing\nEstimated delivery: 3-5 business days`);
-            }
-        }
-
-        // Newsletter subscription
-        function subscribeNewsletter(event) {
-            event.preventDefault();
-            const email = document.getElementById('newsletterEmail').value;
-            if (email) {
-                alert(`Thank you for subscribing with ${email}! Check your email for 10% discount code.`);
-                document.getElementById('newsletterEmail').value = '';
-            }
-        }
-
-        // Share product
-        function shareProduct(productId) {
-            const product = products.find(p => p.id === productId);
-            if (navigator.share) {
-                navigator.share({
-                    title: product.name,
-                    text: `Check out ${product.name} from Stawear!`,
-                    url: window.location.href
-                });
-            } else {
-                alert(`Share ${product.name} with friends!\n\nProduct: ${product.name}\nPrice: Ksh ${product.price}`);
-            }
-        }
-
-        // Save for later
-        function saveForLater(productId) {
-            const product = products.find(p => p.id === productId);
-            alert(`${product.name} saved to your wishlist!`);
-        }
-
-        // Show notification
-        function showNotification(message) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--success);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 9999;
-                animation: slideIn 0.3s ease;
-            `;
-            
-            // Add keyframes for animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                    document.head.removeChild(style);
-                }, 300);
-            }, 3000);
-        }
-
-        // Legal pages (simplified)
+        // Legal pages
         function showTerms() {
-            alert("Terms & Conditions\n\n1. All orders are subject to availability\n2. Prices are in Kenyan Shillings\n3. Delivery charges apply\n4. Returns within 7 days\n\nFull terms: Call 0727 394 165");
+            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Terms%20and%20Conditions', '_blank');
         }
 
         function showPrivacy() {
-            alert("Privacy Policy\n\nWe respect your privacy. Your data is secure with us.\n\nWe only collect necessary information for order processing.\n\nNo data is shared with third parties without consent.");
+            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Privacy%20Policy', '_blank');
         }
 
         function showReturns() {
-            alert("Return Policy\n\n1. Returns accepted within 7 days\n2. Items must be unworn with tags\n3. Custom items cannot be returned\n4. Return shipping paid by customer\n\nCall 0727 394 165 for returns");
+            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Return%20Policy', '_blank');
         }
 
         function showShipping() {
-            alert("Shipping Policy\n\n1. Nairobi: Ksh 200 (2-3 days)\n2. Major cities: Ksh 350-500 (3-5 days)\n3. Countrywide: Ksh 600 (5-7 days)\n4. Express delivery available\n\nCall 0727 394 165 for urgent orders");
+            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Shipping%20Policy', '_blank');
         }
 
-        function showLoginModal() {
-            alert("Login / Register\n\nFor account features, please call 0727 394 165 to set up your account.\n\nWe'll create your personalized shopping experience!");
-        }
-
-        // Header scroll effect
+        // Update active nav on scroll
         window.addEventListener('scroll', () => {
+            const sections = ['home', 'products', 'testimonials', 'branding', 'customization'];
             const header = document.querySelector('header');
+            
             if (window.scrollY > 100) {
                 header.style.padding = '0.5rem 0';
-                header.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.2)';
             } else {
                 header.style.padding = '0.8rem 0';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
             }
+            
+            // Update active nav
+            const scrollPosition = window.scrollY + 200;
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const top = element.offsetTop;
+                    const bottom = top + element.offsetHeight;
+                    
+                    if (scrollPosition >= top && scrollPosition < bottom) {
+                        document.querySelectorAll('nav ul li').forEach(li => li.classList.remove('active'));
+                        document.querySelectorAll('.mobile-menu ul li a').forEach(a => a.classList.remove('active'));
+                        
+                        const activeNav = document.querySelector(`nav ul li:nth-child(${sections.indexOf(section) + 1})`);
+                        if (activeNav) activeNav.classList.add('active');
+                    }
+                }
+            });
         });
-
-        // Analytics tracking
-        console.log('Stawear website loaded successfully');
     </script>
 </body>
 </html>
