@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stawear Admin - Complete Integrated System</title>
+    
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Cropper.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fc;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .admin-sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1a237e 0%, #0d1b3e 100%);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .sidebar-header h2 span {
+            color: #ff9800;
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .menu-item {
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left-color: #ff9800;
+        }
+
+        .menu-item i {
+            width: 24px;
+        }
+
+        .menu-item .badge {
+            background: #c62828;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .admin-main {
+            flex: 1;
+            margin-left: 280px;
+            width: calc(100% - 280px);
+            min-height: 100vh;
+            background: #f4f7fc;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 30px;
+            padding: 8px 20px;
+            width: 300px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+        }
+
+        .notification-icon {
+            position: relative;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #c62828;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c62828, #8b0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-area {
+            padding: 30px;
+        }
+
+        /* ===== STATS CARDS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-info h3 {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .stat-info .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a237e;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #c62828, #8b0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        /* ===== TABLES ===== */
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .table-header h3 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c62828, #8b0000);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(198,40,40,0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px 10px;
+            color: #666;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-processing {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .edit-btn {
+            background: #2196f3;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .view-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        /* ===== MODALS ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .close-modal {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #c62828;
+            outline: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        /* ===== IMAGE UPLOAD ===== */
+        .image-upload-area {
+            border: 3px dashed #ddd;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .image-upload-area:hover {
+            border-color: #c62828;
+            background: #fff5f5;
+        }
+
+        .image-upload-area i {
+            font-size: 3rem;
+            color: #c62828;
+            margin-bottom: 15px;
+        }
+
+        .image-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-item .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 25px;
+            height: 25px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* ===== TOAST ===== */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideIn 0.3s ease;
+            border-left: 5px solid #28a745;
+        }
+
+        .toast.error {
+            border-left-color: #dc3545;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ===== LOGIN PAGE ===== */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a237e, #c62828);
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h2 {
+            color: #1a237e;
+            font-size: 2rem;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #c62828, #8b0000);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .admin-sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .admin-main {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h2>STA<span style="color: #c62828;">WEAR</span></h2>
+                <p>Admin Panel - Full Control</p>
+            </div>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Username" required value="admin">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required value="Stawear@2024">
+                </div>
+                <button type="submit" class="login-btn">Access System</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>STA<span>WEAR</span></h2>
+                <p>Complete Control Panel</p>
+            </div>
+            
+            <div class="sidebar-menu">
+                <div class="menu-item active" onclick="showSection('dashboard')">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item" onclick="showSection('products')">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Products</span>
+                    <span class="badge" id="productCount">0</span>
+                </div>
+                <div class="menu-item" onclick="showSection('orders')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Orders</span>
+                    <span class="badge" id="orderCount">0</span>
+                </div>
+                <div class="menu-item" onclick="showSection('customers')">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                    <span class="badge" id="customerCount">0</span>
+                </div>
+                <div class="menu-item" onclick="showSection('branding')">
+                    <i class="fas fa-palette"></i>
+                    <span>Branding Requests</span>
+                    <span class="badge" id="brandingCount">0</span>
+                </div>
+                <div class="menu-item" onclick="showSection('files')">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>File Manager</span>
+                </div>
+                <div class="menu-item" onclick="showSection('analytics')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </div>
+                <div class="menu-item" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search everything..." id="globalSearch" onkeyup="globalSearch()">
+                </div>
+                
+                <div class="notification-icon" onclick="toggleNotifications()">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notificationBadge">0</span>
+                </div>
+            </div>
+
+            <!-- Notifications Panel -->
+            <div class="notifications-panel" id="notificationsPanel" style="display: none; position: fixed; top: 70px; right: 20px; width: 350px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1001;">
+                <div style="padding: 20px; border-bottom: 1px solid #eee;">
+                    <h3>Notifications</h3>
+                </div>
+                <div id="notificationsList" style="max-height: 400px; overflow-y: auto;"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area" id="contentArea"></div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add/Edit Product</h2>
+                <span class="close-modal" onclick="closeProductModal()">&times;</span>
+            </div>
+            
+            <form id="productForm" onsubmit="saveProduct(event)">
+                <input type="hidden" id="productId">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product Name *</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="productCategory" required>
+                            <option value="Hoodies">Hoodies</option>
+                            <option value="T-Shirts">T-Shirts</option>
+                            <option value="Jackets">Jackets</option>
+                            <option value="Tracksuits">Tracksuits</option>
+                            <option value="Pants">Pants</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Uniforms">Uniforms</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price (Ksh) *</label>
+                        <input type="number" id="productPrice" required min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Original Price</label>
+                        <input type="number" id="productOriginalPrice" min="0">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="productDescription" required rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Badge</label>
+                    <select id="productBadge">
+                        <option value="">None</option>
+                        <option value="BEST SELLER">Best Seller</option>
+                        <option value="NEW">New</option>
+                        <option value="SALE">Sale</option>
+                        <option value="LIMITED">Limited</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Images</label>
+                    <div class="image-upload-area" onclick="document.getElementById('imageUpload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload images</p>
+                        <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;" onchange="handleImageUpload(event)">
+                    </div>
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Sizes & Stock</label>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>S</label>
+                            <input type="number" id="sizeS" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>M</label>
+                            <input type="number" id="sizeM" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>L</label>
+                            <input type="number" id="sizeL" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>XL</label>
+                            <input type="number" id="sizeXL" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>XXL</label>
+                            <input type="number" id="sizeXXL" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 15px; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            </div>
+            <div id="orderDetails"></div>
+        </div>
+    </div>
+
+    <!-- Branding Request Modal -->
+    <div class="modal" id="brandingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Branding Request Details</h2>
+                <span class="close-modal" onclick="closeBrandingModal()">&times;</span>
+            </div>
+            <div id="brandingDetails"></div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // ===== INITIALIZATION =====
+        (function() {
+            emailjs.init("rOBcEHt9BFgYEOL1Z");
+            window.EMAILJS_SERVICE_ID = "service_ym1oijj";
+            window.ORDER_TEMPLATE = "template_jra9me1";
+        })();
+
+        // ===== DATA STORES =====
+        let products = [];
+        let orders = [];
+        let brandingRequests = [];
+        let customers = [];
+        let notifications = [];
+        let uploadedImages = [];
+
+        // ===== LOGIN SYSTEM =====
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'Stawear@2024') {
+                localStorage.setItem('adminLoggedIn', 'true');
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'flex';
+                loadAllData();
+                showSection('dashboard');
+                showToast('Welcome to Admin Panel!', 'success');
+            } else {
+                showToast('Invalid credentials!', 'error');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+        }
+
+        // ===== LOAD ALL DATA FROM MAIN WEBSITE =====
+        function loadAllData() {
+            // Load products from main site
+            const mainProducts = localStorage.getItem('stawearProducts');
+            if (mainProducts) {
+                products = JSON.parse(mainProducts);
+            } else {
+                // Default products from your website
+                products = [
+                    {
+                        id: 1,
+                        name: "Black Belt Master Hoodie",
+                        category: "Hoodies",
+                        price: 2499,
+                        originalPrice: 3200,
+                        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"],
+                        description: "Premium hoodie with embroidered black belt design",
+                        badge: "BEST SELLER",
+                        sizes: ["S", "M", "L", "XL"],
+                        stock: { S: 10, M: 15, L: 15, XL: 10, XXL: 5 }
+                    },
+                    {
+                        id: 2,
+                        name: "Kenyan Taekwondo Tee",
+                        category: "T-Shirts",
+                        price: 1899,
+                        originalPrice: 2400,
+                        image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=500&q=80"],
+                        description: "Cotton t-shirt with Kenyan flag colors",
+                        badge: "NEW",
+                        sizes: ["S", "M", "L", "XL"],
+                        stock: { S: 20, M: 25, L: 25, XL: 20, XXL: 10 }
+                    },
+                    {
+                        id: 3,
+                        name: "Dojang Training Jacket",
+                        category: "Jackets",
+                        price: 3299,
+                        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=500&q=80"],
+                        description: "Lightweight training jacket",
+                        badge: "LIMITED",
+                        sizes: ["M", "L", "XL"],
+                        stock: { M: 8, L: 12, XL: 10 }
+                    },
+                    {
+                        id: 4,
+                        name: "Taekwondo Champion Tracksuit",
+                        category: "Tracksuits",
+                        price: 4999,
+                        originalPrice: 6500,
+                        image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80"],
+                        description: "Complete tracksuit set",
+                        badge: "SALE",
+                        sizes: ["S", "M", "L", "XL"],
+                        stock: { S: 5, M: 8, L: 8, XL: 5 }
+                    },
+                    {
+                        id: 5,
+                        name: "Stawear Signature Cap",
+                        category: "Accessories",
+                        price: 1299,
+                        originalPrice: 1600,
+                        image: "https://images.unsplash.com/photo-1576872381143-784fbd58d7f9?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1576872381143-784fbd58d7f9?auto=format&fit=crop&w=500&q=80"],
+                        description: "Adjustable cap with embroidered logo",
+                        sizes: ["One Size"],
+                        stock: { One: 50 }
+                    },
+                    {
+                        id: 6,
+                        name: "Tournament Gear Bag",
+                        category: "Accessories",
+                        price: 2899,
+                        image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=500&q=80"],
+                        description: "Large capacity gear bag",
+                        sizes: ["One Size"],
+                        stock: { One: 25 }
+                    },
+                    {
+                        id: 7,
+                        name: "Korean Calligraphy Tee",
+                        category: "T-Shirts",
+                        price: 1999,
+                        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=500&q=80"],
+                        description: "Traditional Korean characters design",
+                        sizes: ["S", "M", "L", "XL"],
+                        stock: { S: 15, M: 20, L: 20, XL: 15 }
+                    },
+                    {
+                        id: 8,
+                        name: "Master Track Pants",
+                        category: "Pants",
+                        price: 2199,
+                        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=80",
+                        images: ["https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=80"],
+                        description: "Comfortable training pants",
+                        sizes: ["S", "M", "L", "XL"],
+                        stock: { S: 12, M: 18, L: 18, XL: 12 }
+                    }
+                ];
+                localStorage.setItem('stawearProducts', JSON.stringify(products));
+            }
+
+            // Load orders from main site
+            const mainOrders = localStorage.getItem('stawearOrders');
+            if (mainOrders) {
+                orders = JSON.parse(mainOrders);
+            } else {
+                orders = [
+                    {
+                        id: "STA" + Date.now() - 86400000,
+                        customerName: "John Kamau",
+                        customerPhone: "0712345678",
+                        customerEmail: "john@example.com",
+                        items: [{ name: "Black Belt Master Hoodie", quantity: 1, price: 2499 }],
+                        total: 2699,
+                        status: "completed",
+                        date: new Date(Date.now() - 86400000).toISOString()
+                    },
+                    {
+                        id: "STA" + Date.now() - 172800000,
+                        customerName: "Mary Wanjiku",
+                        customerPhone: "0723456789",
+                        customerEmail: "mary@example.com",
+                        items: [{ name: "Kenyan Taekwondo Tee", quantity: 2, price: 1899 }],
+                        total: 3998,
+                        status: "processing",
+                        date: new Date(Date.now() - 172800000).toISOString()
+                    }
+                ];
+                localStorage.setItem('stawearOrders', JSON.stringify(orders));
+            }
+
+            // Load branding requests
+            const mainBranding = localStorage.getItem('stawearBrandingRequests');
+            if (mainBranding) {
+                brandingRequests = JSON.parse(mainBranding);
+            } else {
+                brandingRequests = [
+                    {
+                        id: 1,
+                        name: "Peter Omondi",
+                        email: "peter@dojang.co.ke",
+                        phone: "0734567890",
+                        dojang: "Nairobi Taekwondo Club",
+                        itemType: "Hoodies",
+                        quantity: 30,
+                        brandingType: "Embroidery",
+                        description: "Need club logo on hoodies",
+                        date: new Date().toISOString()
+                    }
+                ];
+                localStorage.setItem('stawearBrandingRequests', JSON.stringify(brandingRequests));
+            }
+
+            // Extract customers from orders
+            const customerMap = new Map();
+            orders.forEach(order => {
+                if (!customerMap.has(order.customerEmail)) {
+                    customerMap.set(order.customerEmail, {
+                        name: order.customerName,
+                        email: order.customerEmail,
+                        phone: order.customerPhone,
+                        orders: 1,
+                        totalSpent: order.total,
+                        lastOrder: order.date
+                    });
+                } else {
+                    const customer = customerMap.get(order.customerEmail);
+                    customer.orders++;
+                    customer.totalSpent += order.total;
+                }
+            });
+            customers = Array.from(customerMap.values());
+
+            // Update counts
+            document.getElementById('productCount').textContent = products.length;
+            document.getElementById('orderCount').textContent = orders.length;
+            document.getElementById('customerCount').textContent = customers.length;
+            document.getElementById('brandingCount').textContent = brandingRequests.length;
+
+            // Add notifications
+            addNotification(`Welcome back! ${orders.length} orders to manage`, 'info');
+        }
+
+        // ===== NOTIFICATION SYSTEM =====
+        function addNotification(message, type) {
+            notifications.unshift({
+                id: Date.now(),
+                message,
+                type,
+                time: new Date().toLocaleTimeString(),
+                read: false
+            });
+            updateNotificationBadge();
+            renderNotifications();
+        }
+
+        function updateNotificationBadge() {
+            const unread = notifications.filter(n => !n.read).length;
+            document.getElementById('notificationBadge').textContent = unread;
+        }
+
+        function toggleNotifications() {
+            const panel = document.getElementById('notificationsPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+            renderNotifications();
+        }
+
+        function renderNotifications() {
+            const list = document.getElementById('notificationsList');
+            list.innerHTML = notifications.map(n => `
+                <div style="padding: 15px; border-bottom: 1px solid #eee; ${n.read ? '' : 'background: #fff3e0;'}" onclick="markNotificationRead(${n.id})">
+                    <p style="margin-bottom: 5px;">${n.message}</p>
+                    <small style="color: #999;">${n.time}</small>
+                </div>
+            `).join('');
+        }
+
+        function markNotificationRead(id) {
+            const notification = notifications.find(n => n.id === id);
+            if (notification) {
+                notification.read = true;
+                updateNotificationBadge();
+                renderNotifications();
+            }
+        }
+
+        // ===== SECTION RENDERING =====
+        function showSection(section) {
+            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+            event.target.closest('.menu-item').classList.add('active');
+            
+            switch(section) {
+                case 'dashboard': renderDashboard(); break;
+                case 'products': renderProducts(); break;
+                case 'orders': renderOrders(); break;
+                case 'customers': renderCustomers(); break;
+                case 'branding': renderBrandingRequests(); break;
+                case 'files': renderFileManager(); break;
+                case 'analytics': renderAnalytics(); break;
+            }
+        }
+
+        // ===== DASHBOARD =====
+        function renderDashboard() {
+            const totalSales = orders.reduce((sum, order) => sum + order.total, 0);
+            const pendingOrders = orders.filter(o => o.status === 'pending').length;
+            
+            const html = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Total Sales</h3>
+                            <div class="stat-number">Ksh ${totalSales.toLocaleString()}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-money-bill"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Total Orders</h3>
+                            <div class="stat-number">${orders.length}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Pending Orders</h3>
+                            <div class="stat-number">${pendingOrders}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Customers</h3>
+                            <div class="stat-number">${customers.length}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Recent Orders</h3>
+                        <button class="btn btn-primary" onclick="showSection('orders')">View All</button>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${orders.slice(0, 5).map(order => `
+                                <tr>
+                                    <td>${order.id}</td>
+                                    <td>${order.customerName}</td>
+                                    <td>Ksh ${order.total}</td>
+                                    <td><span class="status-badge status-${order.status}">${order.status}</span></td>
+                                    <td>${new Date(order.date).toLocaleDateString()}</td>
+                                    <td>
+                                        <button class="action-btn view-btn" onclick="viewOrder('${order.id}')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        // ===== PRODUCTS SECTION =====
+        function renderProducts() {
+            const html = `
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Product Management</h3>
+                        <button class="btn btn-primary" onclick="openProductModal()">
+                            <i class="fas fa-plus"></i> Add Product
+                        </button>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${products.map(product => `
+                                <tr>
+                                    <td>
+                                        <div class="product-thumb">
+                                            <img src="${product.image}" alt="${product.name}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <strong>${product.name}</strong>
+                                        ${product.badge ? `<br><small style="color:#c62828;">${product.badge}</small>` : ''}
+                                    </td>
+                                    <td>${product.category}</td>
+                                    <td>
+                                        Ksh ${product.price}
+                                        ${product.originalPrice ? `<br><small style="text-decoration:line-through;">Ksh ${product.originalPrice}</small>` : ''}
+                                    </td>
+                                    <td>
+                                        ${Object.entries(product.stock || {}).map(([size, qty]) => 
+                                            qty > 0 ? `${size}:${qty} ` : ''
+                                        ).join('')}
+                                    </td>
+                                    <td>
+                                        <span class="status-badge ${Object.values(product.stock || {}).some(q => q > 0) ? 'status-completed' : 'status-pending'}">
+                                            ${Object.values(product.stock || {}).some(q => q > 0) ? 'In Stock' : 'Out of Stock'}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="action-btn edit-btn" onclick="editProduct(${product.id})">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete-btn" onclick="deleteProduct(${product.id})">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        // ===== PRODUCT CRUD =====
+        function openProductModal(productId = null) {
+            document.getElementById('productModal').classList.add('active');
+            
+            if (productId) {
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    document.getElementById('productId').value = product.id;
+                    document.getElementById('productName').value = product.name;
+                    document.getElementById('productCategory').value = product.category;
+                    document.getElementById('productPrice').value = product.price;
+                    document.getElementById('productOriginalPrice').value = product.originalPrice || '';
+                    document.getElementById('productDescription').value = product.description;
+                    document.getElementById('productBadge').value = product.badge || '';
+                    
+                    // Set stock values
+                    document.getElementById('sizeS').value = product.stock?.S || 0;
+                    document.getElementById('sizeM').value = product.stock?.M || 0;
+                    document.getElementById('sizeL').value = product.stock?.L || 0;
+                    document.getElementById('sizeXL').value = product.stock?.XL || 0;
+                    document.getElementById('sizeXXL').value = product.stock?.XXL || 0;
+                    
+                    // Show existing images
+                    const preview = document.getElementById('imagePreview');
+                    preview.innerHTML = '';
+                    if (product.images) {
+                        product.images.forEach(img => addImageToPreview(img));
+                    }
+                }
+            } else {
+                document.getElementById('productForm').reset();
+                document.getElementById('productId').value = '';
+                document.getElementById('imagePreview').innerHTML = '';
+            }
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        function saveProduct(event) {
+            event.preventDefault();
+            
+            const productId = document.getElementById('productId').value;
+            const images = Array.from(document.getElementById('imagePreview').children).map(
+                img => img.querySelector('img').src
+            );
+            
+            const productData = {
+                id: productId ? parseInt(productId) : Date.now(),
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                price: parseInt(document.getElementById('productPrice').value),
+                originalPrice: parseInt(document.getElementById('productOriginalPrice').value) || null,
+                description: document.getElementById('productDescription').value,
+                badge: document.getElementById('productBadge').value || null,
+                image: images[0] || 'https://via.placeholder.com/500',
+                images: images,
+                stock: {
+                    S: parseInt(document.getElementById('sizeS').value) || 0,
+                    M: parseInt(document.getElementById('sizeM').value) || 0,
+                    L: parseInt(document.getElementById('sizeL').value) || 0,
+                    XL: parseInt(document.getElementById('sizeXL').value) || 0,
+                    XXL: parseInt(document.getElementById('sizeXXL').value) || 0
+                },
+                sizes: Object.keys({
+                    S: 1, M: 1, L: 1, XL: 1, XXL: 1
+                }).filter(size => productData?.stock?.[size] > 0)
+            };
+            
+            if (productId) {
+                const index = products.findIndex(p => p.id === parseInt(productId));
+                if (index !== -1) {
+                    products[index] = productData;
+                    addNotification(`Product "${productData.name}" updated`, 'info');
+                }
+            } else {
+                products.push(productData);
+                addNotification(`New product "${productData.name}" added`, 'success');
+            }
+            
+            localStorage.setItem('stawearProducts', JSON.stringify(products));
+            document.getElementById('productCount').textContent = products.length;
+            closeProductModal();
+            renderProducts();
+            showToast('Product saved successfully!', 'success');
+        }
+
+        function deleteProduct(productId) {
+            if (confirm('Delete this product?')) {
+                const product = products.find(p => p.id === productId);
+                products = products.filter(p => p.id !== productId);
+                localStorage.setItem('stawearProducts', JSON.stringify(products));
+                document.getElementById('productCount').textContent = products.length;
+                renderProducts();
+                addNotification(`Product "${product.name}" deleted`, 'warning');
+                showToast('Product deleted', 'warning');
+            }
+        }
+
+        function editProduct(productId) {
+            openProductModal(productId);
+        }
+
+        // ===== IMAGE UPLOAD =====
+        function handleImageUpload(event) {
+            const files = Array.from(event.target.files);
+            
+            files.forEach(file => {
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast('File too large (max 5MB)', 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    addImageToPreview(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function addImageToPreview(imageUrl) {
+            const preview = document.getElementById('imagePreview');
+            const div = document.createElement('div');
+            div.className = 'preview-item';
+            div.innerHTML = `
+                <img src="${imageUrl}">
+                <button class="remove-image" onclick="this.parentElement.remove()">×</button>
+            `;
+            preview.appendChild(div);
+        }
+
+        // ===== ORDERS SECTION =====
+        function renderOrders() {
+            const html = `
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Order Management</h3>
+                        <select onchange="filterOrders(this.value)" style="padding: 8px; border-radius: 5px;">
+                            <option value="all">All Orders</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTable">
+                            ${renderOrdersTable(orders)}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        function renderOrdersTable(ordersToRender) {
+            return ordersToRender.map(order => `
+                <tr>
+                    <td>${order.id}</td>
+                    <td>
+                        ${order.customerName}<br>
+                        <small>${order.customerPhone}</small>
+                    </td>
+                    <td>${order.items?.length || 0} items</td>
+                    <td>Ksh ${order.total}</td>
+                    <td>${order.paymentMethod || 'M-Pesa'}</td>
+                    <td>
+                        <select class="status-badge" onchange="updateOrderStatus('${order.id}', this.value)" style="padding: 5px; border-radius: 20px;">
+                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
+                            <option value="completed" ${order.status === 'completed' ? 'selected' : ''}>Completed</option>
+                            <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                        </select>
+                    </td>
+                    <td>${new Date(order.date).toLocaleDateString()}</td>
+                    <td>
+                        <button class="action-btn view-btn" onclick="viewOrder('${order.id}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function filterOrders(status) {
+            if (status === 'all') {
+                document.getElementById('ordersTable').innerHTML = renderOrdersTable(orders);
+            } else {
+                const filtered = orders.filter(o => o.status === status);
+                document.getElementById('ordersTable').innerHTML = renderOrdersTable(filtered);
+            }
+        }
+
+        function updateOrderStatus(orderId, newStatus) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = newStatus;
+                localStorage.setItem('stawearOrders', JSON.stringify(orders));
+                addNotification(`Order ${orderId} status updated to ${newStatus}`, 'info');
+                showToast('Order status updated', 'success');
+            }
+        }
+
+        function viewOrder(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                const details = document.getElementById('orderDetails');
+                details.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <h4>Order #${order.id}</h4>
+                        <p><strong>Date:</strong> ${new Date(order.date).toLocaleString()}</p>
+                        <p><strong>Status:</strong> <span class="status-badge status-${order.status}">${order.status}</span></p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4>Customer Details</h4>
+                        <p><strong>Name:</strong> ${order.customerName}</p>
+                        <p><strong>Phone:</strong> ${order.customerPhone}</p>
+                        <p><strong>Email:</strong> ${order.customerEmail}</p>
+                        <p><strong>Address:</strong> ${order.address || 'N/A'}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4>Items</h4>
+                        <table style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${order.items?.map(item => `
+                                    <tr>
+                                        <td>${item.name}</td>
+                                        <td>${item.quantity}</td>
+                                        <td>Ksh ${item.price}</td>
+                                        <td>Ksh ${item.price * item.quantity}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div style="text-align: right; font-size: 1.2rem;">
+                        <strong>Total: Ksh ${order.total}</strong>
+                    </div>
+                `;
+                document.getElementById('orderModal').classList.add('active');
+            }
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('active');
+        }
+
+        // ===== CUSTOMERS SECTION =====
+        function renderCustomers() {
+            const html = `
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Customer Management</h3>
+                        <input type="text" placeholder="Search customers..." style="padding: 8px; border-radius: 5px; border: 1px solid #ddd;" onkeyup="searchCustomers(this.value)">
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Contact</th>
+                                <th>Orders</th>
+                                <th>Total Spent</th>
+                                <th>Last Order</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTable">
+                            ${customers.map(customer => `
+                                <tr>
+                                    <td>${customer.name}</td>
+                                    <td>
+                                        ${customer.email}<br>
+                                        <small>${customer.phone}</small>
+                                    </td>
+                                    <td>${customer.orders}</td>
+                                    <td>Ksh ${customer.totalSpent.toLocaleString()}</td>
+                                    <td>${new Date(customer.lastOrder).toLocaleDateString()}</td>
+                                    <td>
+                                        <button class="action-btn view-btn" onclick="viewCustomer('${customer.email}')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        function searchCustomers(term) {
+            const filtered = customers.filter(c => 
+                c.name.toLowerCase().includes(term.toLowerCase()) ||
+                c.email.toLowerCase().includes(term.toLowerCase()) ||
+                c.phone.includes(term)
+            );
+            
+            document.getElementById('customersTable').innerHTML = filtered.map(customer => `
+                <tr>
+                    <td>${customer.name}</td>
+                    <td>${customer.email}<br><small>${customer.phone}</small></td>
+                    <td>${customer.orders}</td>
+                    <td>Ksh ${customer.totalSpent.toLocaleString()}</td>
+                    <td>${new Date(customer.lastOrder).toLocaleDateString()}</td>
+                    <td><button class="action-btn view-btn" onclick="viewCustomer('${customer.email}')">View</button></td>
+                </tr>
+            `).join('');
+        }
+
+        function viewCustomer(email) {
+            const customerOrders = orders.filter(o => o.customerEmail === email);
+            alert(`Customer has ${customerOrders.length} orders\nTotal spent: Ksh ${customerOrders.reduce((sum, o) => sum + o.total, 0)}`);
+        }
+
+        // ===== BRANDING REQUESTS =====
+        function renderBrandingRequests() {
+            const html = `
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Custom Branding Requests</h3>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Dojang/Team</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Branding</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${brandingRequests.map(request => `
+                                <tr>
+                                    <td>${new Date(request.date).toLocaleDateString()}</td>
+                                    <td>${request.name}<br><small>${request.phone}</small></td>
+                                    <td>${request.dojang}</td>
+                                    <td>${request.itemType}</td>
+                                    <td>${request.quantity}</td>
+                                    <td>${request.brandingType}</td>
+                                    <td><span class="status-badge status-pending">New</span></td>
+                                    <td>
+                                        <button class="action-btn view-btn" onclick="viewBrandingRequest(${request.id})">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        function viewBrandingRequest(id) {
+            const request = brandingRequests.find(r => r.id === id);
+            if (request) {
+                const details = document.getElementById('brandingDetails');
+                details.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <h4>Customer Details</h4>
+                        <p><strong>Name:</strong> ${request.name}</p>
+                        <p><strong>Email:</strong> ${request.email}</p>
+                        <p><strong>Phone:</strong> ${request.phone}</p>
+                        <p><strong>Dojang/Team:</strong> ${request.dojang}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4>Request Details</h4>
+                        <p><strong>Item:</strong> ${request.itemType}</p>
+                        <p><strong>Quantity:</strong> ${request.quantity}</p>
+                        <p><strong>Branding Type:</strong> ${request.brandingType}</p>
+                        <p><strong>Description:</strong> ${request.description}</p>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-success" onclick="markBrandingComplete(${request.id})">Mark Complete</button>
+                        <button class="btn btn-warning" onclick="contactCustomer('${request.phone}')">Contact Customer</button>
+                    </div>
+                `;
+                document.getElementById('brandingModal').classList.add('active');
+            }
+        }
+
+        function closeBrandingModal() {
+            document.getElementById('brandingModal').classList.remove('active');
+        }
+
+        function markBrandingComplete(id) {
+            brandingRequests = brandingRequests.filter(r => r.id !== id);
+            localStorage.setItem('stawearBrandingRequests', JSON.stringify(brandingRequests));
+            document.getElementById('brandingCount').textContent = brandingRequests.length;
+            closeBrandingModal();
+            renderBrandingRequests();
+            addNotification('Branding request marked complete', 'success');
+            showToast('Request completed', 'success');
+        }
+
+        function contactCustomer(phone) {
+            window.open(`https://wa.me/254${phone.replace(/^0/, '')}`, '_blank');
+        }
+
+        // ===== FILE MANAGER =====
+        function renderFileManager() {
+            const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles') || '[]');
+            
+            const html = `
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>File Manager</h3>
+                        <button class="btn btn-primary" onclick="triggerFileUpload()">
+                            <i class="fas fa-upload"></i> Upload Files
+                        </button>
+                        <input type="file" id="fileUpload" multiple style="display: none;" onchange="handleFileUpload(event)">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px;">
+                        ${uploadedFiles.map(file => `
+                            <div style="border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                ${file.type.startsWith('image/') ? 
+                                    `<img src="${file.url}" style="width: 100%; height: 150px; object-fit: cover;">` : 
+                                    `<div style="height: 150px; display: flex; align-items: center; justify-content: center; background: #f5f5f5;">
+                                        <i class="fas fa-file" style="font-size: 3rem; color: #999;"></i>
+                                    </div>`
+                                }
+                                <div style="padding: 10px;">
+                                    <p style="font-size: 0.8rem; margin-bottom: 5px;">${file.name}</p>
+                                    <button class="action-btn view-btn" onclick="copyFileUrl('${file.url}')" style="width: 100%;">Copy URL</button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        function triggerFileUpload() {
+            document.getElementById('fileUpload').click();
+        }
+
+        function handleFileUpload(event) {
+            const files = Array.from(event.target.files);
+            const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles') || '[]');
+            
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadedFiles.push({
+                        id: Date.now() + Math.random(),
+                        name: file.name,
+                        type: file.type,
+                        size: file.size,
+                        url: e.target.result,
+                        date: new Date().toISOString()
+                    });
+                    localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+                    showToast(`File "${file.name}" uploaded`, 'success');
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            setTimeout(() => renderFileManager(), 1000);
+        }
+
+        function copyFileUrl(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('URL copied to clipboard!', 'success');
+            });
+        }
+
+        // ===== ANALYTICS =====
+        function renderAnalytics() {
+            const totalSales = orders.reduce((sum, o) => sum + o.total, 0);
+            const categorySales = {};
+            products.forEach(p => {
+                const sold = orders.reduce((total, order) => {
+                    const item = order.items?.find(i => i.name === p.name);
+                    return total + (item?.quantity || 0);
+                }, 0);
+                categorySales[p.category] = (categorySales[p.category] || 0) + sold;
+            });
+            
+            const html = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Revenue</h3>
+                            <div class="stat-number">Ksh ${totalSales.toLocaleString()}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Products Sold</h3>
+                            <div class="stat-number">${orders.reduce((sum, o) => sum + (o.items?.length || 0), 0)}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-box"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Avg Order Value</h3>
+                            <div class="stat-number">Ksh ${orders.length ? Math.round(totalSales / orders.length) : 0}</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-calculator"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Conversion Rate</h3>
+                            <div class="stat-number">67%</div>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-percent"></i></div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Top Selling Products</h3>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Units Sold</th>
+                                <th>Revenue</th>
+                                <th>Stock Remaining</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${products.map(product => {
+                                const sold = orders.reduce((total, order) => {
+                                    const item = order.items?.find(i => i.name === product.name);
+                                    return total + (item?.quantity || 0);
+                                }, 0);
+                                return `
+                                    <tr>
+                                        <td>${product.name}</td>
+                                        <td>${product.category}</td>
+                                        <td>${sold}</td>
+                                        <td>Ksh ${(sold * product.price).toLocaleString()}</td>
+                                        <td>${Object.values(product.stock || {}).reduce((a, b) => a + b, 0)}</td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        function showToast(message, type) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type === 'error' ? 'error' : ''}`;
+            toast.innerHTML = `
+                <i class="fas ${type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+                <div>${message}</div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function globalSearch() {
+            const term = document.getElementById('globalSearch').value.toLowerCase();
+            if (term.length < 2) return;
+            
+            const results = {
+                products: products.filter(p => p.name.toLowerCase().includes(term)),
+                orders: orders.filter(o => o.id.toLowerCase().includes(term) || o.customerName.toLowerCase().includes(term)),
+                customers: customers.filter(c => c.name.toLowerCase().includes(term) || c.email.toLowerCase().includes(term))
+            };
+            
+            console.log('Search results:', results);
+        }
+    </script>
+</body>
+</html>
