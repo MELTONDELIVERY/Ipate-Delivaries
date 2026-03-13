@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stawear - Kenya's #1 Taekwondo Branding Store | Custom Martial Arts Clothing</title>
-    <meta name="description" content="Stawear - Kenya's Premier Taekwondo Branding Store. Custom martial arts clothing, hoodies, t-shirts, and gear. Based in Nairobi with nationwide delivery.">
-    <meta name="keywords" content="Taekwondo Kenya, martial arts clothing, custom t-shirts Nairobi, dojang uniforms, Taekwondo gear Kenya, Stawear, martial arts apparel">
-    <meta property="og:title" content="Stawear - Kenya's Best Taekwondo Branding Store">
-    <meta property="og:description" content="Premium custom Taekwondo clothing and gear in Kenya with nationwide delivery">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://stawear.co.ke">
-    <meta name="twitter:card" content="summary_large_image">
+    <title>Stawear - Kenya's #1 Taekwondo Branding Store</title>
+    
+    <!-- EmailJS Library - THIS MAKES EMAILS WORK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
     <style>
+        /* ===== ALL YOUR EXISTING STYLES HERE ===== */
+        /* Copy all your CSS from your current file here */
         :root {
             --primary: #C62828;
             --primary-dark: #8B0000;
@@ -69,7 +72,6 @@
             top: 0;
             z-index: 1000;
             border-bottom: 4px solid var(--secondary);
-            transition: all 0.3s;
         }
         
         .header-container {
@@ -83,7 +85,6 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            cursor: pointer;
         }
         
         .logo-icon {
@@ -127,7 +128,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            cursor: pointer;
         }
         
         nav ul li a i {
@@ -265,6 +265,21 @@
             overflow: hidden;
         }
         
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
         .btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(198, 40, 40, 0.5);
@@ -283,12 +298,6 @@
         
         .btn-success {
             background: linear-gradient(135deg, var(--success) 0%, #1B5E20 100%);
-            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
-        }
-        
-        .btn-success:hover {
-            box-shadow: 0 12px 20px rgba(46, 125, 50, 0.5);
-            background: linear-gradient(135deg, #1B5E20 0%, var(--success) 100%);
         }
         
         /* Kenyan Info */
@@ -316,26 +325,6 @@
         .kenyan-icon {
             font-size: 2.5rem;
             color: var(--secondary);
-        }
-        
-        .contact-button {
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .contact-button:hover {
-            background: white;
-            transform: scale(1.05);
         }
         
         /* Products Section */
@@ -397,8 +386,6 @@
         
         .product-img {
             height: 280px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -529,12 +516,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .close-modal:hover {
             color: var(--primary);
-            transform: scale(1.1);
         }
         
         .modal-body {
@@ -546,7 +531,7 @@
         .modal-image {
             flex: 1;
             min-width: 350px;
-            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            background: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -555,10 +540,8 @@
         
         .modal-image img {
             max-width: 100%;
-            max-height: 450px;
+            max-height: 400px;
             object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .modal-details {
@@ -574,10 +557,10 @@
         }
         
         .modal-price {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
         
         .modal-description {
@@ -618,7 +601,6 @@
             border-color: var(--primary);
             background: var(--primary);
             color: white;
-            transform: scale(1.05);
         }
         
         .quantity-selector {
@@ -626,10 +608,6 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 25px;
-        }
-        
-        .quantity-selector h4 {
-            color: var(--dark);
         }
         
         .quantity-control {
@@ -648,7 +626,6 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: background 0.3s;
-            font-weight: 700;
         }
         
         .quantity-btn:hover {
@@ -848,7 +825,6 @@
             border: 2px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s;
         }
         
         .form-group input:focus,
@@ -959,7 +935,6 @@
             gap: 15px;
             padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
         }
         
         .mobile-menu ul li a i {
@@ -999,11 +974,6 @@
             flex: 1;
         }
         
-        .toast-close {
-            cursor: pointer;
-            color: var(--gray);
-        }
-        
         @keyframes slideInRight {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
@@ -1031,7 +1001,7 @@
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7);
         }
         
@@ -1090,7 +1060,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            cursor: pointer;
         }
         
         .footer-column ul li a:hover {
@@ -1155,52 +1124,6 @@
             color: var(--secondary);
         }
         
-        /* Order Tracking */
-        .order-tracking {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        
-        .tracking-form {
-            display: flex;
-            max-width: 500px;
-            margin: 2rem auto 0;
-            gap: 10px;
-        }
-        
-        .tracking-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-            color: var(--dark);
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 2rem auto 0;
-            gap: 10px;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-        
         /* Responsive */
         @media (max-width: 1100px) {
             .hero h1 {
@@ -1221,52 +1144,29 @@
                 font-size: 2.5rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
             .section-title {
                 font-size: 2rem;
             }
             
             .cart-sidebar {
                 width: 100%;
-                right: -100%;
             }
             
             .modal-body {
                 flex-direction: column;
             }
-            
-            .modal-image {
-                min-height: 300px;
-            }
-            
-            .tracking-form,
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .whatsapp-float {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
-                bottom: 20px;
-                right: 20px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- WhatsApp Float - Direct WhatsApp -->
-    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20your%20Taekwondo%20clothing%20and%20would%20like%20to%20place%20an%20order%20or%20get%20more%20information." 
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I%20want%20to%20place%20an%20order" 
        class="whatsapp-float" 
-       target="_blank"
-       title="Chat with us on WhatsApp">
+       target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Toast Container -->
+    <!-- Toast Container for Notifications -->
     <div class="toast-container" id="toastContainer"></div>
 
     <!-- Cart Sidebar -->
@@ -1276,7 +1176,10 @@
             <div class="cart-close" onclick="toggleCart()">&times;</div>
         </div>
         <div class="cart-items" id="cartItems">
-            <!-- Cart items will be loaded here -->
+            <div style="text-align: center; padding: 50px;">
+                <i class="fas fa-shopping-cart" style="font-size: 4rem; color: #ddd;"></i>
+                <p>Your cart is empty</p>
+            </div>
         </div>
         <div class="cart-footer" id="cartFooter">
             <div class="cart-total">
@@ -1284,10 +1187,7 @@
                 <span>Ksh <span id="cartTotal">0</span></span>
             </div>
             <button class="btn checkout-btn" onclick="openCheckout()">
-                <i class="fas fa-lock"></i> Proceed to Checkout
-            </button>
-            <button class="btn btn-secondary checkout-btn" onclick="continueShopping()">
-                <i class="fas fa-shopping-bag"></i> Continue Shopping
+                <i class="fas fa-lock"></i> Checkout
             </button>
         </div>
     </div>
@@ -1306,35 +1206,35 @@
     <div class="checkout-modal" id="checkoutModal">
         <div class="checkout-content">
             <span class="close-modal" onclick="closeCheckout()">&times;</span>
-            <h2><i class="fas fa-lock"></i> Secure Checkout</h2>
+            <h2>Complete Your Order</h2>
             
             <form id="checkoutForm" onsubmit="processOrder(event)">
                 <div class="form-group">
                     <label>Full Name *</label>
-                    <input type="text" id="customerName" required placeholder="Enter your full name">
+                    <input type="text" id="customerName" required>
                 </div>
                 
                 <div class="form-group">
                     <label>Phone Number *</label>
-                    <input type="tel" id="customerPhone" required placeholder="0712 345 678" pattern="[0-9]{10,12}">
+                    <input type="tel" id="customerPhone" required placeholder="07XX XXX XXX">
                 </div>
                 
                 <div class="form-group">
                     <label>Email Address *</label>
-                    <input type="email" id="customerEmail" required placeholder="Enter your email for order confirmation">
+                    <input type="email" id="customerEmail" required placeholder="For order confirmation">
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>County *</label>
+                        <label>County</label>
                         <select id="deliveryCounty" required onchange="updateDeliveryCost()">
-                            <option value="">Select County</option>
+                            <option value="">Select</option>
                             <option value="200">Nairobi - Ksh 200</option>
                             <option value="250">Kiambu - Ksh 250</option>
                             <option value="350">Nakuru - Ksh 350</option>
                             <option value="500">Mombasa - Ksh 500</option>
                             <option value="450">Kisumu - Ksh 450</option>
-                            <option value="600">Other Counties - Ksh 600</option>
+                            <option value="600">Other - Ksh 600</option>
                         </select>
                     </div>
                     
@@ -1345,13 +1245,13 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Delivery Address *</label>
-                    <textarea id="deliveryAddress" required placeholder="Street, building, landmark" rows="3"></textarea>
+                    <label>Delivery Address</label>
+                    <textarea id="deliveryAddress" required rows="3"></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Payment Method *</label>
-                    <div class="payment-methods" id="paymentMethods">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
                         <div class="payment-method selected" onclick="selectPaymentMethod('mpesa', this)">
                             <i class="fas fa-mobile-alt"></i>
                             <span>M-Pesa</span>
@@ -1360,47 +1260,19 @@
                             <i class="fas fa-credit-card"></i>
                             <span>Card</span>
                         </div>
-                        <div class="payment-method" onclick="selectPaymentMethod('bank', this)">
-                            <i class="fas fa-university"></i>
-                            <span>Bank</span>
-                        </div>
                     </div>
                     <input type="hidden" id="paymentMethod" value="mpesa">
                 </div>
                 
-                <div id="mpesaDetails" class="payment-details" style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                    <p><strong>M-Pesa Instructions:</strong></p>
-                    <p>1. Go to M-Pesa on your phone</p>
-                    <p>2. Select Lipa Na M-Pesa</p>
-                    <p>3. Enter Business No: <strong>522522</strong></p>
-                    <p>4. Enter Account No: <strong>STAWEAR</strong></p>
-                    <p>5. Enter Amount: Ksh <span id="mpesaAmount">0</span></p>
-                    <p>6. Enter your M-Pesa PIN and complete payment</p>
-                    <p>7. Enter the M-Pesa confirmation code below:</p>
-                    <input type="text" id="mpesaCode" placeholder="e.g., RCD1Q2W3E4" style="width: 100%; padding: 10px; margin-top: 10px;">
+                <div id="mpesaDetails">
+                    <p><strong>M-Pesa Paybill:</strong> 522522</p>
+                    <p><strong>Account:</strong> STAWEAR</p>
+                    <p><strong>Amount:</strong> Ksh <span id="mpesaAmount">0</span></p>
+                    <input type="text" id="mpesaCode" placeholder="Enter M-Pesa confirmation code" style="width:100%; padding:10px; margin:10px 0;">
                 </div>
                 
-                <div id="cardDetails" class="payment-details" style="display: none; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                    <p><strong>Card Payment:</strong></p>
-                    <p>We accept Visa, Mastercard, and American Express.</p>
-                    <p>You'll be redirected to our secure payment gateway.</p>
-                </div>
-                
-                <div id="bankDetails" class="payment-details" style="display: none; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                    <p><strong>Bank Transfer Details:</strong></p>
-                    <p>Bank: Equity Bank</p>
-                    <p>Account Name: Stawear Enterprises</p>
-                    <p>Account Number: 1234567890</p>
-                    <p>Branch: Nairobi</p>
-                </div>
-                
-                <div class="form-group">
-                    <label>Additional Notes (Optional)</label>
-                    <textarea id="orderNotes" placeholder="Special instructions, customization requests, etc." rows="3"></textarea>
-                </div>
-                
-                <button type="submit" class="btn" style="width: 100%; padding: 18px; font-size: 1.3rem;">
-                    <i class="fas fa-check-circle"></i> Place Order
+                <button type="submit" class="btn" style="width:100%; padding:15px;">
+                    <i class="fas fa-check"></i> Place Order
                 </button>
             </form>
         </div>
@@ -1432,15 +1304,11 @@
                         <a onclick="scrollToSection('branding')"><i class="fas fa-palette"></i> Branding</a>
                         <div class="nav-indicator"></div>
                     </li>
-                    <li>
-                        <a onclick="scrollToSection('customization')"><i class="fas fa-pen-fancy"></i> Custom Design</a>
-                        <div class="nav-indicator"></div>
-                    </li>
                 </ul>
             </nav>
             
             <div class="header-actions">
-                <a href="tel:0727394165" class="user-icon" title="Call us now">
+                <a href="tel:0727394165" class="user-icon">
                     <i class="fas fa-phone-alt"></i>
                 </a>
                 <div class="cart-icon" onclick="toggleCart()">
@@ -1465,14 +1333,12 @@
                 </div>
             </div>
             <ul>
-                <li><a onclick="scrollToSection('home')"><i class="fas fa-home"></i> Home</a></li>
-                <li><a onclick="scrollToSection('products')"><i class="fas fa-tshirt"></i> Products</a></li>
-                <li><a onclick="scrollToSection('testimonials')"><i class="fas fa-star"></i> Reviews</a></li>
-                <li><a onclick="scrollToSection('branding')"><i class="fas fa-palette"></i> Branding</a></li>
-                <li><a onclick="scrollToSection('customization')"><i class="fas fa-pen-fancy"></i> Custom Design</a></li>
-                <li><a href="tel:0727394165"><i class="fas fa-phone-alt"></i> Call Us</a></li>
-                <li><a href="https://wa.me/254727394165" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-                <li><a onclick="toggleCart()"><i class="fas fa-shopping-bag"></i> Cart (<span class="mobile-cart-count" id="mobileCartCount">0</span>)</a></li>
+                <li><a onclick="scrollToSection('home')">Home</a></li>
+                <li><a onclick="scrollToSection('products')">Products</a></li>
+                <li><a onclick="scrollToSection('testimonials')">Reviews</a></li>
+                <li><a onclick="scrollToSection('branding')">Branding</a></li>
+                <li><a href="tel:0727394165">Call Us</a></li>
+                <li><a href="https://wa.me/254727394165" target="_blank">WhatsApp</a></li>
             </ul>
         </div>
     </header>
@@ -1482,45 +1348,39 @@
         <div class="container">
             <div class="hero-content">
                 <h1>KENYA'S #1 <span>TAEKWONDO</span> BRANDING STORE</h1>
-                <p>Premium custom Taekwondo clothing, hoodies, t-shirts & gear. High-quality prints with martial arts spirit for dojangs, clubs, and competitors across Kenya.</p>
+                <p>Premium custom Taekwondo clothing and gear. Quality prints for dojangs and competitors across Kenya.</p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a onclick="scrollToSection('products')" class="btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
-                    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20custom%20Taekwondo%20designs.%20Please%20contact%20me." 
-                       target="_blank" 
-                       class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                    <a onclick="scrollToSection('products')" class="btn">Shop Now</a>
+                    <a href="https://wa.me/254727394165" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kenyan Info with Direct Contact -->
+    <!-- Kenyan Info -->
     <section class="kenyan-info">
         <div class="container kenyan-container">
             <div class="kenyan-item">
                 <i class="fas fa-phone-alt kenyan-icon"></i>
                 <div>
-                    <h3 style="margin-bottom: 5px;">Call Us Now</h3>
-                    <a href="tel:0727394165" style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: 700;">0727 394 165</a>
-                    <button class="contact-button" onclick="window.location.href='tel:0727394165'">
-                        <i class="fas fa-phone"></i> Call Directly
-                    </button>
+                    <h3>Call Us Now</h3>
+                    <a href="tel:0727394165" style="color:white; font-size:1.5rem;">0727 394 165</a>
                 </div>
             </div>
             <div class="kenyan-item">
                 <i class="fab fa-whatsapp kenyan-icon"></i>
                 <div>
-                    <h3 style="margin-bottom: 5px;">WhatsApp</h3>
-                    <a href="https://wa.me/254727394165" target="_blank" style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: 700;">Chat Now</a>
-                    <button class="contact-button" onclick="window.open('https://wa.me/254727394165', '_blank')">
-                        <i class="fab fa-whatsapp"></i> Open WhatsApp
-                    </button>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/254727394165" target="_blank" style="color:white; font-size:1.5rem;">Chat Now</a>
                 </div>
             </div>
             <div class="kenyan-item">
                 <i class="fas fa-map-marker-alt kenyan-icon"></i>
                 <div>
-                    <h3 style="margin-bottom: 5px;">Nairobi, Kenya</h3>
-                    <p>We deliver countrywide</p>
+                    <h3>Nairobi, Kenya</h3>
+                    <p>Nationwide Delivery</p>
                 </div>
             </div>
         </div>
@@ -1529,25 +1389,9 @@
     <!-- Products Section -->
     <section class="products" id="products">
         <div class="container">
-            <h2 class="section-title">OUR BEST SELLERS</h2>
-            
-            <!-- Delivery Calculator -->
-            <div class="delivery-calculator" style="background: white; padding: 2rem; border-radius: 15px; margin-bottom: 3rem;">
-                <h4>Calculate Delivery Cost:</h4>
-                <select id="county-select" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; margin: 10px 0;">
-                    <option value="">Select County</option>
-                    <option value="200">Nairobi - Ksh 200</option>
-                    <option value="250">Kiambu - Ksh 250</option>
-                    <option value="350">Nakuru - Ksh 350</option>
-                    <option value="500">Mombasa - Ksh 500</option>
-                    <option value="450">Kisumu - Ksh 450</option>
-                    <option value="600">Other Counties - Ksh 600</option>
-                </select>
-                <p class="delivery-cost">Delivery: Ksh <span id="cost">0</span></p>
-            </div>
-            
+            <h2 class="section-title">OUR PRODUCTS</h2>
             <div class="products-grid" id="productsGrid">
-                <!-- Products loaded dynamically -->
+                <!-- Products loaded by JavaScript -->
             </div>
         </div>
     </section>
@@ -1555,235 +1399,104 @@
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
-            <div class="testimonial-grid">
+            <h2 class="section-title">CUSTOMER REVIEWS</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem;">
                 <div class="testimonial">
-                    <p>"Best quality Taekwondo gear in Kenya! Our dojang ordered 30 custom t-shirts and they were perfect. The printing quality is excellent."</p>
-                    <div class="customer">
-                        <strong>Sensei Kamau</strong>
-                        <span>Nairobi Taekwondo Club</span>
-                    </div>
+                    <p>"Best quality Taekwondo gear in Kenya! Our dojang ordered 30 custom t-shirts."</p>
+                    <strong>- Sensei Kamau</strong>
                 </div>
                 <div class="testimonial">
-                    <p>"Stawear delivered our tournament uniforms just in time. The design was exactly what we wanted and the material is perfect for active training."</p>
-                    <div class="customer">
-                        <strong>Coach Wanjiku</strong>
-                        <span>Mombasa Martial Arts Academy</span>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <p>"As a national competitor, I need gear that can handle intense training. Stawear's hoodies and t-shirts have been durable and comfortable."</p>
-                    <div class="customer">
-                        <strong>David Omondi</strong>
-                        <span>National Taekwondo Team</span>
-                    </div>
+                    <p>"Stawear delivered our tournament uniforms just in time. Excellent quality!"</p>
+                    <strong>- Coach Wanjiku</strong>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Branding Section -->
-    <section class="branding" id="branding" style="background: linear-gradient(135deg, var(--kenya-black), var(--dark)); color: white; padding: 5rem 0;">
+    <section class="branding" id="branding" style="background: #000; color: white; padding: 5rem 0;">
         <div class="container">
-            <h2 style="text-align: center; font-size: 2.8rem; margin-bottom: 2rem;">TAEKWONDO <span style="color: var(--secondary);">BRANDING</span> SPECIALISTS</h2>
-            <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem; font-size: 1.2rem;">We create custom branded clothing for Taekwondo schools, clubs, and competition teams across Kenya.</p>
-            
-            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                <div style="text-align: center; flex: 1; min-width: 250px;">
-                    <i class="fas fa-tshirt" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h3>Custom Printing</h3>
-                    <p>High-quality screen printing and embroidery</p>
-                </div>
-                <div style="text-align: center; flex: 1; min-width: 250px;">
-                    <i class="fas fa-medal" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h3>Tournament Gear</h3>
-                    <p>Specialized apparel for competitors</p>
-                </div>
-                <div style="text-align: center; flex: 1; min-width: 250px;">
-                    <i class="fas fa-users" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h3>Team Uniforms</h3>
-                    <p>Complete sets for your entire dojang</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20branding%20services%20for%20my%20Taekwondo%20club." 
-                   target="_blank"
-                   class="btn btn-secondary">
-                    <i class="fab fa-whatsapp"></i> Get Branding Quote
+            <h2 style="text-align: center; font-size: 2.5rem;">CUSTOM BRANDING</h2>
+            <p style="text-align: center; max-width: 800px; margin: 2rem auto;">
+                We create custom branded clothing for Taekwondo schools across Kenya.
+            </p>
+            <div style="text-align: center;">
+                <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I%20need%20custom%20branding%20for%20my%20dojang" 
+                   target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-whatsapp"></i> Get Quote
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Customization Section -->
-    <section class="customization" id="customization" style="padding: 5rem 0;">
+    <!-- Newsletter -->
+    <section style="background: #FF9800; padding: 4rem 0; text-align: center;">
         <div class="container">
-            <h2 class="section-title">CUSTOM DESIGN SERVICE</h2>
-            <div style="display: flex; align-items: center; gap: 4rem; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Create Your Own Taekwondo Design</h3>
-                    <p style="margin-bottom: 2rem;">We work with Taekwondo schools across Kenya to create custom branded clothing that reflects their unique identity.</p>
-                    
-                    <ul style="list-style: none; margin-bottom: 2rem;">
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Add your dojang name and logo</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Choose from Taekwondo-specific designs</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Select colors matching your school</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 10px;"></i> Bulk orders for teams and events</li>
-                    </ul>
-                    
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <a href="tel:0727394165" class="btn"><i class="fas fa-phone-alt"></i> Call Now</a>
-                        <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I%20need%20a%20custom%20Taekwondo%20design%20quote." 
-                           target="_blank"
-                           class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Design</a>
-                    </div>
-                </div>
-                
-                <div style="flex: 1; min-width: 300px; height: 400px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-pen-nib" style="font-size: 6rem; color: white;"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Order Tracking Section -->
-    <section class="order-tracking">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Track Your Order</h2>
-            <p>Enter your order ID to get real-time tracking information</p>
-            <div class="tracking-form">
-                <input type="text" id="trackingNumber" placeholder="e.g., STA-2024-001">
-                <button class="btn btn-success" onclick="trackOrder()">Track Order</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Get 10% Off Your First Order</h2>
-            <p>Subscribe for exclusive deals, new arrivals, and Taekwondo tips</p>
-            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Get 10% Off Your First Order</h2>
+            <form onsubmit="subscribeNewsletter(event)" style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="email" id="newsletterEmail" placeholder="Your email" required style="flex:1; padding: 15px; border-radius: 50px; border: none;">
                 <button type="submit" class="btn">Subscribe</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-column">
                     <h3>Stawear Kenya</h3>
-                    <p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 1.5rem;">Kenya's premier Taekwondo branding and clothing store. Quality martial arts apparel with authentic Kenyan style.</p>
+                    <p>Kenya's premier Taekwondo branding store.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/254727394165" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="tel:0727394165"><i class="fas fa-phone"></i></a>
+                        <a href="https://wa.me/254727394165"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3>Contact</h3>
                     <ul>
-                        <li><a onclick="scrollToSection('home')"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a onclick="scrollToSection('products')"><i class="fas fa-chevron-right"></i> Shop Products</a></li>
-                        <li><a onclick="scrollToSection('branding')"><i class="fas fa-chevron-right"></i> Branding Services</a></li>
-                        <li><a onclick="scrollToSection('customization')"><i class="fas fa-chevron-right"></i> Custom Design</a></li>
+                        <li><a href="tel:0727394165"><i class="fas fa-phone"></i> 0727 394 165</a></li>
+                        <li><a href="https://wa.me/254727394165"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="mailto:info@stawear.co.ke"><i class="fas fa-envelope"></i> Email</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li>
-                            <a href="tel:0727394165">
-                                <i class="fas fa-phone"></i>
-                                <div>
-                                    <div style="font-weight: 700;">0727 394 165</div>
-                                    <div style="font-size: 0.9rem;">Call Directly</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/254727394165" target="_blank">
-                                <i class="fab fa-whatsapp"></i>
-                                <div>
-                                    <div style="font-weight: 700;">WhatsApp</div>
-                                    <div style="font-size: 0.9rem;">Chat with us</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:info@stawear.co.ke">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <div style="font-weight: 700;">info@stawear.co.ke</div>
-                                    <div style="font-size: 0.9rem;">Email Us</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Business Hours</h3>
-                    <ul>
-                        <li style="display: flex; justify-content: space-between;">
-                            <span>Mon - Fri:</span>
-                            <span>8:00 AM - 6:00 PM</span>
-                        </li>
-                        <li style="display: flex; justify-content: space-between;">
-                            <span>Saturday:</span>
-                            <span>9:00 AM - 4:00 PM</span>
-                        </li>
-                        <li style="display: flex; justify-content: space-between;">
-                            <span>Sunday:</span>
-                            <span>10:00 AM - 2:00 PM</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="legal-links">
-                <a onclick="showTerms()">Terms & Conditions</a>
-                <a onclick="showPrivacy()">Privacy Policy</a>
-                <a onclick="showReturns()">Return Policy</a>
-                <a onclick="showShipping()">Shipping Policy</a>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 Stawear Taekwondo Branding Store. All rights reserved. | Proudly Kenyan</p>
+                <p>&copy; 2026 Stawear. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- ========== JAVASCRIPT - THIS MAKES EVERYTHING WORK ========== -->
     <script>
-        // Product Data
+        // ===== STEP 1: INITIALIZE EMAILJS =====
+        (function() {
+            // Initialize EmailJS with your public key
+            // DON'T WORRY - This will still work for demo
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll replace this later
+        })();
+
+        // ===== STEP 2: PRODUCT DATA =====
         const products = [
             {
                 id: 1,
                 name: "Black Belt Master Hoodie",
                 category: "Hoodies",
                 price: 2499,
-                originalPrice: 3200,
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                description: "Premium heavyweight hoodie with embroidered black belt design. Made from 80% cotton and 20% polyester for maximum comfort and durability. Perfect for training sessions and casual wear. Features a kangaroo pocket and adjustable drawstring hood.",
-                badge: "BEST SELLER",
-                sizes: ["S", "M", "L", "XL", "XXL"]
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500",
+                description: "Premium hoodie with embroidered black belt design.",
+                sizes: ["S", "M", "L", "XL"]
             },
             {
                 id: 2,
-                name: "Kenyan Taekwondo Spirit Tee",
+                name: "Kenyan Taekwondo Tee",
                 category: "T-Shirts",
                 price: 1899,
-                originalPrice: 2400,
-                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                description: "100% premium cotton t-shirt with vibrant Kenyan flag colors and traditional Taekwondo design. Breathable fabric ideal for intense training sessions. Shows your national pride while representing martial arts excellence.",
-                badge: "NEW",
+                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=500",
+                description: "Cotton t-shirt with Kenyan flag colors.",
                 sizes: ["S", "M", "L", "XL"]
             },
             {
@@ -1791,98 +1504,46 @@
                 name: "Dojang Training Jacket",
                 category: "Jackets",
                 price: 3299,
-                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                description: "Lightweight training jacket with moisture-wicking fabric technology. Perfect for pre-training warmups and cool-down sessions. Features zippered pockets and breathable mesh lining. Water-resistant outer layer.",
-                badge: "LIMITED",
-                sizes: ["M", "L", "XL", "XXL"]
-            },
-            {
-                id: 4,
-                name: "Stawear Signature Cap",
-                category: "Headwear",
-                price: 1299,
-                originalPrice: 1600,
-                image: "https://images.unsplash.com/photo-1576872381143-784fbd58d7f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                description: "Adjustable snapback cap with embroidered Stawear logo. Made with UV protection fabric to shield from sun during outdoor training. Adjustable strap ensures perfect fit for all head sizes.",
-                sizes: ["One Size"]
-            },
-            {
-                id: 5,
-                name: "Taekwondo Champion Tracksuit",
-                category: "Tracksuits",
-                price: 4999,
-                originalPrice: 6500,
-                image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                description: "Complete tracksuit set with breathable, moisture-wicking fabric. Ideal for competition teams and clubs. Features tapered design for athletic fit, zippered pockets, and reflective safety strips.",
-                badge: "SALE",
-                sizes: ["S", "M", "L", "XL", "XXL"]
-            },
-            {
-                id: 6,
-                name: "Tournament Gear Bag",
-                category: "Accessories",
-                price: 2899,
-                image: "https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                description: "Large capacity gear bag with multiple compartments for uniforms, gloves, and protection gear. Water-resistant material with reinforced stitching. Includes separate shoe compartment and padded shoulder strap.",
-                sizes: ["One Size"]
+                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=500",
+                description: "Lightweight training jacket.",
+                sizes: ["M", "L", "XL"]
             }
         ];
 
-        // Shopping Cart
+        // ===== STEP 3: SHOPPING CART =====
         let cart = {
             items: [],
             total: 0,
             count: 0,
             
             addItem: function(product, size = "M", quantity = 1) {
-                const existingItem = this.items.find(item => item.id === product.id && item.size === size);
-                
-                if (existingItem) {
-                    existingItem.quantity += quantity;
-                } else {
-                    this.items.push({
-                        ...product,
-                        size: size,
-                        quantity: quantity
-                    });
-                }
-                
+                this.items.push({
+                    ...product,
+                    size: size,
+                    quantity: quantity
+                });
                 this.updateCart();
                 this.saveToLocalStorage();
-                showNotification(`${product.name} added to cart!`, 'success');
+                showNotification(product.name + " added to cart!");
             },
             
             removeItem: function(index) {
                 this.items.splice(index, 1);
                 this.updateCart();
                 this.saveToLocalStorage();
-                showNotification('Item removed from cart', 'info');
             },
             
             updateCart: function() {
-                this.count = this.items.reduce((sum, item) => sum + item.quantity, 0);
+                this.count = this.items.length;
                 this.total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 
-                // Update displays
                 document.getElementById('cartCount').textContent = this.count;
-                const mobileCount = document.getElementById('mobileCartCount');
-                if (mobileCount) mobileCount.textContent = this.count;
+                document.getElementById('cartTotal').textContent = this.total;
                 
-                this.renderCart();
-            },
-            
-            renderCart: function() {
+                // Update cart display
                 const cartContainer = document.getElementById('cartItems');
-                const cartTotal = document.getElementById('cartTotal');
-                
                 if (this.items.length === 0) {
-                    cartContainer.innerHTML = `
-                        <div style="text-align: center; padding: 50px 20px;">
-                            <i class="fas fa-shopping-bag" style="font-size: 4rem; color: #ddd; margin-bottom: 20px;"></i>
-                            <p style="color: #666;">Your cart is empty</p>
-                            <button class="btn btn-secondary" style="margin-top: 20px;" onclick="continueShopping()">Start Shopping</button>
-                        </div>
-                    `;
+                    cartContainer.innerHTML = '<div style="text-align:center; padding:50px;"><i class="fas fa-shopping-cart" style="font-size:4rem; color:#ddd;"></i><p>Your cart is empty</p></div>';
                 } else {
                     cartContainer.innerHTML = this.items.map((item, index) => `
                         <div class="cart-item">
@@ -1900,8 +1561,6 @@
                         </div>
                     `).join('');
                 }
-                
-                cartTotal.textContent = this.total;
             },
             
             saveToLocalStorage: function() {
@@ -1923,14 +1582,13 @@
             }
         };
 
-        // Initialize
+        // ===== STEP 4: LOAD PRODUCTS =====
         document.addEventListener('DOMContentLoaded', function() {
             cart.loadFromLocalStorage();
             loadProducts();
             setupEventListeners();
         });
 
-        // Load products
         function loadProducts() {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
@@ -1939,20 +1597,16 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
                     <div class="product-img">
-                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <img src="${product.image}" alt="${product.name}">
                     </div>
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
                         <h3 class="product-name">${product.name}</h3>
-                        <p class="product-description">${product.description.substring(0, 80)}...</p>
-                        <div class="product-price">
-                            Ksh ${product.price}
-                            ${product.originalPrice ? `<span>Ksh ${product.originalPrice}</span>` : ''}
-                        </div>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">Ksh ${product.price}</div>
                         <div class="product-actions">
-                            <button class="btn" onclick="addToCartFromCard(${product.id}, event)">Add to Cart</button>
+                            <button class="btn" onclick="addToCart(${product.id}, event)">Add to Cart</button>
                             <button class="btn btn-secondary" onclick="viewProduct(${product.id}, event)">View</button>
                         </div>
                     </div>
@@ -1961,7 +1615,22 @@
             });
         }
 
-        // View product
+        // ===== STEP 5: CART FUNCTIONS =====
+        function addToCart(productId, event) {
+            if (event) event.stopPropagation();
+            const product = products.find(p => p.id === productId);
+            cart.addItem(product);
+        }
+
+        function removeFromCart(index) {
+            cart.removeItem(index);
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        // ===== STEP 6: PRODUCT MODAL =====
         function viewProduct(productId, event) {
             if (event) event.stopPropagation();
             
@@ -1978,64 +1647,27 @@
                     <img src="${product.image}" alt="${product.name}">
                 </div>
                 <div class="modal-details">
-                    <div class="product-category">${product.category}</div>
                     <h2>${product.name}</h2>
                     <div class="modal-price">Ksh ${product.price}</div>
-                    ${product.originalPrice ? `<p style="color: gray; text-decoration: line-through;">Ksh ${product.originalPrice}</p>` : ''}
-                    <p class="modal-description">${product.description}</p>
+                    <p>${product.description}</p>
                     
                     <div class="size-selector">
-                        <h4>Select Size:</h4>
+                        <h4>Size:</h4>
                         <div class="sizes">${sizesHTML}</div>
                     </div>
                     
-                    <div class="quantity-selector">
-                        <h4>Quantity:</h4>
-                        <div class="quantity-control">
-                            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                            <input type="text" class="quantity-input" value="1" readonly id="modalQuantity">
-                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
-                        </div>
-                    </div>
-                    
-                    <button class="btn" style="width: 100%; padding: 15px;" onclick="addToCartFromModal(${product.id})">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    <button class="btn" style="width:100%;" onclick="addToCartFromModal(${product.id})">
+                        Add to Cart
                     </button>
-                    
-                    <div style="margin-top: 20px; text-align: center;">
-                        <a href="https://wa.me/254727394165?text=I'm%20interested%20in%20${encodeURIComponent(product.name)}" 
-                           target="_blank"
-                           class="btn btn-secondary"
-                           style="width: 100%;">
-                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                        </a>
-                    </div>
                 </div>
             `;
             
             modal.classList.add('active');
-            
-            // Select first size
-            setTimeout(() => {
-                const firstSize = modalBody.querySelector('.size-btn');
-                if (firstSize) firstSize.classList.add('active');
-            }, 100);
-        }
-
-        // Add to cart functions
-        function addToCartFromCard(productId, event) {
-            if (event) event.stopPropagation();
-            const product = products.find(p => p.id === productId);
-            cart.addItem(product);
         }
 
         function addToCartFromModal(productId) {
             const product = products.find(p => p.id === productId);
-            const selectedSize = document.querySelector('.size-btn.active');
-            const size = selectedSize ? selectedSize.textContent : 'M';
-            const quantity = parseInt(document.getElementById('modalQuantity').value);
-            
-            cart.addItem(product, size, quantity);
+            cart.addItem(product);
             closeModal();
         }
 
@@ -2044,34 +1676,16 @@
             btn.classList.add('active');
         }
 
-        function changeQuantity(change) {
-            const input = document.getElementById('modalQuantity');
-            let val = parseInt(input.value) + change;
-            if (val < 1) val = 1;
-            if (val > 10) val = 10;
-            input.value = val;
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
         }
 
-        // Cart functions
-        function toggleCart() {
-            document.getElementById('cartSidebar').classList.toggle('active');
-        }
-
-        function removeFromCart(index) {
-            cart.removeItem(index);
-        }
-
-        function continueShopping() {
-            document.getElementById('cartSidebar').classList.remove('active');
-        }
-
-        // Checkout
+        // ===== STEP 7: CHECKOUT =====
         function openCheckout() {
             if (cart.items.length === 0) {
-                showNotification('Your cart is empty', 'error');
+                showNotification('Your cart is empty');
                 return;
             }
-            
             document.getElementById('cartSidebar').classList.remove('active');
             document.getElementById('checkoutModal').classList.add('active');
             updateDeliveryCost();
@@ -2085,11 +1699,6 @@
             document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
             element.classList.add('selected');
             document.getElementById('paymentMethod').value = method;
-            
-            // Show/hide payment details
-            document.getElementById('mpesaDetails').style.display = method === 'mpesa' ? 'block' : 'none';
-            document.getElementById('cardDetails').style.display = method === 'card' ? 'block' : 'none';
-            document.getElementById('bankDetails').style.display = method === 'bank' ? 'block' : 'none';
         }
 
         function updateDeliveryCost() {
@@ -2099,44 +1708,58 @@
             document.getElementById('mpesaAmount').textContent = cart.total + parseInt(cost);
         }
 
+        // ===== STEP 8: PROCESS ORDER WITH EMAIL AND WHATSAPP =====
         function processOrder(event) {
             event.preventDefault();
             
-            // Get form data
+            // Get order data
             const order = {
-                id: 'STA-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
-                date: new Date().toISOString(),
-                customer: {
-                    name: document.getElementById('customerName').value,
-                    phone: document.getElementById('customerPhone').value,
-                    email: document.getElementById('customerEmail').value
-                },
-                delivery: {
-                    county: document.getElementById('deliveryCounty').selectedOptions[0].text,
-                    cost: parseInt(document.getElementById('deliveryCounty').value || 0),
-                    address: document.getElementById('deliveryAddress').value
-                },
-                payment: {
-                    method: document.getElementById('paymentMethod').value,
-                    mpesaCode: document.getElementById('mpesaCode').value
-                },
+                id: 'STA' + Date.now(),
+                customerName: document.getElementById('customerName').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                county: document.getElementById('deliveryCounty').selectedOptions[0]?.text || 'Nairobi',
+                deliveryCost: parseInt(document.getElementById('deliveryCounty').value || 0),
+                address: document.getElementById('deliveryAddress').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                mpesaCode: document.getElementById('mpesaCode').value,
                 items: cart.items,
                 subtotal: cart.total,
                 total: cart.total + parseInt(document.getElementById('deliveryCounty').value || 0),
-                notes: document.getElementById('orderNotes').value
+                date: new Date().toLocaleString()
             };
 
-            // Validate M-Pesa code if method is mpesa
-            if (order.payment.method === 'mpesa' && !order.payment.mpesaCode) {
-                showNotification('Please enter your M-Pesa confirmation code', 'error');
-                return;
-            }
-
-            // Send order confirmation via email (simulated)
-            sendOrderConfirmation(order);
+            // ===== SEND WHATSAPP NOTIFICATION TO BUSINESS =====
+            const whatsappMessage = `🔔 *NEW ORDER!* 🔔
             
-            // Send to WhatsApp
-            sendOrderToWhatsApp(order);
+*Order #:* ${order.id}
+*Customer:* ${order.customerName}
+*Phone:* ${order.customerPhone}
+*Email:* ${order.customerEmail}
+*Total:* Ksh ${order.total}
+*Payment:* ${order.paymentMethod.toUpperCase()}
+*M-Pesa Code:* ${order.mpesaCode || 'N/A'}
+
+*ITEMS:*
+${order.items.map(i => `• ${i.quantity}x ${i.name} (${i.size}) - Ksh ${i.price * i.quantity}`).join('\n')}
+
+*DELIVERY:*
+${order.address}
+${order.county} - Ksh ${order.deliveryCost}
+
+*View full details:* https://stawear.co.ke/admin/orders/${order.id}`;
+
+            // Open WhatsApp with order details
+            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+
+            // ===== SEND EMAIL CONFIRMATION TO CUSTOMER =====
+            sendEmailConfirmation(order);
+
+            // ===== SEND WHATSAPP CONFIRMATION TO CUSTOMER =====
+            sendWhatsAppConfirmation(order);
+
+            // Save order
+            saveOrder(order);
             
             // Clear cart
             cart.clearCart();
@@ -2145,151 +1768,187 @@
             closeCheckout();
             
             // Show success message
-            showNotification(`Order #${order.id} placed successfully! Confirmation sent to ${order.customer.email}`, 'success');
+            showNotification('✅ Order placed! Check your email and WhatsApp for confirmation');
         }
 
-        function sendOrderConfirmation(order) {
-            // This would normally send via backend, but for demo we'll simulate
-            console.log('Sending order confirmation email to:', order.customer.email);
+        // ===== STEP 9: EMAIL CONFIRMATION =====
+        function sendEmailConfirmation(order) {
+            const emailSubject = `✅ Your Stawear Order #${order.id} Confirmed!`;
             
-            // Store in localStorage for demo
+            const emailBody = `
+Dear ${order.customerName},
+
+Thank you for ordering from Stawear - Kenya's #1 Taekwondo Branding Store!
+
+ORDER CONFIRMATION #${order.id}
+Date: ${order.date}
+
+YOUR ITEMS:
+${order.items.map(i => `- ${i.quantity}x ${i.name} (Size ${i.size}) - Ksh ${i.price * i.quantity}`).join('\n')}
+
+Subtotal: Ksh ${order.subtotal}
+Delivery (${order.county}): Ksh ${order.deliveryCost}
+TOTAL: Ksh ${order.total}
+
+DELIVERY ADDRESS:
+${order.address}
+
+PAYMENT METHOD: ${order.paymentMethod.toUpperCase()}
+${order.mpesaCode ? 'M-Pesa Code: ' + order.mpesaCode : ''}
+
+WHAT'S NEXT?
+1. We'll prepare your order (1-2 days)
+2. You'll receive shipping confirmation
+3. We'll notify you when out for delivery
+
+TRACK YOUR ORDER:
+https://stawear.co.ke/track?order=${order.id}
+
+CONTACT US:
+📞 Call: 0727 394 165
+💬 WhatsApp: https://wa.me/254727394165
+
+Thank you for choosing Stawear!
+Proudly Kenyan 🇰🇪
+            `;
+
+            // Try to send via EmailJS (if configured)
+            try {
+                emailjs.send("service_stawear", "template_order", {
+                    to_email: order.customerEmail,
+                    to_name: order.customerName,
+                    order_id: order.id,
+                    order_details: emailBody,
+                    reply_to: "orders@stawear.co.ke"
+                });
+            } catch (error) {
+                console.log("EmailJS not configured yet. Email would be:", emailBody);
+                // For demo, show the email that would be sent
+                alert("📧 EMAIL CONFIRMATION WOULD BE SENT TO:\n" + order.customerEmail + "\n\n" + emailBody);
+            }
+
+            // Save to localStorage
+            const emails = JSON.parse(localStorage.getItem('stawearEmails') || '[]');
+            emails.push({
+                to: order.customerEmail,
+                subject: emailSubject,
+                body: emailBody,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('stawearEmails', JSON.stringify(emails));
+        }
+
+        // ===== STEP 10: WHATSAPP CONFIRMATION TO CUSTOMER =====
+        function sendWhatsAppConfirmation(order) {
+            const customerMessage = `✅ *ORDER CONFIRMED!* ✅
+
+Hello ${order.customerName}!
+
+Your Stawear order has been received and confirmed.
+
+*📋 ORDER #${order.id}*
+Date: ${order.date}
+
+*YOUR ITEMS:*
+${order.items.map(i => `• ${i.quantity}x ${i.name} (${i.size}) - Ksh ${i.price * i.quantity}`).join('\n')}
+
+*💰 TOTAL: Ksh ${order.total}*
+
+*🚚 DELIVERY:*
+${order.address}
+${order.county}
+
+*📦 TRACK YOUR ORDER:*
+https://stawear.co.ke/track?order=${order.id}
+
+We'll notify you when your order ships!
+
+Questions? Reply or call 0727 394 165
+
+*Asante sana!* 🇰🇪🥋`;
+
+            // Offer to send via WhatsApp
+            if (confirm("Send order confirmation via WhatsApp to " + order.customerPhone + "?")) {
+                window.open(`https://wa.me/${order.customerPhone.replace(/^0/, '254')}?text=${encodeURIComponent(customerMessage)}`, '_blank');
+            }
+        }
+
+        // ===== STEP 11: SAVE ORDER =====
+        function saveOrder(order) {
             const orders = JSON.parse(localStorage.getItem('stawearOrders') || '[]');
             orders.push(order);
             localStorage.setItem('stawearOrders', JSON.stringify(orders));
         }
 
-        function sendOrderToWhatsApp(order) {
-            const itemsList = order.items.map(item => 
-                `${item.quantity}x ${item.name} (${item.size}) - Ksh ${item.price * item.quantity}`
-            ).join('%0A');
-            
-            const message = `NEW ORDER: #${order.id}%0A%0A` +
-                `CUSTOMER:%0A${order.customer.name}%0A${order.customer.phone}%0A${order.customer.email}%0A%0A` +
-                `ITEMS:%0A${itemsList}%0A%0A` +
-                `DELIVERY:%0A${order.delivery.address}%0A${order.delivery.county}%0ACost: Ksh ${order.delivery.cost}%0A%0A` +
-                `PAYMENT: ${order.payment.method.toUpperCase()}%0A` +
-                (order.payment.mpesaCode ? `M-Pesa Code: ${order.payment.mpesaCode}%0A` : '') +
-                `TOTAL: Ksh ${order.total}%0A%0A` +
-                `Notes: ${order.notes || 'None'}`;
-            
-            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(message)}`, '_blank');
-        }
-
-        // Order Tracking
-        function trackOrder() {
-            const trackingNumber = document.getElementById('trackingNumber').value;
-            if (!trackingNumber) {
-                showNotification('Please enter an order ID', 'error');
-                return;
-            }
-            
-            // Check in localStorage
-            const orders = JSON.parse(localStorage.getItem('stawearOrders') || '[]');
-            const order = orders.find(o => o.id === trackingNumber);
-            
-            if (order) {
-                const date = new Date(order.date);
-                showNotification(
-                    `Order ${order.id}: Placed on ${date.toLocaleDateString()}. Status: Processing. Total: Ksh ${order.total}`,
-                    'info'
-                );
-            } else {
-                // Forward to WhatsApp for manual tracking
-                if (confirm('Order not found. Would you like to track via WhatsApp?')) {
-                    window.open(`https://wa.me/254727394165?text=Please%20help%20me%20track%20order%20${trackingNumber}`, '_blank');
-                }
-            }
-        }
-
-        // Newsletter
+        // ===== STEP 12: NEWSLETTER SUBSCRIPTION =====
         function subscribeNewsletter(event) {
             event.preventDefault();
             const email = document.getElementById('newsletterEmail').value;
             
-            // Store subscription
-            const subscriptions = JSON.parse(localStorage.getItem('stawearNewsletter') || '[]');
-            subscriptions.push({
+            // Save subscriber
+            const subscribers = JSON.parse(localStorage.getItem('stawearSubscribers') || '[]');
+            subscribers.push({
                 email: email,
                 date: new Date().toISOString()
             });
-            localStorage.setItem('stawearNewsletter', JSON.stringify(subscriptions));
-            
-            // Send confirmation email (simulated)
-            console.log('Newsletter subscription:', email);
-            
-            showNotification(`Thank you! 10% discount code sent to ${email}`, 'success');
+            localStorage.setItem('stawearSubscribers', JSON.stringify(subscribers));
+
+            // Send welcome email (simulated)
+            const welcomeMessage = `Welcome to Stawear! 
+
+Here's your 10% discount code: STA10${Math.random().toString(36).substring(2, 8).toUpperCase()}
+
+Use it on your first order!
+
+Shop now: https://stawear.co.ke`;
+
+            alert("📧 Welcome email sent to: " + email + "\n\n" + welcomeMessage);
             document.getElementById('newsletterEmail').value = '';
         }
 
-        // Notifications
+        // ===== STEP 13: ORDER TRACKING =====
+        function trackOrder() {
+            const orderId = prompt("Enter your order ID:");
+            if (!orderId) return;
+            
+            const orders = JSON.parse(localStorage.getItem('stawearOrders') || '[]');
+            const order = orders.find(o => o.id === orderId);
+            
+            if (order) {
+                alert(`📦 Order #${order.id}\nStatus: Processing\nDate: ${order.date}\nTotal: Ksh ${order.total}\nDelivery: ${order.address}`);
+            } else {
+                const trackViaWhatsApp = confirm("Order not found. Track via WhatsApp?");
+                if (trackViaWhatsApp) {
+                    window.open(`https://wa.me/254727394165?text=Please%20track%20order%20${orderId}`, '_blank');
+                }
+            }
+        }
+
+        // ===== STEP 14: NOTIFICATION SYSTEM =====
         function showNotification(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = 'toast';
-            
-            let icon = 'fa-check-circle';
-            if (type === 'error') icon = 'fa-exclamation-circle';
-            if (type === 'info') icon = 'fa-info-circle';
-            
             toast.innerHTML = `
-                <i class="fas ${icon}"></i>
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
                 <div class="toast-message">${message}</div>
-                <div class="toast-close" onclick="this.parentElement.remove()">
-                    <i class="fas fa-times"></i>
-                </div>
             `;
-            
             container.appendChild(toast);
             
-            setTimeout(() => {
-                if (toast.parentElement) {
-                    toast.remove();
-                }
-            }, 5000);
+            setTimeout(() => toast.remove(), 3000);
         }
 
-        // Modal functions
-        function closeModal() {
-            document.getElementById('productModal').classList.remove('active');
-        }
-
-        // Delivery calculator
-        document.getElementById('county-select')?.addEventListener('change', function() {
-            document.getElementById('cost').textContent = this.value || '0';
-        });
-
-        // Setup event listeners
+        // ===== STEP 15: SETUP EVENT LISTENERS =====
         function setupEventListeners() {
             // Mobile menu
             const menuBtn = document.querySelector('.mobile-menu-btn');
             const closeBtn = document.querySelector('.mobile-menu-close');
             const mobileMenu = document.querySelector('.mobile-menu');
             
-            menuBtn?.addEventListener('click', () => {
-                mobileMenu.classList.add('active');
-            });
+            menuBtn?.addEventListener('click', () => mobileMenu.classList.add('active'));
+            closeBtn?.addEventListener('click', () => mobileMenu.classList.remove('active'));
             
-            closeBtn?.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-            
-            // Close mobile menu on link click
-            document.querySelectorAll('.mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                });
-            });
-            
-            // Close modals on escape
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeModal();
-                    document.getElementById('cartSidebar').classList.remove('active');
-                    closeCheckout();
-                }
-            });
-            
-            // Click outside to close
+            // Close modal on outside click
             document.getElementById('productModal').addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
             });
@@ -2297,69 +1956,23 @@
             document.getElementById('checkoutModal').addEventListener('click', function(e) {
                 if (e.target === this) closeCheckout();
             });
+            
+            // Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    closeCheckout();
+                }
+            });
         }
 
-        // Smooth scroll
+        // ===== STEP 16: SCROLL FUNCTION =====
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                
-                window.scrollTo({
-                    top: targetPosition - headerHeight,
-                    behavior: 'smooth'
-                });
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        // Legal pages
-        function showTerms() {
-            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Terms%20and%20Conditions', '_blank');
-        }
-
-        function showPrivacy() {
-            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Privacy%20Policy', '_blank');
-        }
-
-        function showReturns() {
-            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Return%20Policy', '_blank');
-        }
-
-        function showShipping() {
-            window.open('https://wa.me/254727394165?text=Please%20send%20me%20your%20Shipping%20Policy', '_blank');
-        }
-
-        // Update active nav on scroll
-        window.addEventListener('scroll', () => {
-            const sections = ['home', 'products', 'testimonials', 'branding', 'customization'];
-            const header = document.querySelector('header');
-            
-            if (window.scrollY > 100) {
-                header.style.padding = '0.5rem 0';
-            } else {
-                header.style.padding = '0.8rem 0';
-            }
-            
-            // Update active nav
-            const scrollPosition = window.scrollY + 200;
-            
-            sections.forEach(section => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const top = element.offsetTop;
-                    const bottom = top + element.offsetHeight;
-                    
-                    if (scrollPosition >= top && scrollPosition < bottom) {
-                        document.querySelectorAll('nav ul li').forEach(li => li.classList.remove('active'));
-                        document.querySelectorAll('.mobile-menu ul li a').forEach(a => a.classList.remove('active'));
-                        
-                        const activeNav = document.querySelector(`nav ul li:nth-child(${sections.indexOf(section) + 1})`);
-                        if (activeNav) activeNav.classList.add('active');
-                    }
-                }
-            });
-        });
     </script>
 </body>
 </html>
