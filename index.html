@@ -181,6 +181,40 @@
             color: var(--white);
         }
         
+        /* ===== WHATSAPP FLOAT BUTTON ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 3px solid white;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.15) rotate(5deg);
+            background: #20b859;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
         /* ===== HERO SECTION ===== */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(198, 40, 40, 0.85)), url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=1200&q=80');
@@ -239,6 +273,19 @@
             background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
         }
         
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #1B5E20 100%);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-whatsapp:hover {
+            background: #20b859;
+        }
+        
         .btn-block {
             width: 100%;
         }
@@ -277,7 +324,7 @@
             font-weight: 700;
         }
         
-        /* ===== PRODUCTS GRID - 4 PER LINE ===== */
+        /* ===== PRODUCTS GRID ===== */
         .section-title {
             text-align: center;
             margin: 3rem 0 2rem;
@@ -435,7 +482,7 @@
             min-width: 0;
         }
         
-        /* ===== CUSTOM BRANDING FORM ===== */
+        /* ===== CUSTOM BRANDING SECTION ===== */
         .branding-section {
             background: linear-gradient(135deg, #1A237E 0%, #0D47A1 100%);
             color: white;
@@ -465,6 +512,9 @@
         .branding-form h3 {
             color: var(--primary);
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .form-group {
@@ -486,6 +536,14 @@
             border: 2px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
         }
         
         .form-row {
@@ -494,6 +552,101 @@
             gap: 15px;
         }
         
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .color-option.selected {
+            border-color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .color-option.red { background: #C62828; }
+        .color-option.black { background: #000000; }
+        .color-option.white { background: #FFFFFF; border: 2px solid #ddd; }
+        .color-option.blue { background: #1A237E; }
+        .color-option.green { background: #006600; }
+        .color-option.orange { background: #FF9800; }
+        .color-option.gold { background: #FFD700; }
+        .color-option.silver { background: #C0C0C0; }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: #f5f5f5;
+        }
+        
+        .upload-area i {
+            font-size: 2rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        /* ===== ORDER SUMMARY ===== */
         .order-summary {
             background: rgba(255,255,255,0.1);
             padding: 2rem;
@@ -504,141 +657,49 @@
         .order-summary h3 {
             color: var(--secondary);
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .summary-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255,255,255,0.2);
         }
         
+        .summary-item span:first-child {
+            font-weight: 600;
+        }
+        
         .summary-total {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--secondary);
             margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            text-align: right;
         }
         
         .edit-btn {
             background: var(--secondary);
             color: var(--dark);
             border: none;
-            padding: 5px 15px;
-            border-radius: 20px;
+            padding: 8px 20px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 0.8rem;
-            margin-left: 10px;
-        }
-        
-        /* ===== TESTIMONIALS - BEFORE FOOTER ===== */
-        .testimonials {
-            padding: 4rem 0;
-            background: #f9f9f9;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        @media (max-width: 900px) {
-            .testimonial-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            position: relative;
-        }
-        
-        .testimonial-card:before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.2;
-            font-family: serif;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .testimonial-role {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        /* ===== FOOTER ===== */
-        footer {
-            background: linear-gradient(135deg, var(--kenya-black) 0%, #111 100%);
-            color: white;
-            padding: 3rem 0 1.5rem;
-            border-top: 5px solid var(--secondary);
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            color: var(--secondary);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            display: flex;
+            font-weight: 600;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
+            transition: all 0.3s;
         }
         
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
+        .edit-btn:hover {
+            background: white;
+            transform: translateY(-2px);
         }
         
         /* ===== MODALS ===== */
@@ -668,11 +729,11 @@
             background: white;
             border-radius: 20px;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            padding: 25px;
+            padding: 30px;
         }
         
         .close-modal {
@@ -690,6 +751,10 @@
             background: white;
             border-radius: 50%;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
         }
         
         /* ===== CART SIDEBAR ===== */
@@ -806,6 +871,116 @@
             color: var(--primary);
         }
         
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 4rem 0;
+            background: #f9f9f9;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 900px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--kenya-black) 0%, #111 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+        
         /* ===== TOAST NOTIFICATION ===== */
         .toast-container {
             position: fixed;
@@ -817,14 +992,19 @@
         .toast {
             background: white;
             border-radius: 10px;
-            padding: 12px 20px;
+            padding: 15px 25px;
             margin-bottom: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             animation: slideIn 0.3s ease;
             border-left: 5px solid var(--success);
+        }
+        
+        .toast i {
+            font-size: 1.5rem;
+            color: var(--success);
         }
         
         @keyframes slideIn {
@@ -855,40 +1035,17 @@
             background: var(--primary);
             color: white;
         }
-        
-        /* ===== PAYMENT METHODS ===== */
-        .payment-methods {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .payment-method {
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        
-        .payment-method i {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: var(--gray);
-        }
-        
-        .payment-method.selected {
-            border-color: var(--primary);
-            background: rgba(198, 40, 40, 0.05);
-        }
-        
-        .payment-method.selected i {
-            color: var(--primary);
-        }
     </style>
 </head>
 <body>
+    <!-- WhatsApp Float Button - CLICKABLE -->
+    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I%20want%20to%20inquire%20about%20your%20products%20and%20custom%20branding%20services." 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
@@ -975,12 +1132,12 @@
                 
                 <div class="form-group">
                     <label>Payment Method</label>
-                    <div class="payment-methods">
-                        <div class="payment-method selected" onclick="selectPaymentMethod('mpesa', this)">
+                    <div class="payment-methods" style="display: flex; gap: 10px;">
+                        <div class="payment-method selected" onclick="selectPaymentMethod('mpesa', this)" style="flex:1; padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
                             <i class="fas fa-mobile-alt"></i>
                             <span>M-Pesa</span>
                         </div>
-                        <div class="payment-method" onclick="selectPaymentMethod('card', this)">
+                        <div class="payment-method" onclick="selectPaymentMethod('card', this)" style="flex:1; padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
                             <i class="fas fa-credit-card"></i>
                             <span>Card</span>
                         </div>
@@ -1004,44 +1161,57 @@
         </div>
     </div>
 
-    <!-- Custom Branding Modal -->
+    <!-- Custom Branding Modal - ENHANCED WITH MANY INPUTS -->
     <div class="customize-modal" id="customizeModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeCustomizeModal()">&times;</span>
             <h2 style="color: var(--primary); margin-bottom: 20px;">Custom Branding Request</h2>
             
             <form id="customizeForm" onsubmit="submitCustomOrder(event)">
-                <div class="form-group">
-                    <label>Your Name *</label>
-                    <input type="text" id="customName" required placeholder="John Kamau">
-                </div>
+                <!-- Personal Information -->
+                <h3 style="color: var(--secondary); margin: 20px 0 10px;">1. Personal Information</h3>
                 
-                <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" id="customEmail" required placeholder="you@example.com">
-                </div>
-                
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" id="customPhone" required placeholder="0712 345 678">
-                </div>
-                
-                <div class="form-group">
-                    <label>Dojang/Team Name *</label>
-                    <input type="text" id="dojangName" required placeholder="e.g., Nairobi Taekwondo Club">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="customName" required placeholder="John Kamau" onchange="updateCustomSummary()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="customPhone" required placeholder="0712 345 678" onchange="updateCustomSummary()">
+                    </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="customEmail" required placeholder="you@example.com" onchange="updateCustomSummary()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Dojang/Team Name *</label>
+                        <input type="text" id="dojangName" required placeholder="e.g., Nairobi Taekwondo Club" onchange="updateCustomSummary()">
+                    </div>
+                </div>
+                
+                <!-- Order Details -->
+                <h3 style="color: var(--secondary); margin: 30px 0 10px;">2. Order Details</h3>
+                
+                <div class="form-row-3">
+                    <div class="form-group">
                         <label>Item Type *</label>
                         <select id="itemType" required onchange="updateCustomSummary()">
-                            <option value="">Select</option>
+                            <option value="">Select Item</option>
                             <option value="Hoodies">Hoodies</option>
                             <option value="T-Shirts">T-Shirts</option>
                             <option value="Jackets">Jackets</option>
                             <option value="Tracksuits">Tracksuits</option>
-                            <option value="Caps">Caps</option>
+                            <option value="Pants">Training Pants</option>
+                            <option value="Caps">Caps/Hats</option>
+                            <option value="Bags">Sports Bags</option>
                             <option value="Full Uniforms">Full Uniforms</option>
+                            <option value="Custom Design">Custom Design</option>
                         </select>
                     </div>
                     
@@ -1049,46 +1219,204 @@
                         <label>Quantity *</label>
                         <input type="number" id="customQuantity" min="1" value="10" required onchange="updateCustomSummary()">
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Branding Type *</label>
-                    <select id="brandingType" required onchange="updateCustomSummary()">
-                        <option value="">Select</option>
-                        <option value="Screen Printing">Screen Printing</option>
-                        <option value="Embroidery">Embroidery</option>
-                        <option value="Heat Transfer">Heat Transfer</option>
-                        <option value="Full Custom Design">Full Custom Design</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Design Description *</label>
-                    <textarea id="designDescription" required rows="3" placeholder="Describe your design, colors, text, logos, etc." onchange="updateCustomSummary()"></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label>Deadline</label>
-                    <input type="date" id="deadline" onchange="updateCustomSummary()">
-                </div>
-                
-                <!-- Order Summary -->
-                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                    <h4 style="display: flex; justify-content: space-between; align-items: center;">
-                        Order Summary 
-                        <button type="button" class="edit-btn" onclick="editCustomOrder()">Edit</button>
-                    </h4>
-                    <div id="customSummary">
-                        <p class="summary-item">Item: <span id="summaryItem">Not selected</span></p>
-                        <p class="summary-item">Quantity: <span id="summaryQty">0</span></p>
-                        <p class="summary-item">Branding: <span id="summaryBranding">Not selected</span></p>
-                        <p class="summary-item">Estimated Price: <span id="summaryPrice">Ksh 0</span></p>
+                    
+                    <div class="form-group">
+                        <label>Urgency</label>
+                        <select id="urgency" onchange="updateCustomSummary()">
+                            <option value="Standard">Standard (2-3 weeks)</option>
+                            <option value="Express">Express (1 week) +15%</option>
+                            <option value="Urgent">Urgent (3 days) +30%</option>
+                        </select>
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-block" style="width:100%;">
-                    <i class="fas fa-paper-plane"></i> Submit Request
-                </button>
+                <!-- Branding Options -->
+                <h3 style="color: var(--secondary); margin: 30px 0 10px;">3. Branding Options</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Branding Type *</label>
+                        <select id="brandingType" required onchange="updateCustomSummary()">
+                            <option value="">Select Type</option>
+                            <option value="Screen Printing">Screen Printing</option>
+                            <option value="Embroidery">Embroidery</option>
+                            <option value="Heat Transfer">Heat Transfer</option>
+                            <option value="DTG Printing">DTG Printing</option>
+                            <option value="Sublimation">Sublimation</option>
+                            <option value="Patch">Embroidered Patch</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Print Locations</label>
+                        <select id="printLocation" onchange="updateCustomSummary()">
+                            <option value="Front Only">Front Only</option>
+                            <option value="Back Only">Back Only</option>
+                            <option value="Front & Back">Front & Back</option>
+                            <option value="Full Print">Full Print</option>
+                            <option value="Sleeves">Including Sleeves</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Color Selection -->
+                <div class="form-group">
+                    <label>Primary Colors *</label>
+                    <div class="color-picker" id="colorPicker">
+                        <div class="color-option red" onclick="selectColor('red', this)" title="Red"></div>
+                        <div class="color-option black" onclick="selectColor('black', this)" title="Black"></div>
+                        <div class="color-option white" onclick="selectColor('white', this)" title="White"></div>
+                        <div class="color-option blue" onclick="selectColor('blue', this)" title="Blue"></div>
+                        <div class="color-option green" onclick="selectColor('green', this)" title="Green"></div>
+                        <div class="color-option orange" onclick="selectColor('orange', this)" title="Orange"></div>
+                        <div class="color-option gold" onclick="selectColor('gold', this)" title="Gold"></div>
+                        <div class="color-option silver" onclick="selectColor('silver', this)" title="Silver"></div>
+                    </div>
+                    <input type="hidden" id="selectedColor" value="">
+                </div>
+                
+                <!-- Size Distribution -->
+                <div class="form-group">
+                    <label>Size Distribution</label>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Small</label>
+                            <input type="number" id="sizeS" value="2" min="0" onchange="updateCustomSummary()">
+                        </div>
+                        <div class="form-group">
+                            <label>Medium</label>
+                            <input type="number" id="sizeM" value="3" min="0" onchange="updateCustomSummary()">
+                        </div>
+                        <div class="form-group">
+                            <label>Large</label>
+                            <input type="number" id="sizeL" value="3" min="0" onchange="updateCustomSummary()">
+                        </div>
+                        <div class="form-group">
+                            <label>XL</label>
+                            <input type="number" id="sizeXL" value="2" min="0" onchange="updateCustomSummary()">
+                        </div>
+                        <div class="form-group">
+                            <label>XXL</label>
+                            <input type="number" id="sizeXXL" value="0" min="0" onchange="updateCustomSummary()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Options -->
+                <h3 style="color: var(--secondary); margin: 30px 0 10px;">4. Additional Options</h3>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="includeLogo" onchange="updateCustomSummary()">
+                    <label for="includeLogo">I have a logo to upload</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="needDesign" onchange="updateCustomSummary()">
+                    <label for="needDesign">I need design assistance (+Ksh 1,500)</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="sampleNeeded" onchange="updateCustomSummary()">
+                    <label for="sampleNeeded">Send sample first (+Ksh 500)</label>
+                </div>
+                
+                <!-- Logo Upload Area (hidden by default) -->
+                <div id="uploadArea" style="display: none;" class="upload-area" onclick="triggerFileUpload()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload your logo (PNG, JPG, AI, EPS)</p>
+                    <input type="file" id="logoFile" accept="image/*,.ai,.eps" style="display: none;" onchange="handleFileUpload()">
+                </div>
+                
+                <!-- Design Description -->
+                <div class="form-group">
+                    <label>Design Description *</label>
+                    <textarea id="designDescription" required rows="4" placeholder="Describe your design in detail: 
+- What text should be printed?
+- Any specific fonts?
+- Describe any graphics or symbols
+- Where should each element be placed?
+- Any special instructions?"
+onchange="updateCustomSummary()"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Deadline Date</label>
+                        <input type="date" id="deadline" onchange="updateCustomSummary()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Budget Range (Ksh)</label>
+                        <select id="budgetRange" onchange="updateCustomSummary()">
+                            <option value="">Select budget</option>
+                            <option value="<5000">Less than 5,000</option>
+                            <option value="5000-15000">5,000 - 15,000</option>
+                            <option value="15000-30000">15,000 - 30,000</option>
+                            <option value="30000-50000">30,000 - 50,000</option>
+                            <option value=">50000">Above 50,000</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Live Order Summary -->
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; margin: 30px 0;">
+                    <h4 style="display: flex; justify-content: space-between; align-items: center; color: var(--primary);">
+                        <span><i class="fas fa-calculator"></i> Live Order Summary</span>
+                        <button type="button" class="edit-btn" onclick="resetCustomForm()">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </h4>
+                    
+                    <div id="customSummary">
+                        <div class="summary-item">
+                            <span>Customer:</span>
+                            <span id="summaryName">Not set</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Dojang/Team:</span>
+                            <span id="summaryDojang">Not set</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Item:</span>
+                            <span id="summaryItem">Not selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Quantity:</span>
+                            <span id="summaryQty">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Branding:</span>
+                            <span id="summaryBranding">Not selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Color:</span>
+                            <span id="summaryColor">Not selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Size Distribution:</span>
+                            <span id="summarySizes">S:0, M:0, L:0, XL:0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Urgency:</span>
+                            <span id="summaryUrgency">Standard</span>
+                        </div>
+                        <div class="summary-total" id="summaryTotal">
+                            Total: Ksh 0
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 15px;">
+                    <button type="button" class="btn btn-secondary" style="flex:1;" onclick="closeCustomizeModal()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn" style="flex:2;">
+                        <i class="fab fa-whatsapp"></i> Submit via WhatsApp
+                    </button>
+                </div>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
+                    <i class="fas fa-info-circle"></i> Your request will be sent via WhatsApp and email confirmation
+                </p>
             </form>
         </div>
     </div>
@@ -1118,6 +1446,9 @@
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count" id="cartCount">0</span>
                 </div>
+                <a href="https://wa.me/254727394165" target="_blank" class="user-icon" style="color:#25D366;">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
                 <div class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -1138,8 +1469,8 @@
                 <p>Premium custom Taekwondo clothing and gear. Quality prints for dojangs and competitors across Kenya.</p>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <a onclick="scrollToSection('products')" class="btn">Shop Now</a>
-                    <a href="tel:0727394165" class="btn btn-secondary">
-                        <i class="fas fa-phone-alt"></i> Call Now
+                    <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I%20have%20a%20question%20about%20your%20products" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                     </a>
                 </div>
             </div>
@@ -1154,6 +1485,13 @@
                 <div>
                     <h3>Call Us Now</h3>
                     <a href="tel:0727394165">0727 394 165</a>
+                </div>
+            </div>
+            <div class="kenyan-item">
+                <i class="fab fa-whatsapp kenyan-icon"></i>
+                <div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/254727394165" target="_blank">Chat Now</a>
                 </div>
             </div>
             <div class="kenyan-item">
@@ -1179,77 +1517,71 @@
     <!-- Custom Branding Section -->
     <section class="branding-section" id="branding">
         <div class="container">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: white;">CUSTOM BRANDING REQUEST</h2>
             <div class="branding-container">
                 <div class="branding-form">
-                    <h3><i class="fas fa-pen-fancy"></i> Custom Branding Request</h3>
+                    <h3><i class="fas fa-pen-fancy"></i> Quick Request Form</h3>
                     <form id="brandingForm" onsubmit="event.preventDefault(); openCustomizeModal()">
                         <div class="form-group">
                             <label>Your Name *</label>
-                            <input type="text" id="brandName" required placeholder="John Kamau">
+                            <input type="text" id="quickName" required placeholder="John Kamau">
                         </div>
                         
                         <div class="form-group">
                             <label>Email *</label>
-                            <input type="email" id="brandEmail" required placeholder="you@example.com">
+                            <input type="email" id="quickEmail" required placeholder="you@example.com">
                         </div>
                         
                         <div class="form-group">
                             <label>Dojang/Team Name *</label>
-                            <input type="text" id="brandDojang" required placeholder="e.g., Nairobi Taekwondo Club">
+                            <input type="text" id="quickDojang" required placeholder="e.g., Nairobi Taekwondo Club">
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Item Type</label>
-                                <select id="brandItem">
+                                <select id="quickItem">
                                     <option>Hoodies</option>
                                     <option>T-Shirts</option>
                                     <option>Jackets</option>
                                     <option>Tracksuits</option>
+                                    <option>Full Uniforms</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Quantity</label>
-                                <input type="number" id="brandQty" value="10" min="1">
+                                <input type="number" id="quickQty" value="10" min="1">
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-block">Continue to Customize</button>
+                        <button type="submit" class="btn btn-block" style="margin-top: 20px;">
+                            <i class="fas fa-arrow-right"></i> Open Full Customization
+                        </button>
                     </form>
                 </div>
                 
-                <div class="order-summary" id="orderSummary">
-                    <h3><i class="fas fa-clipboard-list"></i> Your Custom Order</h3>
-                    <div id="summaryDetails">
-                        <div class="summary-item">
-                            <span>Name:</span>
-                            <span id="summaryName">Not set</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Dojang:</span>
-                            <span id="summaryDojang">Not set</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Item:</span>
-                            <span id="summaryItemType">Not selected</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Quantity:</span>
-                            <span id="summaryItemQty">0</span>
-                        </div>
-                        <div class="summary-total" id="summaryTotal">
-                            Total: Ksh 0
-                        </div>
-                        <button class="btn btn-secondary" style="width:100%; margin-top:15px;" onclick="openCustomizeModal()">
-                            <i class="fas fa-edit"></i> Edit Details
-                        </button>
+                <div class="order-summary">
+                    <h3><i class="fas fa-clipboard-list"></i> Why Choose Custom Branding?</h3>
+                    <ul style="list-style: none; color: white;">
+                        <li style="margin-bottom: 15px;">✓ <strong>Your Dojang Name & Logo</strong></li>
+                        <li style="margin-bottom: 15px;">✓ <strong>Choose Your Colors</strong></li>
+                        <li style="margin-bottom: 15px;">✓ <strong>Bulk Order Discounts</strong></li>
+                        <li style="margin-bottom: 15px;">✓ <strong>Free Design Consultation</strong></li>
+                        <li style="margin-bottom: 15px;">✓ <strong>Quality Guaranteed</strong></li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="https://wa.me/254727394165?text=Hello%20Stawear!%20I'm%20interested%20in%20custom%20branding%20for%20my%20dojang." 
+                           target="_blank" 
+                           class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Quick WhatsApp Inquiry
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials - Before Footer -->
+    <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
@@ -1311,6 +1643,7 @@
                     <h3>Contact Info</h3>
                     <ul>
                         <li><a href="tel:0727394165"><i class="fas fa-phone"></i> 0727 394 165</a></li>
+                        <li><a href="https://wa.me/254727394165" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
                         <li><a href="mailto:info@stawear.co.ke"><i class="fas fa-envelope"></i> info@stawear.co.ke</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
                     </ul>
@@ -1325,18 +1658,21 @@
 
     <!-- JavaScript -->
     <script>
-    // ===== EMAILJS INITIALIZATION WITH NEW PUBLIC KEY =====
-(function() {
-    // YOUR NEW PUBLIC KEY
-    emailjs.init("rOBcEHt9BFgYEOL1Z");
-    
-    // YOUR SERVICE ID (unchanged)
-    window.EMAILJS_SERVICE_ID = "service_ym1oijj";
-    
-    console.log("%c✅ EMAILJS READY!", "color: green; font-size: 14px");
-    console.log("   Public Key:", emailjs._userID);
-    console.log("   Service ID:", window.EMAILJS_SERVICE_ID);
-})();
+        // ===== EMAILJS INITIALIZATION WITH NEW PUBLIC KEY =====
+        (function() {
+            // YOUR NEW PUBLIC KEY
+            emailjs.init("rOBcEHt9BFgYEOL1Z");
+            
+            // YOUR SERVICE ID
+            window.EMAILJS_SERVICE_ID = "service_ym1oijj";
+            
+            // YOUR TEMPLATE IDS
+            window.ORDER_TEMPLATE = "template_jra9me1";
+            
+            console.log("%c✅✅✅ EMAILJS READY! ✅✅✅", "color: white; background: green; font-size: 14px; padding: 5px;");
+            console.log("   Public Key:", emailjs._userID);
+            console.log("   Service ID:", window.EMAILJS_SERVICE_ID);
+        })();
 
         // ===== PRODUCT DATA =====
         const products = [
@@ -1493,7 +1829,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             cart.loadFromLocalStorage();
             loadProducts();
-            loadBrandingSummary();
+            
+            // Pre-fill quick form if available
+            const quickName = document.getElementById('quickName');
+            const quickEmail = document.getElementById('quickEmail');
+            const quickDojang = document.getElementById('quickDojang');
+            
+            if (quickName && localStorage.getItem('customName')) {
+                quickName.value = localStorage.getItem('customName') || '';
+                quickEmail.value = localStorage.getItem('customEmail') || '';
+                quickDojang.value = localStorage.getItem('customDojang') || '';
+            }
         });
 
         function loadProducts() {
@@ -1551,9 +1897,17 @@
                     ${product.sizes.map(size => `<button class="size-btn" onclick="selectSize(this)">${size}</button>`).join('')}
                 </div>
                 <button class="btn btn-block" onclick="addToCartFromModal(${product.id})">Add to Cart</button>
+                <button class="btn btn-whatsapp btn-block" style="margin-top:10px;" onclick="whatsappInquiry('${product.name}')">
+                    <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                </button>
             `;
             
             modal.classList.add('active');
+        }
+
+        function whatsappInquiry(productName) {
+            const message = `Hello Stawear! I'm interested in ${productName}. Can you provide more information?`;
+            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function addToCartFromModal(productId) {
@@ -1580,22 +1934,43 @@
             itemType: '',
             quantity: 10,
             brandingType: '',
+            printLocation: 'Front Only',
+            color: '',
+            sizes: { S: 2, M: 3, L: 3, XL: 2, XXL: 0 },
+            urgency: 'Standard',
+            includeLogo: false,
+            needDesign: false,
+            sampleNeeded: false,
             description: '',
-            deadline: ''
+            deadline: '',
+            budget: ''
         };
 
         function openCustomizeModal() {
-            // Pre-fill form with existing data
-            document.getElementById('customName').value = currentCustomOrder.name;
-            document.getElementById('customEmail').value = currentCustomOrder.email;
-            document.getElementById('customPhone').value = currentCustomOrder.phone;
-            document.getElementById('dojangName').value = currentCustomOrder.dojang;
-            document.getElementById('itemType').value = currentCustomOrder.itemType;
-            document.getElementById('customQuantity').value = currentCustomOrder.quantity;
-            document.getElementById('brandingType').value = currentCustomOrder.brandingType;
-            document.getElementById('designDescription').value = currentCustomOrder.description;
-            if (currentCustomOrder.deadline) {
-                document.getElementById('deadline').value = currentCustomOrder.deadline;
+            // Pre-fill from quick form
+            const quickName = document.getElementById('quickName');
+            const quickEmail = document.getElementById('quickEmail');
+            const quickDojang = document.getElementById('quickDojang');
+            const quickItem = document.getElementById('quickItem');
+            const quickQty = document.getElementById('quickQty');
+            
+            if (quickName && quickName.value) {
+                document.getElementById('customName').value = quickName.value;
+                document.getElementById('customEmail').value = quickEmail?.value || '';
+                document.getElementById('dojangName').value = quickDojang?.value || '';
+                currentCustomOrder.name = quickName.value;
+                currentCustomOrder.email = quickEmail?.value || '';
+                currentCustomOrder.dojang = quickDojang?.value || '';
+            }
+            
+            if (quickItem && quickItem.value) {
+                document.getElementById('itemType').value = quickItem.value;
+                currentCustomOrder.itemType = quickItem.value;
+            }
+            
+            if (quickQty && quickQty.value) {
+                document.getElementById('customQuantity').value = quickQty.value;
+                currentCustomOrder.quantity = parseInt(quickQty.value);
             }
             
             updateCustomSummary();
@@ -1606,17 +1981,63 @@
             document.getElementById('customizeModal').classList.remove('active');
         }
 
-        function updateCustomSummary() {
-            currentCustomOrder.name = document.getElementById('customName').value;
-            currentCustomOrder.email = document.getElementById('customEmail').value;
-            currentCustomOrder.phone = document.getElementById('customPhone').value;
-            currentCustomOrder.dojang = document.getElementById('dojangName').value;
-            currentCustomOrder.itemType = document.getElementById('itemType').value;
-            currentCustomOrder.quantity = parseInt(document.getElementById('customQuantity').value) || 0;
-            currentCustomOrder.brandingType = document.getElementById('brandingType').value;
-            currentCustomOrder.description = document.getElementById('designDescription').value;
-            currentCustomOrder.deadline = document.getElementById('deadline').value;
+        function selectColor(color, element) {
+            document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedColor').value = color;
+            currentCustomOrder.color = color;
+            updateCustomSummary();
+        }
 
+        function triggerFileUpload() {
+            document.getElementById('logoFile').click();
+        }
+
+        function handleFileUpload() {
+            const file = document.getElementById('logoFile').files[0];
+            if (file) {
+                showNotification('File uploaded: ' + file.name);
+                currentCustomOrder.includeLogo = true;
+            }
+        }
+
+        function updateCustomSummary() {
+            // Get all form values
+            currentCustomOrder.name = document.getElementById('customName')?.value || '';
+            currentCustomOrder.email = document.getElementById('customEmail')?.value || '';
+            currentCustomOrder.phone = document.getElementById('customPhone')?.value || '';
+            currentCustomOrder.dojang = document.getElementById('dojangName')?.value || '';
+            currentCustomOrder.itemType = document.getElementById('itemType')?.value || '';
+            currentCustomOrder.quantity = parseInt(document.getElementById('customQuantity')?.value) || 0;
+            currentCustomOrder.brandingType = document.getElementById('brandingType')?.value || '';
+            currentCustomOrder.printLocation = document.getElementById('printLocation')?.value || 'Front Only';
+            currentCustomOrder.urgency = document.getElementById('urgency')?.value || 'Standard';
+            currentCustomOrder.includeLogo = document.getElementById('includeLogo')?.checked || false;
+            currentCustomOrder.needDesign = document.getElementById('needDesign')?.checked || false;
+            currentCustomOrder.sampleNeeded = document.getElementById('sampleNeeded')?.checked || false;
+            currentCustomOrder.description = document.getElementById('designDescription')?.value || '';
+            currentCustomOrder.deadline = document.getElementById('deadline')?.value || '';
+            currentCustomOrder.budget = document.getElementById('budgetRange')?.value || '';
+            
+            // Get sizes
+            currentCustomOrder.sizes = {
+                S: parseInt(document.getElementById('sizeS')?.value) || 0,
+                M: parseInt(document.getElementById('sizeM')?.value) || 0,
+                L: parseInt(document.getElementById('sizeL')?.value) || 0,
+                XL: parseInt(document.getElementById('sizeXL')?.value) || 0,
+                XXL: parseInt(document.getElementById('sizeXXL')?.value) || 0
+            };
+            
+            // Show/hide upload area
+            document.getElementById('uploadArea').style.display = 
+                currentCustomOrder.includeLogo ? 'block' : 'none';
+            
+            // Calculate total quantity from sizes
+            const totalFromSizes = Object.values(currentCustomOrder.sizes).reduce((a, b) => a + b, 0);
+            if (totalFromSizes > 0) {
+                currentCustomOrder.quantity = totalFromSizes;
+            }
+            
             // Calculate estimated price
             let basePrice = 0;
             switch(currentCustomOrder.itemType) {
@@ -1624,7 +2045,9 @@
                 case 'T-Shirts': basePrice = 1500; break;
                 case 'Jackets': basePrice = 3000; break;
                 case 'Tracksuits': basePrice = 4500; break;
+                case 'Pants': basePrice = 2000; break;
                 case 'Caps': basePrice = 1000; break;
+                case 'Bags': basePrice = 2500; break;
                 case 'Full Uniforms': basePrice = 3500; break;
                 default: basePrice = 2000;
             }
@@ -1634,106 +2057,155 @@
                 case 'Embroidery': brandingMultiplier = 1.3; break;
                 case 'Screen Printing': brandingMultiplier = 1.1; break;
                 case 'Heat Transfer': brandingMultiplier = 1.2; break;
-                case 'Full Custom Design': brandingMultiplier = 1.5; break;
+                case 'DTG Printing': brandingMultiplier = 1.15; break;
+                case 'Sublimation': brandingMultiplier = 1.25; break;
+                case 'Patch': brandingMultiplier = 1.2; break;
                 default: brandingMultiplier = 1;
             }
+            
+            let urgencyMultiplier = 1;
+            if (currentCustomOrder.urgency === 'Express') urgencyMultiplier = 1.15;
+            if (currentCustomOrder.urgency === 'Urgent') urgencyMultiplier = 1.3;
+            
+            let extras = 0;
+            if (currentCustomOrder.needDesign) extras += 1500;
+            if (currentCustomOrder.sampleNeeded) extras += 500;
+            
+            const estimatedPrice = (basePrice * currentCustomOrder.quantity * brandingMultiplier * urgencyMultiplier) + extras;
 
-            const estimatedPrice = basePrice * currentCustomOrder.quantity * brandingMultiplier;
-
+            // Update summary display
+            document.getElementById('summaryName').textContent = currentCustomOrder.name || 'Not set';
+            document.getElementById('summaryDojang').textContent = currentCustomOrder.dojang || 'Not set';
             document.getElementById('summaryItem').textContent = currentCustomOrder.itemType || 'Not selected';
             document.getElementById('summaryQty').textContent = currentCustomOrder.quantity;
             document.getElementById('summaryBranding').textContent = currentCustomOrder.brandingType || 'Not selected';
-            document.getElementById('summaryPrice').textContent = `Ksh ${estimatedPrice.toLocaleString()}`;
-
-            // Update branding summary on main page
-            loadBrandingSummary();
-        }
-
-        function loadBrandingSummary() {
-            document.getElementById('summaryName').textContent = currentCustomOrder.name || 'Not set';
-            document.getElementById('summaryDojang').textContent = currentCustomOrder.dojang || 'Not set';
-            document.getElementById('summaryItemType').textContent = currentCustomOrder.itemType || 'Not selected';
-            document.getElementById('summaryItemQty').textContent = currentCustomOrder.quantity;
-            
-            // Recalculate for main summary
-            let basePrice = 0;
-            switch(currentCustomOrder.itemType) {
-                case 'Hoodies': basePrice = 2500; break;
-                case 'T-Shirts': basePrice = 1500; break;
-                case 'Jackets': basePrice = 3000; break;
-                case 'Tracksuits': basePrice = 4500; break;
-                case 'Caps': basePrice = 1000; break;
-                case 'Full Uniforms': basePrice = 3500; break;
-                default: basePrice = 2000;
-            }
-
-            let brandingMultiplier = 1;
-            switch(currentCustomOrder.brandingType) {
-                case 'Embroidery': brandingMultiplier = 1.3; break;
-                case 'Screen Printing': brandingMultiplier = 1.1; break;
-                case 'Heat Transfer': brandingMultiplier = 1.2; break;
-                case 'Full Custom Design': brandingMultiplier = 1.5; break;
-                default: brandingMultiplier = 1;
-            }
-
-            const estimatedPrice = basePrice * currentCustomOrder.quantity * brandingMultiplier;
+            document.getElementById('summaryColor').textContent = currentCustomOrder.color || 'Not selected';
+            document.getElementById('summarySizes').textContent = `S:${currentCustomOrder.sizes.S}, M:${currentCustomOrder.sizes.M}, L:${currentCustomOrder.sizes.L}, XL:${currentCustomOrder.sizes.XL}`;
+            document.getElementById('summaryUrgency').textContent = currentCustomOrder.urgency;
             document.getElementById('summaryTotal').innerHTML = `Total: Ksh ${estimatedPrice.toLocaleString()}`;
+            
+            // Save to localStorage for quick form
+            localStorage.setItem('customName', currentCustomOrder.name);
+            localStorage.setItem('customEmail', currentCustomOrder.email);
+            localStorage.setItem('customDojang', currentCustomOrder.dojang);
         }
 
-        function editCustomOrder() {
-            // Scroll to form or open modal
-            openCustomizeModal();
+        function resetCustomForm() {
+            if (confirm('Reset all form fields?')) {
+                document.getElementById('customizeForm').reset();
+                currentCustomOrder = {
+                    name: '', email: '', phone: '', dojang: '', itemType: '',
+                    quantity: 10, brandingType: '', printLocation: 'Front Only',
+                    color: '', sizes: { S: 2, M: 3, L: 3, XL: 2, XXL: 0 },
+                    urgency: 'Standard', includeLogo: false, needDesign: false,
+                    sampleNeeded: false, description: '', deadline: '', budget: ''
+                };
+                updateCustomSummary();
+                showNotification('Form reset');
+            }
         }
 
         function submitCustomOrder(event) {
             event.preventDefault();
             
-            // Validate all fields
+            // Validate required fields
             if (!currentCustomOrder.name || !currentCustomOrder.email || !currentCustomOrder.phone || 
                 !currentCustomOrder.dojang || !currentCustomOrder.itemType || !currentCustomOrder.brandingType || 
                 !currentCustomOrder.description) {
-                alert("Please fill in all required fields");
+                alert("Please fill in all required fields (*)");
                 return;
             }
 
+            // Format order details for display
+            const sizeBreakdown = `S:${currentCustomOrder.sizes.S}, M:${currentCustomOrder.sizes.M}, L:${currentCustomOrder.sizes.L}, XL:${currentCustomOrder.sizes.XL}, XXL:${currentCustomOrder.sizes.XXL}`;
+            
+            // Calculate price for summary
+            let basePrice = 2000;
+            switch(currentCustomOrder.itemType) {
+                case 'Hoodies': basePrice = 2500; break;
+                case 'T-Shirts': basePrice = 1500; break;
+                case 'Jackets': basePrice = 3000; break;
+                case 'Tracksuits': basePrice = 4500; break;
+                default: basePrice = 2000;
+            }
+            
+            let brandingMultiplier = 1;
+            switch(currentCustomOrder.brandingType) {
+                case 'Embroidery': brandingMultiplier = 1.3; break;
+                case 'Screen Printing': brandingMultiplier = 1.1; break;
+                default: brandingMultiplier = 1;
+            }
+            
+            let urgencyMultiplier = 1;
+            if (currentCustomOrder.urgency === 'Express') urgencyMultiplier = 1.15;
+            if (currentCustomOrder.urgency === 'Urgent') urgencyMultiplier = 1.3;
+            
+            let extras = 0;
+            if (currentCustomOrder.needDesign) extras += 1500;
+            if (currentCustomOrder.sampleNeeded) extras += 500;
+            
+            const estimatedPrice = (basePrice * currentCustomOrder.quantity * brandingMultiplier * urgencyMultiplier) + extras;
+
+            // Create WhatsApp message
+            const whatsappMessage = `🔔 *NEW CUSTOM BRANDING REQUEST!* 🔔
+
+*CUSTOMER DETAILS:*
+• Name: ${currentCustomOrder.name}
+• Phone: ${currentCustomOrder.phone}
+• Email: ${currentCustomOrder.email}
+• Dojang/Team: ${currentCustomOrder.dojang}
+
+*ORDER DETAILS:*
+• Item: ${currentCustomOrder.itemType}
+• Quantity: ${currentCustomOrder.quantity}
+• Size Breakdown: ${sizeBreakdown}
+• Branding Type: ${currentCustomOrder.brandingType}
+• Print Location: ${currentCustomOrder.printLocation}
+• Primary Color: ${currentCustomOrder.color || 'Not specified'}
+• Urgency: ${currentCustomOrder.urgency}
+
+*ADDITIONAL SERVICES:*
+• Has Logo: ${currentCustomOrder.includeLogo ? 'Yes' : 'No'}
+• Need Design: ${currentCustomOrder.needDesign ? 'Yes' : 'No'}
+• Sample Needed: ${currentCustomOrder.sampleNeeded ? 'Yes' : 'No'}
+• Deadline: ${currentCustomOrder.deadline || 'Not specified'}
+• Budget Range: ${currentCustomOrder.budget || 'Not specified'}
+
+*DESIGN DESCRIPTION:*
+${currentCustomOrder.description}
+
+*ESTIMATED PRICE: Ksh ${estimatedPrice.toLocaleString()}*
+
+Please contact this customer ASAP!`;
+
+            // Send via WhatsApp
+            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+
             // Send email via EmailJS
-            emailjs.send(window.EMAILJS_SERVICE_ID, "template_jra9me1", {
+            emailjs.send(window.EMAILJS_SERVICE_ID, window.ORDER_TEMPLATE, {
                 to_email: currentCustomOrder.email,
                 to_name: currentCustomOrder.name,
                 customerName: currentCustomOrder.name,
                 orderId: "CUST" + Date.now(),
                 orderDate: new Date().toLocaleString(),
                 orderItems: `Custom ${currentCustomOrder.itemType} x${currentCustomOrder.quantity} (${currentCustomOrder.brandingType})`,
-                orderTotal: document.getElementById('summaryPrice').textContent,
+                orderTotal: estimatedPrice,
                 deliveryAddress: "Custom order - to be confirmed",
                 trackingUrl: "https://stawear.co.ke/custom",
                 customDetails: currentCustomOrder.description,
                 dojangName: currentCustomOrder.dojang,
-                deadline: currentCustomOrder.deadline || "Not specified",
                 from_name: "Stawear Kenya"
             }).then(function() {
-                showNotification("✅ Custom order request sent! We'll contact you soon.");
-                
-                // Send WhatsApp notification
-                const whatsappMessage = `🔔 *NEW CUSTOM ORDER!* 🔔\n\n` +
-                    `*Name:* ${currentCustomOrder.name}\n` +
-                    `*Phone:* ${currentCustomOrder.phone}\n` +
-                    `*Email:* ${currentCustomOrder.email}\n` +
-                    `*Dojang:* ${currentCustomOrder.dojang}\n` +
-                    `*Item:* ${currentCustomOrder.itemType}\n` +
-                    `*Quantity:* ${currentCustomOrder.quantity}\n` +
-                    `*Branding:* ${currentCustomOrder.brandingType}\n` +
-                    `*Description:* ${currentCustomOrder.description}\n` +
-                    `*Deadline:* ${currentCustomOrder.deadline || 'Not specified'}`;
-                
-                window.open(`https://wa.me/254727394165?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-                
-                closeCustomizeModal();
-            }, function(error) {
+                showNotification("✅ Request sent! Check your email for confirmation");
+            }).catch(function(error) {
                 console.log("Email error:", error);
-                alert("Custom order request received! We'll contact you soon.\n\nDetails:\n" + 
-                      JSON.stringify(currentCustomOrder, null, 2));
             });
+
+            // Show success message
+            showNotification("✅ Custom request sent via WhatsApp!");
+            
+            // Close modal
+            closeCustomizeModal();
         }
 
         // ===== CHECKOUT FUNCTIONS =====
@@ -1791,16 +2263,35 @@
 
             const orderItemsList = order.items.map(item => 
                 `• ${item.quantity}x ${item.name} (${item.size}) - Ksh ${item.price * item.quantity}`
-            ).join('<br>');
+            ).join('\n');
 
-            // Send order confirmation email
-            emailjs.send(window.EMAILJS_SERVICE_ID, "template_jra9me1", {
+            // Send WhatsApp to business
+            const whatsappMessage = `🔔 *NEW ORDER!* 🔔
+
+*Order #:* ${order.id}
+*Customer:* ${order.customerName}
+*Phone:* ${order.customerPhone}
+*Email:* ${order.customerEmail}
+*Total:* Ksh ${order.total}
+*M-Pesa Code:* ${order.mpesaCode}
+
+*ITEMS:*
+${orderItemsList}
+
+*DELIVERY:*
+${order.address}
+${order.county} - Ksh ${order.deliveryCost}`;
+            
+            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+
+            // Send email confirmation
+            emailjs.send(window.EMAILJS_SERVICE_ID, window.ORDER_TEMPLATE, {
                 to_email: order.customerEmail,
                 to_name: order.customerName,
                 customerName: order.customerName,
                 orderId: order.id,
                 orderDate: order.date,
-                orderItems: orderItemsList,
+                orderItems: orderItemsList.replace(/\n/g, '<br>'),
                 orderTotal: order.total,
                 deliveryAddress: `${order.address}, ${order.county}`,
                 trackingUrl: `https://stawear.co.ke/track?order=${order.id}`,
@@ -1808,11 +2299,6 @@
             }).then(function() {
                 showNotification("✅ Order confirmation email sent!");
             });
-
-            // Send WhatsApp to business
-            const whatsappMessage = `🔔 *NEW ORDER!* 🔔\n\n*Order #:* ${order.id}\n*Customer:* ${order.customerName}\n*Phone:* ${order.customerPhone}\n*Email:* ${order.customerEmail}\n*Total:* Ksh ${order.total}\n*M-Pesa:* ${order.mpesaCode}\n\n*ITEMS:*\n${order.items.map(i => `• ${i.quantity}x ${i.name} (${i.size}) - Ksh ${i.price * i.quantity}`).join('\n')}\n\n*DELIVERY:*\n${order.address}\n${order.county} - Ksh ${order.deliveryCost}`;
-            
-            window.open(`https://wa.me/254727394165?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
 
             // Save order
             const orders = JSON.parse(localStorage.getItem('stawearOrders') || '[]');
@@ -1829,7 +2315,7 @@
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i><div>${message}</div>`;
+            toast.innerHTML = `<i class="fas fa-check-circle"></i><div>${message}</div>`;
             container.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
