@@ -1325,17 +1325,18 @@
 
     <!-- JavaScript -->
     <script>
-        // ===== INITIALIZE EMAILJS WITH YOUR KEYS =====
+    // ===== EMAILJS INITIALIZATION WITH NEW PUBLIC KEY =====
 (function() {
-    // THIS MUST BE EXACT - with your public key
+    // YOUR NEW PUBLIC KEY
     emailjs.init("rOBcEHt9BFgYEOL1Z");
     
-    // THIS MUST BE EXACT - with your service ID
+    // YOUR SERVICE ID (unchanged)
     window.EMAILJS_SERVICE_ID = "service_ym1oijj";
     
-    console.log("✅ EmailJS initialized with Public Key:", emailjs._userID);
-    console.log("✅ Service ID set to:", window.EMAILJS_SERVICE_ID);
-})();;
+    console.log("%c✅ EMAILJS READY!", "color: green; font-size: 14px");
+    console.log("   Public Key:", emailjs._userID);
+    console.log("   Service ID:", window.EMAILJS_SERVICE_ID);
+})();
 
         // ===== PRODUCT DATA =====
         const products = [
