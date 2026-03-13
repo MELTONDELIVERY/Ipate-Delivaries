@@ -1326,11 +1326,16 @@
     <!-- JavaScript -->
     <script>
         // ===== INITIALIZE EMAILJS WITH YOUR KEYS =====
-        (function() {
-            emailjs.init("E5eZzTZBlvjrawgo_");
-            window.EMAILJS_SERVICE_ID = "service_ym1oijj";
-            console.log("✅ EmailJS initialized");
-        })();
+(function() {
+    // THIS MUST BE EXACT - with your public key
+    emailjs.init("E5eZzTZBlvjrawgo_");
+    
+    // THIS MUST BE EXACT - with your service ID
+    window.EMAILJS_SERVICE_ID = "service_ym1oijj";
+    
+    console.log("✅ EmailJS initialized with Public Key:", emailjs._userID);
+    console.log("✅ Service ID set to:", window.EMAILJS_SERVICE_ID);
+})();;
 
         // ===== PRODUCT DATA =====
         const products = [
